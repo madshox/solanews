@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessPostReady;
+use App\Models\PostReady;
 use Goutte\Client;
 use Illuminate\Http\Request;
 
@@ -17,38 +19,54 @@ class MainController extends Controller
         });
         $post_links = compact('links');
 
-
         $post_cats = [];
         $post_titles = [];
         $post_images = [];
         $post_descriptions = [];
         foreach ($post_links as $post_link) {
             foreach ($post_link as $link) {
-                //get posts cats
                 $post = $client->request('GET', $link);
-//                $cat = str_replace('/category', '', $post->filter('.itemCat a')->attr('href'));
-//                    if(!str_contains($cat, 'reklama')) {
-//                        $post_cats[] = trim($cat, '/');
-//                    }
+                //get posts cats
+                $cat = str_replace('/category', '', $post->filter('.itemCat a')->attr('href'));
+                $cat = trim($cat, '/');
+//                   $post_cats[] = trim($cat, '/');
 
                 //get posts titles
                 $title = $post->filter('.articleContHead')->filter('h1')->each(function ($node) {
                     return $node->text();
                 });
-                $post_titles[] = $title;
+//                $post_titles[] = $title;
 
-//                //get posts images
-//                $images = $post->filter('.postContent img')->attr('src');
+
+                //get posts images
+                if($post->filter('.postContent img')->count() != 0) {
+                    $images = $post->filter('.postContent img')->attr('src');
+                }
+                else {
+                    $images = 'https://daryo.uz/assets/images/logo.svg?s=1';
+                }
 //                $post_images[] = $images;
 
                 //get posts descriptions
                 $description = $post->filter('.postContent')->filter('p')->each(function ($node) {
                     return $node->text();
                 });
-                $post_descriptions[] = $description;
+                $description = implode($description);
+//                $post_descriptions[] = $description;
+
+                sleep(1);
+
+
+                $create_post = PostReady::create([
+                    'title' => $title[0],
+                    'category' => $cat,
+                    'img' => $images,
+                    'description' => $description,
+                ]);
+
+                ProcessPostReady::dispatch($create_post);
             }
         }
-        $postDatas = collect($post_titles, $post_descriptions);
-        return view('welcome', compact('post_titles', 'post_descriptions'));
+//        return view('welcome', compact('post_titles', 'post_descriptions', 'post_cats', 'post_images'));
     }
 }
