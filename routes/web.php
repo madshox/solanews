@@ -13,4 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\MainController@index');
+Route::get('/', 'App\Http\Controllers\MainController@index')->name('index');
+
+
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+//    Route::group(['middleware' => 'is_admin'], function () {
+        Route::resource('posts', 'PostController');
+        Route::resource('categories', 'CategoryController');
+//    });
+});
