@@ -28,14 +28,7 @@
 <h2>News</h2>
 
 <div class="row">
-    @foreach($post_titles as $key => $post_title)
-        <div class="col-md-3" style="background-color:#aaa;">
-                <h2>{{ $post_title[0] }}</h2>
-                <p>{!! implode($post_descriptions[$key]) !!}</p>
-                <p>{{ $post_cats[$key] }}</p>
-                <p>{{ $post_images[$key] }}</p>
-        </div>
-    @endforeach
+    <h1>Welcome</h1>
 </div>
 
 </body>

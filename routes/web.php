@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\MainController@index')->name('index');
+Route::get('/', 'App\Http\Controllers\MainController@home')->name('welcome');
+Route::get('/parse', 'App\Http\Controllers\MainController@index')->name('parse');
 
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {

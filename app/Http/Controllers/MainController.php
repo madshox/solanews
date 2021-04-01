@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
+    public function home() {
+        return view('welcome');
+    }
     public function index()
     {
         $client = new Client();
