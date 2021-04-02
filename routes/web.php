@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\MainController@home')->name('welcome');
-Route::get('/parse', 'App\Http\Controllers\MainController@index')->name('parse');
+Route::get('/', 'App\Http\Controllers\MainController@index')->name('index');
 
+
+
+Route::get('/parse','App\Http\Controllers\MainController@parse')->name('parse');
+Route::delete('/deleteAllPosts', 'App\Http\Controllers\MainController@deleteAllPosts')->name('delete_all_posts');
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
 //    Route::group(['middleware' => 'is_admin'], function () {

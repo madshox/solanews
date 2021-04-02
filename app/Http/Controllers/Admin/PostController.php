@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
+        $posts = Post::paginate(10);
         return view('dashboard.posts.index', compact('posts'));
     }
 
@@ -73,10 +73,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+//        $img = file_get_contents('https://s.daryo.uz/wp-content/uploads/2021/04/kema-global-l-p.jpg');
+//        dd($img);
         $post->update([
             'title' => $request->title,
             'description' => $request->description,
-            'status' => $request->status ? 1 : 0
+            'status' => $request->status ? 1 : 0,
         ]);
         return redirect()->route('posts.index');
     }

@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Models\Post;
+use Goutte\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -29,6 +31,6 @@ class ProcessPostReady implements ShouldQueue
      */
     public function handle()
     {
-        //
+
     }
 }

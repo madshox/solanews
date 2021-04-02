@@ -9,11 +9,20 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function home() {
-        return view('welcome');
+    public function index() {
+        return view('index');
     }
-    public function index()
+
+    public function deleteAllPosts() {
+        Post::where('status', 0)->delete();
+        return redirect()->route('posts.index');
+    }
+
+    public function parse()
     {
+//        $this->dispatch(new ProcessPostReady);
+//        return redirect()->route('posts.index');
+
         $client = new Client();
         $crawler = $client->request('GET', 'https://daryo.uz/uz/feed/');
 
@@ -58,11 +67,12 @@ class MainController extends Controller
 
                 sleep(1);
 
+                $img = file_get_contents('https:' . $images);
 
                 $create_post = Post::create([
                     'title' => $title[0],
                     'category' => $cat,
-                    'img' => $images,
+                    'img' => 'https:' . $img,
                     'description' => $description,
                 ]);
 

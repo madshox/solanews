@@ -54,7 +54,11 @@
                                             Главная картинка
                                         </div>
                                         <fieldset class="form-group">
-                                            <img src="{{ $post->img }}" alt="">
+                                            <label for="basicInputFile">Загрузить</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input"
+                                                       id="inputGroupFile01" name="img">
+                                            </div>
                                         </fieldset>
                                     </div>
 

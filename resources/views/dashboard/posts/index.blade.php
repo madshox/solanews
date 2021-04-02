@@ -8,7 +8,14 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Услуги</h4>
-                            <a href="{{ route('posts.create') }}"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"><i class="feather icon-plus"></i>Парсить</button></a>
+                        </div>
+                        <div class="card-header">
+                            <a href="{{ route('parse') }}"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"><i class="feather icon-plus"></i>Парсить</button></a>
+                            <form action="{{ route('delete_all_posts') }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light"><i class="feather icon-trash"></i>Удалить все неопубликованные посты</button>
+                            </form>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
@@ -67,6 +74,7 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                {{ $posts->links() }}
                             </div>
                         </div>
                     </div>
