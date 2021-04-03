@@ -52,7 +52,7 @@
                                                         @endif
                                                     </div>
                                                 </td>
-                                                <td><img src="{{ $post->img }}" height="auto" width="150" alt=""></td>
+                                                <td><img src="{{ Storage::url($post->img) }}" height="auto" width="150" alt=""></td>
                                                 <td style="display: flex; justify-content: center;">
                                                     <form action="{{ route('posts.destroy', $post) }}" method="POST">
                                                         <a href="{{ route('posts.edit', $post) }}"><button type="button" class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">

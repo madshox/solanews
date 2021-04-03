@@ -6,6 +6,7 @@ use App\Jobs\ProcessPostReady;
 use App\Models\Post;
 use Goutte\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
 {
@@ -14,6 +15,10 @@ class MainController extends Controller
     }
 
     public function deleteAllPosts() {
+        $not_publish_posts = Post::where('status', 0)->get();
+        foreach ($not_publish_posts as $not_publish_post) {
+            Storage::disk('public')->delete($not_publish_post->img);
+        }
         Post::where('status', 0)->delete();
         return redirect()->route('posts.index');
     }
@@ -56,7 +61,7 @@ class MainController extends Controller
                 if ($post->filter('.postContent img')->count() != 0) {
                     $images = $post->filter('.postContent img')->attr('src');
                 } else {
-                    $images = 'https://daryo.uz/assets/images/logo.svg?s=1';
+                    $images = '//daryo.uz/assets/images/logo.svg?s=1';
                 }
 
                 //get posts descriptions
@@ -67,13 +72,28 @@ class MainController extends Controller
 
                 sleep(1);
 
-                $img = file_get_contents('https:' . $images);
+                if(!is_dir(storage_path() . '/app/public/images/')){
+                    mkdir(storage_path() . '/app/public/images/');
+                    $images_url = storage_path() . '/app/public/images/' . time() . '.jpg';
+                }
+                else {
+                    $images_url = storage_path() . '/app/public/images/' . time() . '.jpg';
+                }
+
+                if(str_contains($images, 'http:')) {
+                    $img = $images;
+                }
+                else {
+                    $img = 'http:' . $images;
+                };
+
+                file_put_contents($images_url, file_get_contents($img));
 
                 $create_post = Post::create([
                     'title' => $title[0],
                     'category' => $cat,
-                    'img' => 'https:' . $img,
                     'description' => $description,
+                    'img' => str_replace('D:\OSPanel\domains\solanews\storage/app/public/', '', $images_url)
                 ]);
 
                 ProcessPostReady::dispatch($create_post);

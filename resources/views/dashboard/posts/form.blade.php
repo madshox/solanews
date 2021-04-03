@@ -54,10 +54,8 @@
                                             Главная картинка
                                         </div>
                                         <fieldset class="form-group">
-                                            <label for="basicInputFile">Загрузить</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input"
-                                                       id="inputGroupFile01" name="img">
+                                            <div class="">
+                                                <img style="width: 500px" src="{{ Storage::url($post->img) }}" alt="">
                                             </div>
                                         </fieldset>
                                     </div>
@@ -66,7 +64,7 @@
                                         <select name="category_id" id="catid" class="form-control">
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}"
-                                                        @if($post->category == $category->id)
+                                                        @if($post->category == $category->slug)
                                                         selected
                                                     @endif>
                                                     {{ $category->title }}
