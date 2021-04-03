@@ -101,7 +101,7 @@
     <div class="navbar navbar-expand-lg bsnav bsnav-sticky bsnav-sticky-slide">
         <div class="container position-relative">
 
-            <a class="navbar-brand" href="https://solanews.uz/ru">
+            <a class="navbar-brand" href="{{ route('index') }}">
                 <img src="{{ asset('front/img/logo.png') }}" alt="Logo">
             </a>
 
@@ -118,47 +118,13 @@
                             <a   href="/uz">O'z</a>
                         </div>
                     </li>
-
+                    @foreach($categories as $category)
                     <li class="nav-item">
-                        <a class="nav-link" href="https://solanews.uz/ru/category/view/4/avto">
-                            Авто
+                        <a class="nav-link" href="{{ route('category', $category->slug) }}">
+                            {{ $category->title }}
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://solanews.uz/ru/category/view/5/v-mire">
-                            В мире
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://solanews.uz/ru/category/view/7/obshhestvo">
-                            Общество
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://solanews.uz/ru/category/view/3/texnologii">
-                            Технологии
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://solanews.uz/ru/category/view/2/sport">
-                            Спорт
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://solanews.uz/ru/category/view/1/novosti">
-                            Новости
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://solanews.uz/ru/category/view/6/kino">
-                            Кино
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://solanews.uz/ru/category/view/9/razvleceniya">
-                            Развлечения
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
 
             </div>

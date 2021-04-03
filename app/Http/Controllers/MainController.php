@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\ProcessPostReady;
+use App\Models\Category;
 use App\Models\Post;
 use Goutte\Client;
 use Illuminate\Http\Request;
@@ -16,6 +17,18 @@ class MainController extends Controller
     public function deleteAllPosts() {
         Post::where('status', 0)->delete();
         return redirect()->route('posts.index');
+    }
+
+    public function category($slug) {
+        $category = Category::where('slug', $slug)->first();
+        $posts = Post::get();
+        return view('category', compact('category', 'posts'));
+    }
+
+    public function post($slug, $post) {
+        $category = Category::where('slug', $slug)->first();
+        $post = Post::where('id', $post)->first();
+        return view('post-item', compact('category', 'post'));
     }
 
     public function parse()
@@ -67,12 +80,9 @@ class MainController extends Controller
 
                 sleep(1);
 
-                $img = file_get_contents('https:' . $images);
-
                 $create_post = Post::create([
                     'title' => $title[0],
                     'category' => $cat,
-                    'img' => 'https:' . $img,
                     'description' => $description,
                 ]);
 
