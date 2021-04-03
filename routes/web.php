@@ -26,3 +26,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
         Route::resource('categories', 'CategoryController');
 //    });
 });
+
+Route::get('/category/{slug}/{post}', 'App\Http\Controllers\MainController@post')->name('post');
+Route::get('/category/{slug}', 'App\Http\Controllers\MainController@category')->name('category');
