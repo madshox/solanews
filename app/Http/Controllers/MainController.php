@@ -25,15 +25,15 @@ class MainController extends Controller
     }
 
     public function category($slug) {
-        $category = Category::where('slug', $slug)->first();
+        $cat = Category::where('slug', $slug)->first();
         $posts = Post::get();
-        return view('category', compact('category', 'posts'));
+        return view('category', compact('cat', 'posts'));
     }
 
     public function post($slug, $post) {
-        $category = Category::where('slug', $slug)->first();
+        $cat = Category::where('slug', $slug)->first();
         $post = Post::where('id', $post)->first();
-        return view('post-item', compact('category', 'post'));
+        return view('post-item', compact('cat', 'post'));
     }
 
     public function parse()
@@ -58,6 +58,9 @@ class MainController extends Controller
                 //get posts cats
                 $cat = str_replace('/category', '', $post->filter('.itemCat a')->attr('href'));
                 $cat = trim($cat, '/');
+                $category = Category::firstOrCreate([
+                    'title' => $cat
+                ]);
 
                 //get posts titles
                 $title = $post->filter('.articleContHead')->filter('h1')->each(function ($node) {
@@ -103,11 +106,13 @@ class MainController extends Controller
                 file_put_contents($images_url, file_get_contents($img));
 
 
+
                 $create_post = Post::create([
                     'title' => $title[0],
+                    'category_id' => $category->id,
                     'category' => $cat,
                     'description' => $description,
-                    'img' => str_replace('D:\OSPanel\domains\solanews\storage/app/public/', '', $images_url)
+                    'img' => str_replace(storage_path() . '/app/public/', '', $images_url)
                 ]);
 
                 ProcessPostReady::dispatch($create_post);
