@@ -91,6 +91,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        dd($post);
         $post->delete();
         return redirect()->route('posts.index')->with('danger', 'Пост успешно удален');
     }

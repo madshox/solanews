@@ -94,7 +94,7 @@
                                             <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
                                             </div>
                                             <div class="news__img">
-                                                <a href="news-item.html">
+                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
                                                     <img class="newsImg__mini"
                                                          src="{{ Storage::url($post->img) }}">
                                                 </a>
@@ -118,11 +118,11 @@
                                                     </div>
                                                 </div>
                                                 <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
+                                                    <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                        {{ $post->title }}
                                                     </a>
                                                 </h3>
-                                                <div class="news__subtitle">{{ $post->description }}</div>
+                                                <div class="news__subtitle">{!! $post->description !!}</div>
                                                 <div class="my-border">
                                                     <div class="news__dates--two">
                                                         <div class="news__time mr-1">19:00</div>
@@ -3043,3 +3043,4 @@
         </section>
     </main>
 @endsection
+a

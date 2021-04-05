@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->integer('category_id')->nullable();
+            $table->integer('news_source')->nullable();
             $table->boolean('status')->default(0);
             $table->string('category');
             $table->string('img');

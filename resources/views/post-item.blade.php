@@ -41,7 +41,7 @@
                                         </div>
 
                                         <div class="news__external-link my-3">
-                                            <a href="#">
+                                            <a href="{{ $post->news_source }}" target="_blank">
                                                 <i class="far fa-external-link"></i>
                                                 <span>Источник новости</span>
                                             </a>
@@ -98,7 +98,7 @@
                                                 </div>
                                                 <div class="my-2 news__dates">
                                                     <!-- <div class="news__date mr-1">17 октября</div> -->
-                                                    <div class="news__time mr-1">{{ $post->updated_at }}</div>
+                                                    <div class="news__time mr-1">{{ $post->updated_at->format('Y:m:d') }}</div>
                                                     <div class="news__category--title">• Парламентская газета</div>
                                                 </div>
                                             </div>
@@ -122,7 +122,7 @@
                                                         </a>
                                                     </h2>
                                                     <div class="news__subtitle">
-                                                        {{ $post->description }}
+                                                        {!! $post->description !!}
                                                     </div>
                                                     <div class="my-border">
                                                         <div class="news__dates--two">

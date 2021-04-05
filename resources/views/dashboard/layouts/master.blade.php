@@ -411,7 +411,7 @@
 
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
-
+@yield('javascript')
 <!--Ck-editor-->
 <script>
     ClassicEditor

@@ -112,7 +112,8 @@ class MainController extends Controller
                     'category_id' => $category->id,
                     'category' => $cat,
                     'description' => $description,
-                    'img' => str_replace(storage_path() . '/app/public/', '', $images_url)
+                    'img' => str_replace(storage_path() . '/app/public/', '', $images_url),
+                    'news_source' => $link
                 ]);
 
                 ProcessPostReady::dispatch($create_post);
