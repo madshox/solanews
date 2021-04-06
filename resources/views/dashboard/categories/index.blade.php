@@ -22,6 +22,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">Position</th>
                                     <th scope="col" style="text-align: center;">Действия</th>
                                 </tr>
                                 </thead>
@@ -30,6 +31,7 @@
                                     <tr>
                                         <th scope="row">{{ $category->id }}</th>
                                         <td>{{ $category->title }}</td>
+                                        <td>{{ $category->position }}</td>
                                         <td style="display: flex; justify-content: center;">
                                             <form action="{{ route('categories.destroy', $category) }}"
                                                   method="POST">

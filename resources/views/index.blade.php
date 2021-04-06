@@ -84,57 +84,63 @@
                 <div class="row mt-3">
                     <div class="col-md-9 col-lg-8">
                         <div class="row">
-{{--                            @foreach($posts as $post)--}}
-                                @foreach($categories as $category)
-                                    @foreach($category->posts as $post)
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
-                                                    <img class="newsImg__mini"
-                                                         src="{{ Storage::url($post->img) }}">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__time mr-1">19:00</div>
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
+                            {{--@foreach($posts as $post)--}}
+                            @foreach($categories as $category)
+                                @if($category->position == 1)
+                                @foreach($category->posts as $post)
+                                    <div class="col-md-12 col-lg-6 my-2">
+                                        <div class="row">
+                                            <div class="col-md-5 col-lg-12">
+                                                <div class="news news__bottom">
+                                                    <div class="news__viewed d-none d-lg-block"><i
+                                                            class="fas fa-eye"></i> 133
                                                     </div>
-                                                </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="{{ route('post', [$category->slug, $post->id]) }}">
-                                                        {{ $post->title }}
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">{!! $post->description !!}</div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
+                                                    <div class="news__img">
+                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                            <img class="newsImg__mini"
+                                                                 src="{{ Storage::url($post->img) }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="my-2 news__dates">
                                                         <div class="news__time mr-1">19:00</div>
                                                         <div class="news__category--title">• Парламентская газета</div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-7 col-lg-12">
+                                                <div class="news news__bottom">
+                                                    <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
+                                                            class="fas fa-eye"></i> 133
+                                                    </div>
+                                                    <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="news__category mr-2">
+                                                                <span><a href="category.html">Политика</a></span>
+                                                                <span><a href="category.html">Спорт</a></span>
+                                                                <span><a href="category.html">Технологии</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <h3 class="news__title--small my-1">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                {{ $post->title }}
+                                                            </a>
+                                                        </h3>
+                                                        <div class="news__subtitle">{!! $post->description !!}</div>
+                                                        <div class="my-border">
+                                                            <div class="news__dates--two">
+                                                                <div class="news__time mr-1">19:00</div>
+                                                                <div class="news__category--title">• Парламентская
+                                                                    газета
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
                                 @endforeach
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -264,7 +270,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -346,7 +353,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -428,7 +436,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -510,7 +519,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -697,7 +707,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -779,7 +790,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -861,7 +873,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -943,7 +956,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -1415,7 +1429,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -1497,7 +1512,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -1579,7 +1595,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -1661,7 +1678,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -1847,7 +1865,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -1929,7 +1948,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2011,7 +2031,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2093,7 +2114,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2279,7 +2301,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2361,7 +2384,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2443,7 +2467,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2525,7 +2550,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2711,7 +2737,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2793,7 +2820,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2875,7 +2903,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">
@@ -2957,7 +2986,8 @@
                                     <div class="col-md-7 col-lg-12">
                                         <div class="news news__bottom">
                                             <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133</div>
+                                                    class="fas fa-eye"></i> 133
+                                            </div>
                                             <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="news__category mr-2">

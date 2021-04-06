@@ -100,11 +100,11 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('posts.destroy', $post) }}" method="POST" id="deletePostForm">
+                <form action="#" method="POST" id="deletePostForm">
                     @csrf
                     @method('DELETE')
                     <div class="modal-body" id="postId">
-                        Вы действительно хотите удалить новость <span class="PostId"></span>?
+                        Вы действительно хотите удалить новость <span class="postId"></span>?
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger" data-dismiss="modal" id="deletePost">Да</button>
@@ -120,13 +120,13 @@
     <script>
         $(document).ready(function () {
             $('.postId').on('click', function () {
-                $('.PostId').text($(this).data('post-id'));
+                let id = $(this).data('post-id');
+                $('.PostId').text(id);
                 $('#deleteModal').modal();
+                $('#deletePost').on('click', function () {
+                    $('#deletePostForm').attr('action', "/admin/posts/"+id).submit();
+                });
             });
-        });
-
-        $('#deletePost').on('click', function (event) {
-
         });
     </script>
 @endsection

@@ -80,7 +80,7 @@ class PostController extends Controller
             'description' => $request->description,
             'status' => $request->status ? 1 : 0,
         ]);
-        return redirect()->route('posts.index');
+        return redirect()->back()->with('warning', 'Пост успешно отредактирован');
     }
 
     /**
@@ -91,7 +91,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        dd($post);
         $post->delete();
         return redirect()->route('posts.index')->with('danger', 'Пост успешно удален');
     }

@@ -57,7 +57,31 @@
                                         </fieldset>
                                     </div>
 
-                                    <div class="card-body">
+                                    <div class="col-sm-3">
+                                        @error('position')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                        <div class="text-bold-600 font-medium-2 mb-1">
+                                            Позиция
+                                        </div>
+                                        <fieldset
+                                            class="form-group position-relative has-icon-left input-divider-left">
+                                            @isset($category)
+                                                <input type="number" class="form-control" id="name" name="position"
+                                                       placeholder="Позиция категории"
+                                                       value="{{ old('position', isset($category) ? $category->position : null) }}">
+                                            @else
+                                                <input type="number" class="form-control" id="name" name="title"
+                                                       placeholder="Позиция категории"
+                                                       value="{{ old('position', isset($category) ? $category->position : null) }}">
+                                            @endisset
+                                            <div class="form-control-position">
+                                                <i class="feather icon-phone"></i>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="card-body col-12">
                                         <div class="row" style="display: inline-flex">
                                             <div class="col-6">
                                                 @csrf
