@@ -36,9 +36,6 @@
     <link rel="stylesheet" type="text/css"
           href="{{ asset('back/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/core/colors/palette-gradient.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/pages/dashboard-analytics.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/pages/card-analytics.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('back/app-assets/css/plugins/tour/tour.css') }}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -51,6 +48,7 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     {{--Select2--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js" defer></script>
@@ -411,7 +409,10 @@
 
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
+
+<!--JavaScript-->
 @yield('javascript')
+
 <!--Ck-editor-->
 <script>
     ClassicEditor
@@ -460,10 +461,6 @@
 <script src="{{ asset('back/app-assets/js/core/app.js') }}"></script>
 <script src="{{ asset('back/app-assets/js/scripts/components.js') }}"></script>
 <!-- END: Theme JS-->
-
-<!-- BEGIN: Page JS-->
-<script src="{{ asset('back/app-assets/js/scripts/pages/dashboard-analytics.js') }}"></script>
-<!-- END: Page JS-->
 
 </body>
 <!-- END: Body-->

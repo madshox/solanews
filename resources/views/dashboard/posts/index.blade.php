@@ -69,7 +69,7 @@
                                                     </div>
                                                 </button>
                                             </a>
-                                            <a class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light"
+                                            <a class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light postId"
                                                     data-toggle="modal" data-target="#DeleteModal"
                                                     data-post-id="{{ $post->id }}">
                                                 <div class="fonticon-wrap">
@@ -90,7 +90,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade text-left" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel120"
+    <div class="modal fade text-left" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel120"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -103,11 +103,11 @@
                 <form action="{{ route('posts.destroy', $post) }}" method="POST" id="deletePostForm">
                     @csrf
                     @method('DELETE')
-                    <div class="modal-body">
-                        Вы действительно хотите удалить новость?
+                    <div class="modal-body" id="postId">
+                        Вы действительно хотите удалить новость <span class="PostId"></span>?
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger" data-dismiss="modal">Да</button>
+                        <button type="submit" class="btn btn-danger" data-dismiss="modal" id="deletePost">Да</button>
                         <button type="button" class="btn btn-success" data-dismiss="modal">Нет</button>
                     </div>
                 </form>
@@ -118,12 +118,15 @@
 
 @section('javascript')
     <script>
-        $('#deletePostForm').on('show.bs.modal', function (event) {
-            console.log('Hello');
-            let button = $(event.relatedTarget);
-            let action = button.data('action');
-            let modal = $(this);
-            modal.find('form').attr('action', action);
-        })
+        $(document).ready(function () {
+            $('.postId').on('click', function () {
+                $('.PostId').text($(this).data('post-id'));
+                $('#deleteModal').modal();
+            });
+        });
+
+        $('#deletePost').on('click', function (event) {
+
+        });
     </script>
 @endsection
