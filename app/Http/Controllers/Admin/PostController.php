@@ -73,14 +73,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-//        $img = file_get_contents('https://s.daryo.uz/wp-content/uploads/2021/04/kema-global-l-p.jpg');
-//        dd($img);
         $post->update([
             'title' => $request->title,
             'description' => $request->description,
-            'status' => $request->status ? 1 : 0,
+            'category' => $request->category,
+            'category_id' => Category::where('slug', $request->category)->value('id'),
+            'status' => $request->status ? 1 : 0
         ]);
-        return redirect()->back()->with('warning', 'Пост успешно отредактирован');
+        dd('redirects_to');
+        return redirect()->route('posts.index')->with('warning', 'Пост успешно отредактирован');
     }
 
     /**

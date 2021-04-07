@@ -87,50 +87,52 @@
                             {{--@foreach($posts as $post)--}}
                             @foreach($categories as $category)
                                 @if($category->position == 1)
-                                @foreach($category->posts as $post)
-                                    <div class="col-md-12 col-lg-6 my-2">
-                                        <div class="row">
-                                            <div class="col-md-5 col-lg-12">
-                                                <div class="news news__bottom">
-                                                    <div class="news__viewed d-none d-lg-block"><i
-                                                            class="fas fa-eye"></i> 133
-                                                    </div>
-                                                    <div class="news__img">
-                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
-                                                            <img class="newsImg__mini"
-                                                                 src="{{ Storage::url($post->img) }}">
-                                                        </a>
-                                                    </div>
-                                                    <div class="my-2 news__dates">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7 col-lg-12">
-                                                <div class="news news__bottom">
-                                                    <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                            class="fas fa-eye"></i> 133
-                                                    </div>
-                                                    <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="news__category mr-2">
-                                                                <span><a href="category.html">Политика</a></span>
-                                                                <span><a href="category.html">Спорт</a></span>
-                                                                <span><a href="category.html">Технологии</a></span>
+                                    @foreach($category->posts as $post)
+                                        <div class="col-md-12 col-lg-6 my-2">
+                                            <div class="row">
+                                                <div class="col-md-5 col-lg-12">
+                                                    <div class="news news__bottom">
+                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                class="fas fa-eye"></i> 133
+                                                        </div>
+                                                        <div class="news__img">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                <img class="newsImg__mini"
+                                                                     src="{{ Storage::url($post->img) }}">
+                                                            </a>
+                                                        </div>
+                                                        <div class="my-2 news__dates">
+                                                            <div class="news__time mr-1">19:00</div>
+                                                            <div class="news__category--title">• Парламентская газета
                                                             </div>
                                                         </div>
-                                                        <h3 class="news__title--small my-1">
-                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
-                                                                {{ $post->title }}
-                                                            </a>
-                                                        </h3>
-                                                        <div class="news__subtitle">{!! $post->description !!}</div>
-                                                        <div class="my-border">
-                                                            <div class="news__dates--two">
-                                                                <div class="news__time mr-1">19:00</div>
-                                                                <div class="news__category--title">• Парламентская
-                                                                    газета
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7 col-lg-12">
+                                                    <div class="news news__bottom">
+                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
+                                                                class="fas fa-eye"></i> 133
+                                                        </div>
+                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="news__category mr-2">
+                                                                    <span><a href="category.html">Политика</a></span>
+                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                    <span><a href="category.html">Технологии</a></span>
+                                                                </div>
+                                                            </div>
+                                                            <h3 class="news__title--small my-1">
+                                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                    {{ $post->title }}
+                                                                </a>
+                                                            </h3>
+                                                            <div class="news__subtitle">{!! $post->description !!}</div>
+                                                            <div class="my-border">
+                                                                <div class="news__dates--two">
+                                                                    <div class="news__time mr-1">19:00</div>
+                                                                    <div class="news__category--title">• Парламентская
+                                                                        газета
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -138,8 +140,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             @endforeach
                         </div>
@@ -248,339 +249,67 @@
                 <div class="row mt-3">
                     <div class="col-md-9 col-lg-8">
                         <div class="row">
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="news-item.html">
-                                                    <img class="newsImg__mini"
-                                                         src="https://picsum.photos/id/12/1900/1600">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__date mr-1">17 октября</div>
-                                                <!-- <div class="news__time mr-1">19:00</div> -->
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
+                            @foreach($categories as $category)
+                                @if($category->position == 2)
+                                    @foreach($category->posts as $post)
+                                        <div class="col-md-12 col-lg-6 my-2">
+                                            <div class="row">
+                                                <div class="col-md-5 col-lg-12">
+                                                    <div class="news news__bottom">
+                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                class="fas fa-eye"></i> 133
+                                                        </div>
+                                                        <div class="news__img">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                <img class="newsImg__mini"
+                                                                     src="{{ Storage::url($post->img) }}">
+                                                            </a>
+                                                        </div>
+                                                        <div class="my-2 news__dates">
+                                                            <div class="news__date mr-1">17 октября</div>
+                                                            <!-- <div class="news__time mr-1">19:00</div> -->
+                                                            <div class="news__category--title">• Парламентская газета
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam,
-                                                    quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                    voluptate
-                                                    velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                    cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.
-                                                    Sed
-                                                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                    inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                    explicabo.
-                                                    Nemo
-                                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit,
-                                                    sed
-                                                    quia
-                                                    consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                    nesciunt.
-                                                    Neque
-                                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur,
-                                                    adipisci
-                                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                    dolore
-                                                    magnam aliquam quaerat voluptatem.
-                                                </div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
+                                                <div class="col-md-7 col-lg-12">
+                                                    <div class="news news__bottom">
+                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
+                                                                class="fas fa-eye"></i> 133
+                                                        </div>
+                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="news__category mr-2">
+                                                                    <span><a href="category.html">Политика</a></span>
+                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                    <span><a href="category.html">Технологии</a></span>
+                                                                </div>
+                                                            </div>
+                                                            <h3 class="news__title--small my-1">
+                                                                <a href="news-item.html">
+                                                                    {{ $post->title }}
+                                                                </a>
+                                                            </h3>
+                                                            <div class="news__subtitle">
+                                                                {{ $post->description }}
+                                                            </div>
+                                                            <div class="my-border">
+                                                                <div class="news__dates--two">
+                                                                    <div class="news__time mr-1">19:00</div>
+                                                                    <div class="news__category--title">• Парламентская
+                                                                        газета
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="news-item.html">
-                                                    <img class="newsImg__mini"
-                                                         src="https://picsum.photos/id/23/90/60">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__time mr-1">19:00</div>
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam,
-                                                    quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                    voluptate
-                                                    velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                    cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.
-                                                    Sed
-                                                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                    inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                    explicabo.
-                                                    Nemo
-                                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit,
-                                                    sed
-                                                    quia
-                                                    consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                    nesciunt.
-                                                    Neque
-                                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur,
-                                                    adipisci
-                                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                    dolore
-                                                    magnam aliquam quaerat voluptatem.
-                                                </div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="news-item.html">
-                                                    <img class="newsImg__mini"
-                                                         src="https://picsum.photos/id/15/800/400">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__time mr-1">19:00</div>
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam,
-                                                    quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                    voluptate
-                                                    velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                    cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.
-                                                    Sed
-                                                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                    inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                    explicabo.
-                                                    Nemo
-                                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit,
-                                                    sed
-                                                    quia
-                                                    consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                    nesciunt.
-                                                    Neque
-                                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur,
-                                                    adipisci
-                                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                    dolore
-                                                    magnam aliquam quaerat voluptatem.
-                                                </div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="news-item.html">
-                                                    <img class="newsImg__mini"
-                                                         src="https://picsum.photos/id/76/1100/800">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__time mr-1">19:00</div>
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam,
-                                                    quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                    voluptate
-                                                    velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                    cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.
-                                                    Sed
-                                                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                    inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                    explicabo.
-                                                    Nemo
-                                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit,
-                                                    sed
-                                                    quia
-                                                    consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                    nesciunt.
-                                                    Neque
-                                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur,
-                                                    adipisci
-                                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                    dolore
-                                                    magnam aliquam quaerat voluptatem.
-                                                </div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    @endforeach
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-md-3 col-lg-4 d-none d-md-block">
@@ -685,339 +414,67 @@
                 <div class="row mt-3">
                     <div class="col-md-9 col-lg-8">
                         <div class="row">
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="news-item.html">
-                                                    <img class="newsImg__mini"
-                                                         src="https://picsum.photos/id/24/300/150">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__date mr-1">17 октября</div>
-                                                <!-- <div class="news__time mr-1">19:00</div> -->
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
+                            @foreach($categories as $category)
+                                @if($category->position == 3)
+                                    @foreach($category->posts as $post)
+                                        <div class="col-md-12 col-lg-6 my-2">
+                                            <div class="row">
+                                                <div class="col-md-5 col-lg-12">
+                                                    <div class="news news__bottom">
+                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                class="fas fa-eye"></i> 133
+                                                        </div>
+                                                        <div class="news__img">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                <img class="newsImg__mini"
+                                                                     src="{{ Storage::url($post->id) }}">
+                                                            </a>
+                                                        </div>
+                                                        <div class="my-2 news__dates">
+                                                            <div class="news__date mr-1">17 октября</div>
+                                                            <!-- <div class="news__time mr-1">19:00</div> -->
+                                                            <div class="news__category--title">• Парламентская газета
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam,
-                                                    quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                    voluptate
-                                                    velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                    cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.
-                                                    Sed
-                                                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                    inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                    explicabo.
-                                                    Nemo
-                                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit,
-                                                    sed
-                                                    quia
-                                                    consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                    nesciunt.
-                                                    Neque
-                                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur,
-                                                    adipisci
-                                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                    dolore
-                                                    magnam aliquam quaerat voluptatem.
-                                                </div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
+                                                <div class="col-md-7 col-lg-12">
+                                                    <div class="news news__bottom">
+                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
+                                                                class="fas fa-eye"></i> 133
+                                                        </div>
+                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="news__category mr-2">
+                                                                    <span><a href="category.html">Политика</a></span>
+                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                    <span><a href="category.html">Технологии</a></span>
+                                                                </div>
+                                                            </div>
+                                                            <h3 class="news__title--small my-1">
+                                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                    {{ $post->title }}
+                                                                </a>
+                                                            </h3>
+                                                            <div class="news__subtitle">
+                                                                {{ $post->description }}
+                                                            </div>
+                                                            <div class="my-border">
+                                                                <div class="news__dates--two">
+                                                                    <div class="news__time mr-1">19:00</div>
+                                                                    <div class="news__category--title">• Парламентская
+                                                                        газета
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="news-item.html">
-                                                    <img class="newsImg__mini"
-                                                         src="https://picsum.photos/id/51/950/650">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__time mr-1">19:00</div>
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam,
-                                                    quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                    voluptate
-                                                    velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                    cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.
-                                                    Sed
-                                                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                    inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                    explicabo.
-                                                    Nemo
-                                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit,
-                                                    sed
-                                                    quia
-                                                    consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                    nesciunt.
-                                                    Neque
-                                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur,
-                                                    adipisci
-                                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                    dolore
-                                                    magnam aliquam quaerat voluptatem.
-                                                </div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="news-item.html">
-                                                    <img class="newsImg__mini"
-                                                         src="https://picsum.photos/id/4/900/600">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__time mr-1">19:00</div>
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam,
-                                                    quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                    voluptate
-                                                    velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                    cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.
-                                                    Sed
-                                                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                    inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                    explicabo.
-                                                    Nemo
-                                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit,
-                                                    sed
-                                                    quia
-                                                    consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                    nesciunt.
-                                                    Neque
-                                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur,
-                                                    adipisci
-                                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                    dolore
-                                                    magnam aliquam quaerat voluptatem.
-                                                </div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-6 my-2">
-                                <div class="row">
-                                    <div class="col-md-5 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__img">
-                                                <a href="news-item.html">
-                                                    <img class="newsImg__mini"
-                                                         src="https://picsum.photos/id/4/900/600">
-                                                </a>
-                                            </div>
-                                            <div class="my-2 news__dates">
-                                                <div class="news__time mr-1">19:00</div>
-                                                <div class="news__category--title">• Парламентская газета</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-lg-12">
-                                        <div class="news news__bottom">
-                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                    class="fas fa-eye"></i> 133
-                                            </div>
-                                            <div class="news__content mt-0 mt-md-0 mt-lg-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="news__category mr-2">
-                                                        <span><a href="category.html">Политика</a></span>
-                                                        <span><a href="category.html">Спорт</a></span>
-                                                        <span><a href="category.html">Технологии</a></span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="news__title--small my-1">
-                                                    <a href="news-item.html">
-                                                        Президент рассказал о раскрытии коррупционных
-                                                    </a>
-                                                </h3>
-                                                <div class="news__subtitle">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam,
-                                                    quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                    commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                    voluptate
-                                                    velit
-                                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                    cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.
-                                                    Sed
-                                                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                    accusantium
-                                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                    inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                    explicabo.
-                                                    Nemo
-                                                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                    fugit,
-                                                    sed
-                                                    quia
-                                                    consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                    nesciunt.
-                                                    Neque
-                                                    porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                    consectetur,
-                                                    adipisci
-                                                    velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                    dolore
-                                                    magnam aliquam quaerat voluptatem.
-                                                </div>
-                                                <div class="my-border">
-                                                    <div class="news__dates--two">
-                                                        <div class="news__time mr-1">19:00</div>
-                                                        <div class="news__category--title">• Парламентская газета</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    @endforeach
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-md-3 col-lg-4 d-none d-md-block">

@@ -2,6 +2,7 @@
 {{--@dd($posts)--}}
 @section('title', 'Редактировать пост ' . $post['title'])
 @section('content')
+    @php use Symfony\Component\DomCrawler\Form @endphp
     <section id="input-with-icons">
         <div class="row match-height">
             <div class="col-12">
@@ -61,9 +62,9 @@
                                     </div>
 
                                     <div class="col-12" style="margin-top: 30px">
-                                        <select name="category_id" id="catid" class="form-control">
+                                        <select name="category" id="catid" class="form-control">
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}"
+                                                <option value="{{ $category->slug }}"
                                                         @if($post->category == $category->slug)
                                                         selected
                                                     @endif>
@@ -119,6 +120,7 @@
                                 </div>
                             </div>
                         </div>
+                        {!! Form::hidden('redirects_to', URL::previous()) !!}
                     </form>
                 </div>
             </div>
