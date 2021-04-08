@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->job(ProcessPostReady::class)->dailyAt('15:00');
+         $schedule->job(new ProcessPostReady)->dailyAt('15:00');
     }
 
     /**

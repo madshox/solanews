@@ -62,6 +62,7 @@
                                         </td>
                                         <td style="display: flex; justify-content: center;">
                                             <a href="{{ route('posts.edit', $post) }}">
+                                                <input type="hidden" name="current_page" value="{{ $posts->currentPage() }}">
                                                 <button type="button"
                                                         class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">
                                                     <div class="fonticon-wrap">
@@ -76,7 +77,6 @@
                                                     <i class="feather icon-trash-2"></i>
                                                 </div>
                                             </a>
-                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -101,6 +101,7 @@
                     </button>
                 </div>
                 <form action="#" method="POST" id="deletePostForm">
+                    <input type="hidden" name="current_page" value="{{ $posts->currentPage() }}">
                     @csrf
                     @method('DELETE')
                     <div class="modal-body" id="postId">

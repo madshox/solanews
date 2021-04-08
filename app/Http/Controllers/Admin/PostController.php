@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class PostController extends Controller
 {
@@ -73,6 +74,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        dd($_GET['current_page']);
+        $url = $_POST['current_page'];
         $post->update([
             'title' => $request->title,
             'description' => $request->description,
@@ -80,8 +83,7 @@ class PostController extends Controller
             'category_id' => Category::where('slug', $request->category)->value('id'),
             'status' => $request->status ? 1 : 0
         ]);
-        dd('redirects_to');
-        return redirect()->route('posts.index')->with('warning', 'Пост успешно отредактирован');
+        return redirect()->to('admin/posts' . '?page=' . $url)->with('warning', 'Пост успешно отредактирован');
     }
 
     /**
@@ -92,7 +94,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $url = $_POST['current_page'];
         $post->delete();
-        return redirect()->route('posts.index')->with('danger', 'Пост успешно удален');
+        return redirect()->to('admin/posts' . '?page=' . $url)->with('danger', 'Пост успешно удален');
     }
 }
