@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        $posts = Post::where('status', 1)->get();
+        $posts = Post::where('status', 1)->orderBy('created_at', 'desc')->get();
         View::share('posts', $posts);
 
         $categories = Category::get();

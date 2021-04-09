@@ -62,8 +62,8 @@
                                     <div class="col-12" style="margin-top: 30px">
                                         <select name="category" id="catid" class="form-control">
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->slug }}"
-                                                        @if($post->category == $category->slug)
+                                                <option value="{{ $category->title }}"
+                                                        @if($post['category_id'] == $category->id)
                                                         selected
                                                     @endif>
                                                     {{ $category->title }}

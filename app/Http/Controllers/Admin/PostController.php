@@ -74,8 +74,6 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        dd($_GET['current_page']);
-        $url = $_POST['current_page'];
         $post->update([
             'title' => $request->title,
             'description' => $request->description,
@@ -83,7 +81,7 @@ class PostController extends Controller
             'category_id' => Category::where('slug', $request->category)->value('id'),
             'status' => $request->status ? 1 : 0
         ]);
-        return redirect()->to('admin/posts' . '?page=' . $url)->with('warning', 'Пост успешно отредактирован');
+        return redirect()->route('posts.index')->with('warning', 'Пост успешно отредактирован');
     }
 
     /**

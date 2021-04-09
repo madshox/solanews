@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        @error('name')
+                                        @error('title')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                         <div class="text-bold-600 font-medium-2 mb-1">
@@ -45,11 +45,11 @@
                                             @isset($category)
                                                 <input type="text" class="form-control" id="name" name="title"
                                                        placeholder="Название категории"
-                                                       value="{{ old('name', isset($category) ? $category->title : null) }}">
+                                                       value="{{ old('title', isset($category) ? $category->title : null) }}">
                                             @else
                                                 <input type="text" class="form-control" id="name" name="title"
                                                        placeholder="Название категории"
-                                                       value="{{ old('name', isset($category) ? $category->title : null) }}">
+                                                       value="{{ old('title', isset($category) ? $category->title : null) }}">
                                             @endisset
                                             <div class="form-control-position">
                                                 <i class="feather icon-phone"></i>
@@ -71,7 +71,7 @@
                                                        placeholder="Позиция категории"
                                                        value="{{ old('position', isset($category) ? $category->position : null) }}">
                                             @else
-                                                <input type="number" class="form-control" id="name" name="title"
+                                                <input type="number" class="form-control" id="name" name="position"
                                                        placeholder="Позиция категории"
                                                        value="{{ old('position', isset($category) ? $category->position : null) }}">
                                             @endisset
