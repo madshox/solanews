@@ -22,12 +22,9 @@
                                 class="feather icon-trash"></i>Удалить все неопубликованные посты
                         </button>
                     </form>
-                    <form action="{{ route('delete_all_select') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light delete_all_select"><i
-                                class="feather icon-trash" id="delete_all_select"></i>Удалить все выделенные посты
+                        <button type="submit" id="delete_all_select" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light"
+                                ><i class="feather icon-trash"></i>Удалить все выделенные посты
                         </button>
-                    </form>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -45,7 +42,7 @@
                                         <li class="d-inline-block mr-2">
                                             <fieldset>
                                                 <div class="vs-checkbox-con vs-checkbox-danger">
-                                                    <input type="checkbox" value="1" id="checkall">
+                                                    <input type="checkbox" value="" id="checkall">
                                                     <span class="vs-checkbox">
                                                             <span class="vs-checkbox--check">
                                                                 <i class="vs-icon feather icon-check"></i>
@@ -80,7 +77,7 @@
                                         </td>
                                         <td><img src="{{ Storage::url($post->img) }}" height="auto" width="150" alt="">
                                         </td>
-                                        <td style="display: flex; justify-content: center;">
+                                        <td>
                                             <a href="{{ route('posts.edit', $post) }}">
                                                 <input type="hidden" name="current_page" value="{{ $posts->currentPage() }}">
                                                 <button type="button"
@@ -163,69 +160,5 @@
                 });
             });
         });
-    </script>
-
-    <script>
-        $(document).ready(function(){
-
-            // Check all
-            $('#checkall').click(function(){
-                if($(this).is(':checked')){
-                    $('.delete_check').prop('checked', true);
-                }else{
-                    $('.delete_check').prop('checked', false);
-                }
-            });
-
-            // Delete record
-            $('#delete_all_select').click(function(){
-
-                let deleteids_arr = [];
-                // Read all checked checkboxes
-                $("input:checkbox[class=delete_check]:checked").each(function () {
-                    deleteids_arr.push($(this).val());
-                });
-
-                // Check checkbox checked or not
-                if(deleteids_arr.length > 0){
-
-                    // Confirm alert
-                    let confirmdelete = confirm("Do you really want to Delete records?");
-                    if (confirmdelete === true) {
-                        $.ajax({
-                            url: 'delete_all_select',
-                            type: 'post',
-                            data: {request: 2, deleteids_arr: deleteids_arr},
-                            // success: function(response){
-                            //     dataTable.ajax.reload();
-                            // }
-                        });
-                    }
-                }
-            });
-
-        });
-
-        // Checkbox checked
-        function checkcheckbox(){
-
-            // Total checkboxes
-            let length = $('.delete_check').length;
-
-            // Total checked checkboxes
-            let totalchecked = 0;
-            $('.delete_check').each(function(){
-                if($(this).is(':checked')){
-                    totalchecked += 1;
-                }
-            });
-
-            // Checked unchecked checkbox
-            if(totalchecked == length){
-                $("#checkall").prop('checked', true);
-            }else{
-                $('#checkall').prop('checked', false);
-            }
-        }
     </script>
 @endsection
