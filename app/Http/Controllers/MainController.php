@@ -24,6 +24,20 @@ class MainController extends Controller
         return redirect()->route('posts.index');
     }
 
+    public function deleteAllSelect(Request $request)
+    {
+//        if ($request) {
+        dd($request->deleteids_arr);
+            $deleteids_arr = [];
+            if (isset($_POST['deleteids_arr'])) {
+                $deleteids_arr = $_POST['deleteids_arr'];
+            }
+            foreach ($deleteids_arr as $deleteid) {
+                Post::where('id', $deleteid)->delete();
+            }
+//        }
+    }
+
     public function category($slug) {
         $cat = Category::where('slug', $slug)->first();
         $posts = Post::get();

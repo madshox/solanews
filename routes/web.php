@@ -19,6 +19,7 @@ Route::get('/', 'App\Http\Controllers\MainController@index')->name('index');
 
 Route::get('/parse','App\Http\Controllers\MainController@parse')->name('parse');
 Route::delete('/deleteAllPosts', 'App\Http\Controllers\MainController@deleteAllPosts')->name('delete_all_posts');
+Route::post('/deleteAllSelect', 'App\Http\Controllers\MainController@deleteAllSelect')->name('delete_all_select');
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
 //    Route::group(['middleware' => 'is_admin'], function () {
