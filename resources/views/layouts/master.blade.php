@@ -608,7 +608,7 @@
 
 
 
-<script src="/vendor/site/js/main.min.js"></script>
+<script src="{{ asset('front/js/main.min.js') }}"></script>
 
 
 <!-- Yandex.Metrika counter -->

@@ -16,7 +16,8 @@ class Category extends Model
     ];
 
     public function posts() {
-        return $this->hasMany(Post::class)->where('status', 1);
+        return $this->hasMany(Post::class)->where('status', 1)
+            ->orderBy('created_at', 'desc')->limit(5);
     }
 
     public function sluggable() {
