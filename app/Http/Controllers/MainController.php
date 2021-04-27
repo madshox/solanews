@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Goutte\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
@@ -26,16 +27,9 @@ class MainController extends Controller
 
     public function deleteAllSelect(Request $request)
     {
-//        if ($request) {
-        dd($request->deleteids_arr);
-            $deleteids_arr = [];
-            if (isset($_POST['deleteids_arr'])) {
-                $deleteids_arr = $_POST['deleteids_arr'];
-            }
-            foreach ($deleteids_arr as $deleteid) {
-                Post::where('id', $deleteid)->delete();
-            }
-//        }
+        $ids = $request->ids;
+        Post::whereIn('id', explode(',', $ids))->delete();
+        return redirect()->route('posts.index')->with('danger', 'Посты успешно удалены');;
     }
 
     public function category($slug) {
@@ -47,6 +41,14 @@ class MainController extends Controller
     public function post($slug, $post) {
         $cat = Category::where('slug', $slug)->first();
         $post = Post::where('id', $post)->first();
+
+        //views
+        $blogKey = 'blog_' . $post->id;
+        if(!Session::has($blogKey)) {
+            $post->increment('count_view');
+            Session::put($blogKey, 1);
+        }
+
         return view('post-item', compact('cat', 'post'));
     }
 

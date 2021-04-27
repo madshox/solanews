@@ -3,7 +3,7 @@
 
 @section('content')
     <main>
-        <!-- News -->
+        <!-- 1 -->
         <section class="section-news" id="news">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
@@ -34,7 +34,7 @@
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="news news__top">
-                            <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                            <div class="news__viewed"><i class="fas fa-eye"></i>c</div>
                             <div class="news__img">
                                 <a href="{{ route('post', [$category->slug, $post->id]) }}">
                                     <img class="newsImg__big"
@@ -54,7 +54,7 @@
                     <div class="col-md-6">
                         <div class="news news__top">
                             <div class="news__content mt-md-3 mt-1">
-                                <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                                <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                 <div class="d-flex align-items-center py-2">
                                     <div class="news__category mr-2">
                                         <span><a href="category.html">Политика</a></span>
@@ -85,7 +85,7 @@
                                         <div class="col-md-5 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed d-none d-lg-block"><i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__img">
                                                     <a href="{{ route('post', [$category->slug, $post->id]) }}">
@@ -105,7 +105,7 @@
                                             <div class="news news__bottom">
                                                 <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
                                                     <i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                     <div class="d-flex align-items-center">
@@ -167,7 +167,7 @@
             </div>
         </section>
 
-        <!-- Sport -->
+        <!-- 2 -->
         <section class="section-news" id="sport">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
@@ -198,7 +198,7 @@
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="news news__top">
-                            <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                            <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                             <div class="news__img">
                                 <a href="{{ route('post', [$category->slug, $post->id]) }}">
                                     <img class="newsImg__big"
@@ -218,7 +218,7 @@
                     <div class="col-md-6">
                         <div class="news news__top">
                             <div class="news__content mt-md-3 mt-1">
-                                <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                                <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                                 <div class="d-flex align-items-center py-2">
                                     <div class="news__category mr-2">
                                         <span><a href="category.html">Политика</a></span>
@@ -249,7 +249,7 @@
                                         <div class="col-md-5 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed d-none d-lg-block"><i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__img">
                                                     <a href="{{ route('post', [$category->slug, $post->id]) }}">
@@ -269,7 +269,7 @@
                                             <div class="news news__bottom">
                                                 <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
                                                     <i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                     <div class="d-flex align-items-center">
@@ -330,7 +330,7 @@
             </div>
         </section>
 
-        <!-- Technology -->
+        <!-- 3 -->
         <section class="section-news" id="technology">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
@@ -361,7 +361,7 @@
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="news news__top">
-                            <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                            <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                             <div class="news__img">
                                 <a href="{{ route('post', [$category->slug, $post->id]) }}">
                                     <img class="newsImg__big"
@@ -381,7 +381,7 @@
                     <div class="col-md-6">
                         <div class="news news__top">
                             <div class="news__content mt-md-3 mt-1">
-                                <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                                <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                                 <div class="d-flex align-items-center py-2">
                                     <div class="news__category mr-2">
                                         <span><a href="category.html">Политика</a></span>
@@ -412,7 +412,7 @@
                                         <div class="col-md-5 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed d-none d-lg-block"><i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__img">
                                                     <a href="{{ route('post', [$category->slug, $post->id]) }}">
@@ -432,7 +432,7 @@
                                             <div class="news news__bottom">
                                                 <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
                                                     <i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                     <div class="d-flex align-items-center">
@@ -778,7 +778,7 @@
             </div>
         </section>
 
-        <!-- Auto -->
+        <!-- 4 -->
         <section class="section-news" id="auto">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
@@ -809,7 +809,7 @@
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="news news__top">
-                            <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                            <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                             <div class="news__img">
                                 <a href="{{ route('post', [$category->slug, $post->id]) }}">
                                     <img class="newsImg__big"
@@ -829,7 +829,7 @@
                     <div class="col-md-6">
                         <div class="news news__top">
                             <div class="news__content mt-md-3 mt-1">
-                                <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                                <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                                 <div class="d-flex align-items-center py-2">
                                     <div class="news__category mr-2">
                                         <span><a href="category.html">Политика</a></span>
@@ -860,7 +860,7 @@
                                         <div class="col-md-5 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed d-none d-lg-block"><i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__img">
                                                     <a href="{{ route('post', [$category->slug, $post->id]) }}">
@@ -880,7 +880,7 @@
                                             <div class="news news__bottom">
                                                 <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
                                                     <i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                     <div class="d-flex align-items-center">
@@ -940,7 +940,7 @@
             </div>
         </section>
 
-        <!-- World -->
+        <!-- 5 -->
         <section class="section-news" id="world">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
@@ -971,7 +971,7 @@
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="news news__top">
-                            <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                            <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                             <div class="news__img">
                                 <a href="{{ route('post', [$category->slug, $post->id]) }}">
                                     <img class="newsImg__big"
@@ -991,7 +991,7 @@
                     <div class="col-md-6">
                         <div class="news news__top">
                             <div class="news__content mt-md-3 mt-1">
-                                <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                                <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                                 <div class="d-flex align-items-center py-2">
                                     <div class="news__category mr-2">
                                         <span><a href="category.html">Политика</a></span>
@@ -1022,7 +1022,7 @@
                                         <div class="col-md-5 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed d-none d-lg-block"><i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__img">
                                                     <a href="{{ route('post', [$category->slug, $post->id]) }}">
@@ -1042,7 +1042,7 @@
                                             <div class="news news__bottom">
                                                 <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
                                                     <i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                     <div class="d-flex align-items-center">
@@ -1102,7 +1102,7 @@
             </div>
         </section>
 
-        <!-- Science -->
+        <!-- 6 -->
         <section class="section-news" id="science">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
@@ -1133,7 +1133,7 @@
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="news news__top">
-                            <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                            <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                             <div class="news__img">
                                 <a href="{{ route('post', [$category->slug, $post->id]) }}">
                                     <img class="newsImg__big"
@@ -1153,7 +1153,7 @@
                     <div class="col-md-6">
                         <div class="news news__top">
                             <div class="news__content mt-md-3 mt-1">
-                                <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                                <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                                 <div class="d-flex align-items-center py-2">
                                     <div class="news__category mr-2">
                                         <span><a href="category.html">Политика</a></span>
@@ -1184,7 +1184,7 @@
                                         <div class="col-md-5 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed d-none d-lg-block"><i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__img">
                                                     <a href="{{ route('post', [$category->slug, $post->id]) }}">
@@ -1204,7 +1204,7 @@
                                             <div class="news news__bottom">
                                                 <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
                                                     <i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                     <div class="d-flex align-items-center">
@@ -1264,7 +1264,7 @@
             </div>
         </section>
 
-        <!-- Town -->
+        <!-- 7 -->
         <section class="section-news" id="town">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
@@ -1295,7 +1295,7 @@
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="news news__top">
-                            <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                            <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                             <div class="news__img">
                                 <a href="{{ route('post', [$category->slug, $post->id]) }}">
                                     <img class="newsImg__big"
@@ -1315,7 +1315,7 @@
                     <div class="col-md-6">
                         <div class="news news__top">
                             <div class="news__content mt-md-3 mt-1">
-                                <div class="news__viewed"><i class="fas fa-eye"></i> 133</div>
+                                <div class="news__viewed"><i class="fas fa-eye"></i> {{ $post->count_view }}</div>
                                 <div class="d-flex align-items-center py-2">
                                     <div class="news__category mr-2">
                                         <span><a href="category.html">Политика</a></span>
@@ -1346,7 +1346,7 @@
                                         <div class="col-md-5 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed d-none d-lg-block"><i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__img">
                                                     <a href="{{ route('post', [$category->slug, $post->id]) }}">
@@ -1365,8 +1365,7 @@
                                         <div class="col-md-7 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
-                                                    <i
-                                                        class="fas fa-eye"></i> 133
+                                                    <i class="fa fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                     <div class="d-flex align-items-center">

@@ -6,6 +6,7 @@
     <div class="row" id="table-hover-animation">
         <div class="col-12">
             <div class="card">
+                <div class="notifDiv"></div>
                 <div class="card-header">
                     <h4 class="card-title">Услуги</h4>
                 </div>
@@ -24,6 +25,7 @@
                     </form>
                     <form action="{{ route('delete_all_select') }}" method="POST">
                         @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light delete_all_select"><i
                                 class="feather icon-trash" id="delete_all_select"></i>Удалить все выделенные посты
                         </button>
@@ -98,11 +100,11 @@
                                                 </div>
                                             </a>
                                         </td>
-                                        <td>
+                                        <td id="{{$post->id}}">
                                             <li class="d-inline-block mr-2">
                                                 <fieldset>
                                                     <div class="vs-checkbox-con vs-checkbox-danger sub_chk">
-                                                        <input type="checkbox" class="delete_check" data-id="{{$post->id}}">
+                                                        <input type="checkbox" class="delete_check checkbox" data-id="{{$post->id}}">
                                                         <span class="vs-checkbox">
                                                             <span class="vs-checkbox--check">
                                                                 <i class="vs-icon feather icon-check"></i>
@@ -156,7 +158,7 @@
         $(document).ready(function () {
             $('.postId').on('click', function () {
                 let id = $(this).data('post-id');
-                $('.PostId').text(id);
+                $('.postId').text(id);
                 $('#deleteModal').modal();
                 $('#deletePost').on('click', function () {
                     $('#deletePostForm').attr('action', "/admin/posts/"+id).submit();
@@ -166,66 +168,51 @@
     </script>
 
     <script>
-        $(document).ready(function(){
-
-            // Check all
-            $('#checkall').click(function(){
-                if($(this).is(':checked')){
-                    $('.delete_check').prop('checked', true);
-                }else{
-                    $('.delete_check').prop('checked', false);
+        $(document).ready(function () {
+            //select all
+            $('#checkall').on('click', function () {
+                if($(this).is(":checked", true)) {
+                    $('.checkbox').prop('checked', true);
+                } else {
+                    $('.checkbox').prop('checked', false);
                 }
             });
 
-            // Delete record
-            $('#delete_all_select').click(function(){
+            //select checkbox all
+            $('.checkbox').on('click', function () {
+                if($('.checkbox:checked').length == $('.checkbox').length) {
+                    $('#checkall').prop('checked', true)
+                } else {
+                    $('#checkall').prop('checked', false)
+                }
+            });
 
-                let deleteids_arr = [];
-                // Read all checked checkboxes
-                $("input:checkbox[class=delete_check]:checked").each(function () {
-                    deleteids_arr.push($(this).val());
+            $('.delete_all_select').on('click', function () {
+                let idsArr = [];
+                $('.checkbox:checked').each(function () {
+                    idsArr.push($(this).attr('data-id'));
                 });
-
-                // Check checkbox checked or not
-                if(deleteids_arr.length > 0){
-
-                    // Confirm alert
-                    let confirmdelete = confirm("Do you really want to Delete records?");
-                    if (confirmdelete === true) {
+                if(idsArr.length < 1) {
+                    alert('please select atleast one record to delete');
+                    return false;
+                } else {
+                    // $('#deleteModal').modal();
+                    // $('#deletePost').on('click', function () {
+                    //
+                    // });
+                    if(confirm('Are you sure?')) {
+                        let strIds = idsArr.join(',');
                         $.ajax({
-                            url: 'delete_all_select',
-                            type: 'post',
-                            data: {request: 2, deleteids_arr: deleteids_arr},
-                            // success: function(response){
-                            //     dataTable.ajax.reload();
-                            // }
+                            url: "{{ route('delete_all_select') }}",
+                            type: 'DELETE',
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: 'ids='+strIds,
                         });
+                    } else {
+                        return false;
                     }
                 }
             });
-
         });
-
-        // Checkbox checked
-        function checkcheckbox(){
-
-            // Total checkboxes
-            let length = $('.delete_check').length;
-
-            // Total checked checkboxes
-            let totalchecked = 0;
-            $('.delete_check').each(function(){
-                if($(this).is(':checked')){
-                    totalchecked += 1;
-                }
-            });
-
-            // Checked unchecked checkbox
-            if(totalchecked == length){
-                $("#checkall").prop('checked', true);
-            }else{
-                $('#checkall').prop('checked', false);
-            }
-        }
     </script>
 @endsection

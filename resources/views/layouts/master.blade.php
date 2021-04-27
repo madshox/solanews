@@ -14,7 +14,7 @@
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="{{ asset('front/libs/fontawesome/css/all.css') }}/">
+    <link rel="stylesheet" href="{{ asset('front/libs/fontawesome/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/main.min.css') }}">
 
     <meta name="description" content="Главные новости дня из Ташкента и областей Узбекистана, информационная лента новостей, новости Узбекистана и мира.">

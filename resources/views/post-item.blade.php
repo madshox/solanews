@@ -18,7 +18,7 @@
                                         </a>
                                     </h1>
 
-                                    <div class="news__viewed mb-3 d-block"><i class="fas fa-eye"></i> 133</div>
+                                    <div class="news__viewed mb-3 d-block"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
 
                                     <div class="news__img">
                                         <img class="newsImg__biggest" src="{{ Storage::url($post->img) }}">
@@ -89,7 +89,7 @@
                                         <div class="col-md-5 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed d-none d-lg-block"><i class="fas fa-eye"></i>
-                                                    133
+                                                    {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__img">
                                                     <a href="{{ route('post', [$cat->slug, $post->id]) }}">
@@ -106,7 +106,7 @@
                                         <div class="col-md-7 col-lg-12">
                                             <div class="news news__bottom">
                                                 <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                        class="fas fa-eye"></i> 133
+                                                        class="fas fa-eye"></i> {{ $post->count_view }}
                                                 </div>
                                                 <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                     <div class="d-flex align-items-center">
