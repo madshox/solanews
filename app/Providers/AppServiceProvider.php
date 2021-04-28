@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -37,5 +38,8 @@ class AppServiceProvider extends ServiceProvider
 
         $categories = Category::get();
         View::share('categories', $categories);
+
+        $tags = Tag::get();
+        View::share('tags', $tags);
     }
 }

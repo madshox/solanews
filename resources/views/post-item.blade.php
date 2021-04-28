@@ -31,9 +31,9 @@
                                     <div class="news__content mt-2 border-bottom pb-3 pb-md-3">
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
-                                                <span><a href="category.html">Политика</a></span>
-                                                <span><a href="category.html">Законодательство</a></span>
-                                                <span><a href="category.html">Спорт</a></span>
+                                                @foreach($post->tags as $tag)
+                                                    <span><a href="{{ route('index', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <div class="news__subtitle">

@@ -61,8 +61,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $tagg = $post->tags->map(function ($item, $key) {
+            return $item['id'];
+        });
         $categories = Category::get();
-        return view('dashboard.posts.form', compact( 'post', 'categories'));
+        return view('dashboard.posts.form', compact( 'post', 'categories', 'tagg'));
     }
 
     /**
@@ -81,6 +84,9 @@ class PostController extends Controller
             'category_id' => Category::where('slug', $request->category)->value('id'),
             'status' => $request->status ? 1 : 0
         ]);
+        //requestda tags bor, nado if kotoryy udalyaet ne xvatayushiy tegi
+        $post->tags()->attach(request('tags'));
+
         return redirect()->route('posts.index')->with('warning', 'Пост успешно отредактирован');
     }
 

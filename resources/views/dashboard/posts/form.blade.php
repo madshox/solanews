@@ -59,6 +59,8 @@
                                             </div>
                                         </fieldset>
                                     </div>
+
+                                    {{--category--}}
                                     <div class="col-12" style="margin-top: 30px">
                                         <select name="category" id="catid" class="form-control">
                                             @foreach($categories as $category)
@@ -67,6 +69,20 @@
                                                         selected
                                                     @endif>
                                                     {{ $category->title }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    {{--tag--}}
+                                    <div class="col-12" style="margin-top: 30px">
+                                        <select name="tags[]" id="tagId" class="form-control" multiple>
+                                            @foreach($tags as $tag)
+                                                <option value="{{ $tag->id }}"
+                                                    @if(in_array($tag->id, $tagg->toArray()))
+                                                        selected
+                                                    @endif>
+                                                    {{ $tag->name }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -126,6 +142,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#catid').select2();
+        })
+
+        $(document).ready(function () {
+            $('#tagId').select2();
         })
     </script>
 @endsection
