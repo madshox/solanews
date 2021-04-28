@@ -15,9 +15,14 @@ class Category extends Model
       'id'
     ];
 
-    public function posts() {
+    public function latestPosts() {
         return $this->hasMany(Post::class)->where('status', 1)
             ->orderBy('created_at', 'desc')->limit(5);
+    }
+
+    public function popularPosts() {
+        return $this->hasMany(Post::class)->where('status', 1)
+            ->orderBy('count_view', 'desc')->limit(5);
     }
 
     public function sluggable() {

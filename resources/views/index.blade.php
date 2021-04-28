@@ -9,7 +9,7 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 1)
-                        @foreach($category->posts as $post)
+                        @foreach($category->latestPosts as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
@@ -35,11 +35,13 @@
                                             </li>
                                         </ul>
                                     </section>
-                            </div>
                                     {{--Tab-end--}}
+                </div>
+
             <div class="tab-content">
                 <div class="tab-pane active" id="first"
                      aria-labelledby="first-tab" role="tabpanel">
+
                     {{--head news--}}
                     <div class="row mt-4">
                         <div class="col-md-6">
@@ -82,6 +84,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col-md-9 col-lg-8">
                             <div class="row">
@@ -154,7 +157,124 @@
                 </div>
                 <div class="tab-pane" id="first2"
                      aria-labelledby="first2-tab" role="tabpanel">
-                    2-tab
+                @foreach($categories as $category)
+                    @if($category->position == 1)
+                        @foreach($category->popularPosts as $post)
+                            <!-- first-loop -->
+                                @if($loop->first)
+{{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                    {{--head news--}}
+                                    <div class="row mt-4">
+                                        <div class="col-md-6">
+                                            <div class="news news__top">
+                                                <div class="news__viewed"><i class="fas fa-eye"></i>c</div>
+                                                <div class="news__img">
+                                                    <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                        <img class="newsImg__big"
+                                                             src="{{ Storage::url($post->img) }}">
+                                                    </a>
+                                                    <div class="news__icon">
+                                                        <img src="{{ asset('front/img/news_icon.png') }}" alt="news_icon">
+                                                    </div>
+                                                </div>
+                                                <div class="my-2 news__dates">
+                                                    <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="news news__top">
+                                                <div class="news__content mt-md-3 mt-1">
+                                                    <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
+                                                    <div class="d-flex align-items-center py-2">
+                                                        <div class="news__category mr-2">
+                                                            <span><a href="category.html">Политика</a></span>
+                                                            <span><a href="category.html">Законодательство</a></span>
+                                                            <span><a href="category.html">Спорт</a></span>
+                                                        </div>
+                                                    </div>
+                                                    <h2 class="news__title--big">
+                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                            {{ $post->title }}
+                                                        </a>
+                                                    </h2>
+                                                    <div class="news__subtitle">
+                                                        {!! $post->description !!}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col-md-9 col-lg-8">
+                                            <div class="row">
+                                            @endif
+                                            <!-- first-loop-End -->
+                                                @if(!$loop->first)
+                                                    <div class="col-md-12 col-lg-6 my-2">
+                                                        <div class="row">
+                                                            <div class="col-md-5 col-lg-12">
+                                                                <div class="news news__bottom">
+                                                                    <div class="news__viewed d-none d-lg-block"><i
+                                                                            class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                    </div>
+                                                                    <div class="news__img">
+                                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                            <img class="newsImg__mini"
+                                                                                 src="{{ Storage::url($post->img) }}">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="my-2 news__dates">
+                                                                        <div
+                                                                            class="news__time mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-7 col-lg-12">
+                                                                <div class="news news__bottom">
+                                                                    <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
+                                                                        <i
+                                                                            class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                    </div>
+                                                                    <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="news__category mr-2">
+                                                                        <span><a
+                                                                                href="category.html">Политика</a></span>
+                                                                                <span><a href="category.html">Спорт</a></span>
+                                                                                <span><a
+                                                                                        href="category.html">Технологии</a></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <h3 class="news__title--small my-1">
+                                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                {{ $post->title }}
+                                                                            </a>
+                                                                        </h3>
+                                                                        <div
+                                                                            class="news__subtitle">{!! $post->description !!}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @endforeach
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        {{--square adwertising--}}
+                                        <div class="col-md-3 col-lg-4 d-none d-md-block">
+                                            <div class="rek h-100">
+                                                <div class="rek__vertical sticky-top">
+                                                    <img src="{{ asset('front/img/rek4.png') }}" alt="Rek">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                 </div>
             </div>
 
@@ -173,12 +293,12 @@
         </section>
 
         <!-- 2 -->
-        <section class="section-news" id="sport">
+        <section class="section-news" id="news">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 2)
-                        @foreach($category->posts as $post)
+                        @foreach($category->latestPosts as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
@@ -204,11 +324,13 @@
                                             </li>
                                         </ul>
                                     </section>
+                                    {{--Tab-end--}}
                 </div>
-                {{--Tab-end--}}
+
                 <div class="tab-content">
                     <div class="tab-pane active" id="second"
                          aria-labelledby="second-tab" role="tabpanel">
+
                         {{--head news--}}
                         <div class="row mt-4">
                             <div class="col-md-6">
@@ -251,6 +373,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-3">
                             <div class="col-md-9 col-lg-8">
                                 <div class="row">
@@ -323,7 +446,124 @@
                     </div>
                     <div class="tab-pane" id="second2"
                          aria-labelledby="second2-tab" role="tabpanel">
-                        2-tab
+                    @foreach($categories as $category)
+                        @if($category->position == 2)
+                            @foreach($category->popularPosts as $post)
+                                <!-- first-loop -->
+                                    @if($loop->first)
+                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                        {{--head news--}}
+                                        <div class="row mt-4">
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__viewed"><i class="fas fa-eye"></i>c</div>
+                                                    <div class="news__img">
+                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                            <img class="newsImg__big"
+                                                                 src="{{ Storage::url($post->img) }}">
+                                                        </a>
+                                                        <div class="news__icon">
+                                                            <img src="{{ asset('front/img/news_icon.png') }}" alt="news_icon">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-2 news__dates">
+                                                        <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__content mt-md-3 mt-1">
+                                                        <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
+                                                        <div class="d-flex align-items-center py-2">
+                                                            <div class="news__category mr-2">
+                                                                <span><a href="category.html">Политика</a></span>
+                                                                <span><a href="category.html">Законодательство</a></span>
+                                                                <span><a href="category.html">Спорт</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <h2 class="news__title--big">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                {{ $post->title }}
+                                                            </a>
+                                                        </h2>
+                                                        <div class="news__subtitle">
+                                                            {!! $post->description !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-md-9 col-lg-8">
+                                                <div class="row">
+                                                @endif
+                                                <!-- first-loop-End -->
+                                                    @if(!$loop->first)
+                                                        <div class="col-md-12 col-lg-6 my-2">
+                                                            <div class="row">
+                                                                <div class="col-md-5 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__img">
+                                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                <img class="newsImg__mini"
+                                                                                     src="{{ Storage::url($post->img) }}">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="my-2 news__dates">
+                                                                            <div
+                                                                                class="news__time mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
+                                                                            <i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="news__category mr-2">
+                                                                        <span><a
+                                                                                href="category.html">Политика</a></span>
+                                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                                    <span><a
+                                                                                            href="category.html">Технологии</a></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <h3 class="news__title--small my-1">
+                                                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                    {{ $post->title }}
+                                                                                </a>
+                                                                            </h3>
+                                                                            <div
+                                                                                class="news__subtitle">{!! $post->description !!}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            {{--square adwertising--}}
+                                            <div class="col-md-3 col-lg-4 d-none d-md-block">
+                                                <div class="rek h-100">
+                                                    <div class="rek__vertical sticky-top">
+                                                        <img src="{{ asset('front/img/rek4.png') }}" alt="Rek">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
 
@@ -342,12 +582,12 @@
         </section>
 
         <!-- 3 -->
-        <section class="section-news" id="technology">
+        <section class="section-news" id="news">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 3)
-                        @foreach($category->posts as $post)
+                        @foreach($category->latestPosts as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
@@ -373,11 +613,13 @@
                                             </li>
                                         </ul>
                                     </section>
+                                    {{--Tab-end--}}
                 </div>
-                {{--Tab-end--}}
+
                 <div class="tab-content">
                     <div class="tab-pane active" id="third"
                          aria-labelledby="third-tab" role="tabpanel">
+
                         {{--head news--}}
                         <div class="row mt-4">
                             <div class="col-md-6">
@@ -420,6 +662,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-3">
                             <div class="col-md-9 col-lg-8">
                                 <div class="row">
@@ -492,7 +735,124 @@
                     </div>
                     <div class="tab-pane" id="third2"
                          aria-labelledby="third2-tab" role="tabpanel">
-                        2-tab
+                    @foreach($categories as $category)
+                        @if($category->position == 3)
+                            @foreach($category->popularPosts as $post)
+                                <!-- first-loop -->
+                                    @if($loop->first)
+                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                        {{--head news--}}
+                                        <div class="row mt-4">
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__viewed"><i class="fas fa-eye"></i>c</div>
+                                                    <div class="news__img">
+                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                            <img class="newsImg__big"
+                                                                 src="{{ Storage::url($post->img) }}">
+                                                        </a>
+                                                        <div class="news__icon">
+                                                            <img src="{{ asset('front/img/news_icon.png') }}" alt="news_icon">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-2 news__dates">
+                                                        <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__content mt-md-3 mt-1">
+                                                        <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
+                                                        <div class="d-flex align-items-center py-2">
+                                                            <div class="news__category mr-2">
+                                                                <span><a href="category.html">Политика</a></span>
+                                                                <span><a href="category.html">Законодательство</a></span>
+                                                                <span><a href="category.html">Спорт</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <h2 class="news__title--big">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                {{ $post->title }}
+                                                            </a>
+                                                        </h2>
+                                                        <div class="news__subtitle">
+                                                            {!! $post->description !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-md-9 col-lg-8">
+                                                <div class="row">
+                                                @endif
+                                                <!-- first-loop-End -->
+                                                    @if(!$loop->first)
+                                                        <div class="col-md-12 col-lg-6 my-2">
+                                                            <div class="row">
+                                                                <div class="col-md-5 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__img">
+                                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                <img class="newsImg__mini"
+                                                                                     src="{{ Storage::url($post->img) }}">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="my-2 news__dates">
+                                                                            <div
+                                                                                class="news__time mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
+                                                                            <i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="news__category mr-2">
+                                                                        <span><a
+                                                                                href="category.html">Политика</a></span>
+                                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                                    <span><a
+                                                                                            href="category.html">Технологии</a></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <h3 class="news__title--small my-1">
+                                                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                    {{ $post->title }}
+                                                                                </a>
+                                                                            </h3>
+                                                                            <div
+                                                                                class="news__subtitle">{!! $post->description !!}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            {{--square adwertising--}}
+                                            <div class="col-md-3 col-lg-4 d-none d-md-block">
+                                                <div class="rek h-100">
+                                                    <div class="rek__vertical sticky-top">
+                                                        <img src="{{ asset('front/img/rek4.png') }}" alt="Rek">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
 
@@ -562,7 +922,7 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 4)
-                        @foreach($category->posts as $post)
+                        @foreach($category->latestPosts as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
@@ -588,11 +948,13 @@
                                             </li>
                                         </ul>
                                     </section>
+                                    {{--Tab-end--}}
                 </div>
-                {{--Tab-end--}}
+
                 <div class="tab-content">
                     <div class="tab-pane active" id="fourth"
                          aria-labelledby="fourth-tab" role="tabpanel">
+
                         {{--head news--}}
                         <div class="row mt-4">
                             <div class="col-md-6">
@@ -635,6 +997,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-3">
                             <div class="col-md-9 col-lg-8">
                                 <div class="row">
@@ -707,7 +1070,124 @@
                     </div>
                     <div class="tab-pane" id="fourth2"
                          aria-labelledby="fourth2-tab" role="tabpanel">
-                        2-tab
+                    @foreach($categories as $category)
+                        @if($category->position == 4)
+                            @foreach($category->popularPosts as $post)
+                                <!-- first-loop -->
+                                    @if($loop->first)
+                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                        {{--head news--}}
+                                        <div class="row mt-4">
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__viewed"><i class="fas fa-eye"></i>c</div>
+                                                    <div class="news__img">
+                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                            <img class="newsImg__big"
+                                                                 src="{{ Storage::url($post->img) }}">
+                                                        </a>
+                                                        <div class="news__icon">
+                                                            <img src="{{ asset('front/img/news_icon.png') }}" alt="news_icon">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-2 news__dates">
+                                                        <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__content mt-md-3 mt-1">
+                                                        <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
+                                                        <div class="d-flex align-items-center py-2">
+                                                            <div class="news__category mr-2">
+                                                                <span><a href="category.html">Политика</a></span>
+                                                                <span><a href="category.html">Законодательство</a></span>
+                                                                <span><a href="category.html">Спорт</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <h2 class="news__title--big">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                {{ $post->title }}
+                                                            </a>
+                                                        </h2>
+                                                        <div class="news__subtitle">
+                                                            {!! $post->description !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-md-9 col-lg-8">
+                                                <div class="row">
+                                                @endif
+                                                <!-- first-loop-End -->
+                                                    @if(!$loop->first)
+                                                        <div class="col-md-12 col-lg-6 my-2">
+                                                            <div class="row">
+                                                                <div class="col-md-5 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__img">
+                                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                <img class="newsImg__mini"
+                                                                                     src="{{ Storage::url($post->img) }}">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="my-2 news__dates">
+                                                                            <div
+                                                                                class="news__time mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
+                                                                            <i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="news__category mr-2">
+                                                                        <span><a
+                                                                                href="category.html">Политика</a></span>
+                                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                                    <span><a
+                                                                                            href="category.html">Технологии</a></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <h3 class="news__title--small my-1">
+                                                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                    {{ $post->title }}
+                                                                                </a>
+                                                                            </h3>
+                                                                            <div
+                                                                                class="news__subtitle">{!! $post->description !!}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            {{--square adwertising--}}
+                                            <div class="col-md-3 col-lg-4 d-none d-md-block">
+                                                <div class="rek h-100">
+                                                    <div class="rek__vertical sticky-top">
+                                                        <img src="{{ asset('front/img/rek4.png') }}" alt="Rek">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
 
@@ -731,7 +1211,7 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 5)
-                        @foreach($category->posts as $post)
+                        @foreach($category->latestPosts as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
@@ -757,11 +1237,13 @@
                                             </li>
                                         </ul>
                                     </section>
+                                    {{--Tab-end--}}
                 </div>
-                {{--Tab-end--}}
+
                 <div class="tab-content">
                     <div class="tab-pane active" id="fifth"
                          aria-labelledby="fifth-tab" role="tabpanel">
+
                         {{--head news--}}
                         <div class="row mt-4">
                             <div class="col-md-6">
@@ -804,6 +1286,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-3">
                             <div class="col-md-9 col-lg-8">
                                 <div class="row">
@@ -876,7 +1359,124 @@
                     </div>
                     <div class="tab-pane" id="fifth2"
                          aria-labelledby="fifth2-tab" role="tabpanel">
-                        2-tab
+                    @foreach($categories as $category)
+                        @if($category->position == 5)
+                            @foreach($category->popularPosts as $post)
+                                <!-- first-loop -->
+                                    @if($loop->first)
+                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                        {{--head news--}}
+                                        <div class="row mt-4">
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__viewed"><i class="fas fa-eye"></i>c</div>
+                                                    <div class="news__img">
+                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                            <img class="newsImg__big"
+                                                                 src="{{ Storage::url($post->img) }}">
+                                                        </a>
+                                                        <div class="news__icon">
+                                                            <img src="{{ asset('front/img/news_icon.png') }}" alt="news_icon">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-2 news__dates">
+                                                        <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__content mt-md-3 mt-1">
+                                                        <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
+                                                        <div class="d-flex align-items-center py-2">
+                                                            <div class="news__category mr-2">
+                                                                <span><a href="category.html">Политика</a></span>
+                                                                <span><a href="category.html">Законодательство</a></span>
+                                                                <span><a href="category.html">Спорт</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <h2 class="news__title--big">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                {{ $post->title }}
+                                                            </a>
+                                                        </h2>
+                                                        <div class="news__subtitle">
+                                                            {!! $post->description !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-md-9 col-lg-8">
+                                                <div class="row">
+                                                @endif
+                                                <!-- first-loop-End -->
+                                                    @if(!$loop->first)
+                                                        <div class="col-md-12 col-lg-6 my-2">
+                                                            <div class="row">
+                                                                <div class="col-md-5 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__img">
+                                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                <img class="newsImg__mini"
+                                                                                     src="{{ Storage::url($post->img) }}">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="my-2 news__dates">
+                                                                            <div
+                                                                                class="news__time mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
+                                                                            <i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="news__category mr-2">
+                                                                        <span><a
+                                                                                href="category.html">Политика</a></span>
+                                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                                    <span><a
+                                                                                            href="category.html">Технологии</a></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <h3 class="news__title--small my-1">
+                                                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                    {{ $post->title }}
+                                                                                </a>
+                                                                            </h3>
+                                                                            <div
+                                                                                class="news__subtitle">{!! $post->description !!}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            {{--square adwertising--}}
+                                            <div class="col-md-3 col-lg-4 d-none d-md-block">
+                                                <div class="rek h-100">
+                                                    <div class="rek__vertical sticky-top">
+                                                        <img src="{{ asset('front/img/rek4.png') }}" alt="Rek">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
 
@@ -900,7 +1500,7 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 6)
-                        @foreach($category->posts as $post)
+                        @foreach($category->latestPosts as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
@@ -926,11 +1526,13 @@
                                             </li>
                                         </ul>
                                     </section>
+                                    {{--Tab-end--}}
                 </div>
-                {{--Tab-end--}}
+
                 <div class="tab-content">
                     <div class="tab-pane active" id="sixth"
                          aria-labelledby="sixth-tab" role="tabpanel">
+
                         {{--head news--}}
                         <div class="row mt-4">
                             <div class="col-md-6">
@@ -973,6 +1575,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-3">
                             <div class="col-md-9 col-lg-8">
                                 <div class="row">
@@ -1045,7 +1648,124 @@
                     </div>
                     <div class="tab-pane" id="sixth2"
                          aria-labelledby="sixth2-tab" role="tabpanel">
-                        2-tab
+                    @foreach($categories as $category)
+                        @if($category->position == 6)
+                            @foreach($category->popularPosts as $post)
+                                <!-- first-loop -->
+                                    @if($loop->first)
+                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                        {{--head news--}}
+                                        <div class="row mt-4">
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__viewed"><i class="fas fa-eye"></i>c</div>
+                                                    <div class="news__img">
+                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                            <img class="newsImg__big"
+                                                                 src="{{ Storage::url($post->img) }}">
+                                                        </a>
+                                                        <div class="news__icon">
+                                                            <img src="{{ asset('front/img/news_icon.png') }}" alt="news_icon">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-2 news__dates">
+                                                        <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__content mt-md-3 mt-1">
+                                                        <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
+                                                        <div class="d-flex align-items-center py-2">
+                                                            <div class="news__category mr-2">
+                                                                <span><a href="category.html">Политика</a></span>
+                                                                <span><a href="category.html">Законодательство</a></span>
+                                                                <span><a href="category.html">Спорт</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <h2 class="news__title--big">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                {{ $post->title }}
+                                                            </a>
+                                                        </h2>
+                                                        <div class="news__subtitle">
+                                                            {!! $post->description !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-md-9 col-lg-8">
+                                                <div class="row">
+                                                @endif
+                                                <!-- first-loop-End -->
+                                                    @if(!$loop->first)
+                                                        <div class="col-md-12 col-lg-6 my-2">
+                                                            <div class="row">
+                                                                <div class="col-md-5 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__img">
+                                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                <img class="newsImg__mini"
+                                                                                     src="{{ Storage::url($post->img) }}">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="my-2 news__dates">
+                                                                            <div
+                                                                                class="news__time mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
+                                                                            <i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="news__category mr-2">
+                                                                        <span><a
+                                                                                href="category.html">Политика</a></span>
+                                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                                    <span><a
+                                                                                            href="category.html">Технологии</a></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <h3 class="news__title--small my-1">
+                                                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                    {{ $post->title }}
+                                                                                </a>
+                                                                            </h3>
+                                                                            <div
+                                                                                class="news__subtitle">{!! $post->description !!}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            {{--square adwertising--}}
+                                            <div class="col-md-3 col-lg-4 d-none d-md-block">
+                                                <div class="rek h-100">
+                                                    <div class="rek__vertical sticky-top">
+                                                        <img src="{{ asset('front/img/rek4.png') }}" alt="Rek">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
 
@@ -1069,7 +1789,7 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 7)
-                        @foreach($category->posts as $post)
+                        @foreach($category->latestPosts as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
@@ -1095,11 +1815,13 @@
                                             </li>
                                         </ul>
                                     </section>
+                                    {{--Tab-end--}}
                 </div>
-                {{--Tab-end--}}
+
                 <div class="tab-content">
                     <div class="tab-pane active" id="seventh"
                          aria-labelledby="seventh-tab" role="tabpanel">
+
                         {{--head news--}}
                         <div class="row mt-4">
                             <div class="col-md-6">
@@ -1142,6 +1864,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-3">
                             <div class="col-md-9 col-lg-8">
                                 <div class="row">
@@ -1214,7 +1937,124 @@
                     </div>
                     <div class="tab-pane" id="seventh2"
                          aria-labelledby="seventh2-tab" role="tabpanel">
-                        2-tab
+                    @foreach($categories as $category)
+                        @if($category->position == 7)
+                            @foreach($category->popularPosts as $post)
+                                <!-- first-loop -->
+                                    @if($loop->first)
+                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                        {{--head news--}}
+                                        <div class="row mt-4">
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__viewed"><i class="fas fa-eye"></i>c</div>
+                                                    <div class="news__img">
+                                                        <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                            <img class="newsImg__big"
+                                                                 src="{{ Storage::url($post->img) }}">
+                                                        </a>
+                                                        <div class="news__icon">
+                                                            <img src="{{ asset('front/img/news_icon.png') }}" alt="news_icon">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-2 news__dates">
+                                                        <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="news news__top">
+                                                    <div class="news__content mt-md-3 mt-1">
+                                                        <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
+                                                        <div class="d-flex align-items-center py-2">
+                                                            <div class="news__category mr-2">
+                                                                <span><a href="category.html">Политика</a></span>
+                                                                <span><a href="category.html">Законодательство</a></span>
+                                                                <span><a href="category.html">Спорт</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <h2 class="news__title--big">
+                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                {{ $post->title }}
+                                                            </a>
+                                                        </h2>
+                                                        <div class="news__subtitle">
+                                                            {!! $post->description !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-md-9 col-lg-8">
+                                                <div class="row">
+                                                @endif
+                                                <!-- first-loop-End -->
+                                                    @if(!$loop->first)
+                                                        <div class="col-md-12 col-lg-6 my-2">
+                                                            <div class="row">
+                                                                <div class="col-md-5 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed d-none d-lg-block"><i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__img">
+                                                                            <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                <img class="newsImg__mini"
+                                                                                     src="{{ Storage::url($post->img) }}">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="my-2 news__dates">
+                                                                            <div
+                                                                                class="news__time mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7 col-lg-12">
+                                                                    <div class="news news__bottom">
+                                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
+                                                                            <i
+                                                                                class="fas fa-eye"></i> {{ $post->count_view }}
+                                                                        </div>
+                                                                        <div class="news__content mt-0 mt-md-0 mt-lg-3">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="news__category mr-2">
+                                                                        <span><a
+                                                                                href="category.html">Политика</a></span>
+                                                                                    <span><a href="category.html">Спорт</a></span>
+                                                                                    <span><a
+                                                                                            href="category.html">Технологии</a></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <h3 class="news__title--small my-1">
+                                                                                <a href="{{ route('post', [$category->slug, $post->id]) }}">
+                                                                                    {{ $post->title }}
+                                                                                </a>
+                                                                            </h3>
+                                                                            <div
+                                                                                class="news__subtitle">{!! $post->description !!}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            {{--square adwertising--}}
+                                            <div class="col-md-3 col-lg-4 d-none d-md-block">
+                                                <div class="rek h-100">
+                                                    <div class="rek__vertical sticky-top">
+                                                        <img src="{{ asset('front/img/rek4.png') }}" alt="Rek">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
 
@@ -1233,4 +2073,3 @@
         </section>
     </main>
 @endsection
-a

@@ -83,7 +83,7 @@
                             <div class="col-12 py-3">
                                 <div class="section__title">Похожие публикации</div>
                             </div>
-                            @foreach($cat->posts as $post)
+                            @foreach($cat->latestPosts as $post)
                                 <div class="col-md-12 col-lg-6 my-2">
                                     <div class="row">
                                         <div class="col-md-5 col-lg-12">
