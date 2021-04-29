@@ -84,8 +84,18 @@ class PostController extends Controller
             'category_id' => Category::where('slug', $request->category)->value('id'),
             'status' => $request->status ? 1 : 0
         ]);
-        //requestda tags bor, nado if kotoryy udalyaet ne xvatayushiy tegi
-        $post->tags()->attach(request('tags'));
+
+        for ($i=0; $i < count($request['tags']); $i++) {
+            if(!$post->tags->contains($request['tags'][$i])) {
+                $post->tags()->attach($request['tags'][$i]);
+            }
+        }
+
+        foreach ($post->tags as $tag) {
+            if (!collect($request['tags'])->contains($tag->id)) {
+                $post->tags()->detach($tag->id);
+            }
+        }
 
         return redirect()->route('posts.index')->with('warning', 'Пост успешно отредактирован');
     }

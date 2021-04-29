@@ -67,9 +67,9 @@
                                     <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                     <div class="d-flex align-items-center py-2">
                                         <div class="news__category mr-2">
-                                            <span><a href="category.html">Политика</a></span>
-                                            <span><a href="category.html">Законодательство</a></span>
-                                            <span><a href="category.html">Спорт</a></span>
+                                            @foreach($post->tags as $tag)
+                                                <span><a href="{{ route('index', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <h2 class="news__title--big">
@@ -119,11 +119,9 @@
                                                     <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                         <div class="d-flex align-items-center">
                                                             <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                <span><a href="category.html">Спорт</a></span>
-                                                                <span><a
-                                                                        href="category.html">Технологии</a></span>
+                                                                @foreach($post->tags as $tag)
+                                                                    <span><a href="{{ route('index', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                         <h3 class="news__title--small my-1">

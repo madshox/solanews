@@ -13,7 +13,7 @@
                             <div class="col-12 my-2">
                                 <div class="news news__item news__top">
                                     <h1 class="news__title--big mt-1 mb-3">
-                                        <a href="news-item.html">
+                                        <a href="#">
                                             {{ $post->title }}
                                         </a>
                                     </h1>
