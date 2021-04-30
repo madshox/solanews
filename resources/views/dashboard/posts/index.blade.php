@@ -84,7 +84,7 @@
                                         </td>
                                         <td style="display: flex; justify-content: center;">
                                             <a href="{{ route('posts.edit', $post) }}">
-                                                <input type="hidden" name="current_page" value="{{ $posts->currentPage() }}">
+{{--                                                <input type="hidden" name="current_page" value="{{ $posts->currentPage() }}">--}}
                                                 <button type="button"
                                                         class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">
                                                     <div class="fonticon-wrap">

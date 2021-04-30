@@ -29,5 +29,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
 
 
 Route::get('/', 'App\Http\Controllers\MainController@index')->name('index');
+Route::get('/tags/{tag}', 'App\Http\Controllers\MainController@tag')->name('tag');
 Route::get('/category/{slug}/{post}', 'App\Http\Controllers\MainController@post')->name('post');
 Route::get('/category/{slug}', 'App\Http\Controllers\MainController@category')->name('category');

@@ -68,7 +68,7 @@
                                     <div class="d-flex align-items-center py-2">
                                         <div class="news__category mr-2">
                                             @foreach($post->tags as $tag)
-                                                <span><a href="{{ route('index', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
                                             @endforeach
                                         </div>
                                     </div>

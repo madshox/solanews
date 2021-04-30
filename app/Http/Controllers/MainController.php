@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\ProcessPostReady;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Goutte\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -36,6 +37,12 @@ class MainController extends Controller
         $cat = Category::where('slug', $slug)->first();
         $posts = Post::get();
         return view('category', compact('cat', 'posts'));
+    }
+
+    public function tag($tag) {
+        $tag = Tag::where('name', $tag)->first();
+        $tagList = Tag::get();
+        return view('tag', compact('tag', 'tagList'));
     }
 
     public function post($slug, $post) {

@@ -97,7 +97,8 @@ class PostController extends Controller
             }
         }
 
-        return redirect()->route('posts.index')->with('warning', 'Пост успешно отредактирован');
+        return redirect()->route('posts.index')
+            ->with('warning', 'Пост успешно отредактирован');
     }
 
     /**
