@@ -10,11 +10,11 @@
                         <div class="row category-row">
                             <div class="col-12">
                                 <div class="catalogBtn">
-                                    @foreach($categories as $category)
-                                        <div class="catalogBtn__item">
+                                    @foreach($tags as $tag)
+                                        <div class="catalogBtn__item @if(Route::current()->tag == $tag->name) active @endif">
                                             <a class="mybtn mybtn__green"
-                                               href="{{ route('category', ['slug' => $category->slug]) }}">
-                                                {{ $category->title }}
+                                               href="{{ route('tag', $tag->name) }}">
+                                                {{ $tag->name }}
                                             </a>
                                         </div>
                                     @endforeach

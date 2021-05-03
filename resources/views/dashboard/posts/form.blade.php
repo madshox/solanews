@@ -95,7 +95,7 @@
                                                 <div class="d-flex justify-content-start flex-wrap">
                                                     <div
                                                         class="custom-control custom-switch switch-lg custom-switch-success mr-2 mb-1">
-                                                        <p class="mb-lg-1"><b>Статус вакансии</b></p>
+                                                        <p class="mb-lg-1"><b>Статус поста</b></p>
                                                         <input type="checkbox" class="custom-control-input"
                                                                id="customSwitch90" name="status" value="1"
                                                                @if($post->status == '1') checked

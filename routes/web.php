@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//pages
+Route::group(['prefix' => 'page'], function () {
+    Route::get('ads', 'App\Http\Controllers\MainController@ads')->name('ads');
+    Route::get('contacts', 'App\Http\Controllers\MainController@contacts')->name('contacts');
+});
 
 
 Route::get('/parse','App\Http\Controllers\MainController@parse')->name('parse');
@@ -24,6 +28,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
 //    Route::group(['middleware' => 'is_admin'], function () {
         Route::resource('posts', 'PostController');
         Route::resource('categories', 'CategoryController');
+        Route::resource('tags', 'TagController');
 //    });
 });
 

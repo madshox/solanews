@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-//        $posts = Post::where('status', 1)->orderBy('created_at', 'desc')->get();
-//        View::share('posts', $posts);
+        $posts = Post::where('status', 1)->orderBy('created_at', 'desc')->get();
+        View::share('posts', $posts);
 
         $popularPost = Post::where('status', 1)->orderBy('count_view', 'desc')->get();
         View::share('popularPost', $popularPost);

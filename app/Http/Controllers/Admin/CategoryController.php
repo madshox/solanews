@@ -64,8 +64,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $categories = Category::get();
-        return view('dashboard.categories.form', compact('categories', 'category'));
+        return view('dashboard.categories.form', compact('category'));
     }
 
     /**

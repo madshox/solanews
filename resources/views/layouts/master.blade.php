@@ -248,49 +248,57 @@
     <div class="footer__links">
         <div class="container">
             <ul>
-                <li>
-                    <a href="https://solanews.uz/ru/category/view/1/novosti">
-                        Новости
-                    </a>
-                </li>
-                <li>
-                    <a href="https://solanews.uz/ru/category/view/2/sport">
-                        Спорт
-                    </a>
-                </li>
-                <li>
-                    <a href="https://solanews.uz/ru/category/view/3/texnologii">
-                        Технологии
-                    </a>
-                </li>
+                @foreach($categories as $category)
+                    @if($loop->index == 3)
+                        @break
+                    @endif
+                    <li>
+                        <a href="{{ route('category', $category->slug) }}">
+                            {{ $category->title }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
             <ul>
-                <li>
-                    <a href="https://solanews.uz/ru/category/view/4/avto">
-                        Авто
-                    </a>
-                </li>
-                <li>
-                    <a href="https://solanews.uz/ru/category/view/5/v-mire">
-                        В мире
-                    </a>
-                </li>
-                <li>
-                    <a href="https://solanews.uz/ru/category/view/6/kino">
-                        Кино
-                    </a>
-                </li>
+                @foreach($categories as $category)
+                    @if($loop->index < 3)
+                        @continue
+                    @endif
+                    @if($loop->index == 6)
+                        @break
+                    @endif
+                    <li>
+                        <a href="{{ route('category', $category->slug) }}">
+                            {{ $category->title }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <ul>
+                @foreach($categories as $category)
+                    @if($loop->index < 6)
+                        @continue
+                    @endif
+                    @if($loop->index == 9)
+                        @break
+                    @endif
+                    <li>
+                        <a href="{{ route('category', $category->slug) }}">
+                            {{ $category->title }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
 
             <ul>
-                <li><a href="https://solanews.uz/ru/pages/1/reklama">Реклама</a></li>
+                <li><a href="{{ route('ads') }}">Реклама</a></li>
 
                 <li><a href="https://solanews.uz/ru/pages/2/polzovatelskoe-soglasenie">Пользовательское соглашение</a>
                 </li>
             </ul>
             <ul>
 
-                <li><a href="https://solanews.uz/ru/contacts">Контакты</a></li>
+                <li><a href="{{ route('contacts') }}">Контакты</a></li>
 
             </ul>
 

@@ -244,9 +244,9 @@
             <li class="nav-item @if(Route::current()->getName() == ('posts.index')) active @endif"><a href="{{ route('posts.index') }}"><i class="feather icon-message-square"></i><span
                         class="menu-title" data-i18n="Chat">Посты</span></a>
             </li>
-{{--            <li class="nav-item @if(Route::current()->getName() == ('subcategories.index')) active @endif"><a href="{{ route('subcategories.index') }}"><i class="feather icon-check-square"></i><span--}}
-{{--                        class="menu-title" data-i18n="Todo">Подкатегории</span></a>--}}
-{{--            </li>--}}
+            <li class="nav-item @if(Route::current()->getName() == ('tags.index')) active @endif"><a href="{{ route('tags.index') }}"><i class="feather icon-check-square"></i><span
+                        class="menu-title" data-i18n="Todo">Теги</span></a>
+            </li>
 {{--            <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span--}}
 {{--                        class="menu-title" data-i18n="Calender">Calender</span></a>--}}
 {{--            </li>--}}

@@ -59,6 +59,14 @@ class MainController extends Controller
         return view('post-item', compact('cat', 'post'));
     }
 
+    public function ads() {
+        return view('ads');
+    }
+
+    public function contacts() {
+        return view('contacts');
+    }
+
     public function parse()
     {
         $client = new Client();
