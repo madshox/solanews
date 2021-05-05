@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'page'], function () {
     Route::get('ads', 'App\Http\Controllers\MainController@ads')->name('ads');
     Route::get('contacts', 'App\Http\Controllers\MainController@contacts')->name('contacts');
+    Route::get('policy', 'App\Http\Controllers\MainController@policy')->name('policy');
+    Route::post('feedback', 'App\Http\Controllers\MainController@feedback')->name('feedback');
 });
 
 

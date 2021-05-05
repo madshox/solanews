@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FeedbackRequest;
 use App\Jobs\ProcessPostReady;
 use App\Models\Category;
+use App\Models\Feedback;
 use App\Models\Post;
 use App\Models\Tag;
 use Goutte\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -65,6 +68,11 @@ class MainController extends Controller
 
     public function contacts() {
         return view('contacts');
+    }
+
+    public function feedback(FeedbackRequest $request) {
+        Feedback::create($request->only(['name', 'phone', 'description']));
+        return Redirect::back()->with('success', true);
     }
 
     public function parse()

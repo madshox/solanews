@@ -40,165 +40,101 @@
                             <div class="tab-content container">
                                 <div id="home" class="tab-pane active">
                                     <div class="row">
-                                        <div class="col-md-12 col-lg-6 my-2">
-                                            <div class="row">
-                                                <div class="col-md-5 col-lg-12">
-                                                    <div class="news news__bottom">
-                                                        <div class="news__viewed d-md-none d-lg-block d-block"><i
-                                                                class="fas fa-eye"></i> 133
-                                                        </div>
-                                                        <div class="news__img d-block">
-                                                            <a href="news-item.html">
-                                                                <img class="newsImg__mini" src="https://picsum.photos/id/19/900/600">
-                                                            </a>
-                                                        </div>
-                                                        <div class="my-2 news__dates">
-                                                            <div class="news__date mr-1">17 октября</div>
-                                                            <!-- <div class="news__time mr-1">19:00</div> -->
-                                                            <div class="news__category--title">• Парламентская газета</div>
+{{--                                        @dd($tag->popularPosts)--}}
+                                        @foreach($tag->latestPosts as $post)
+                                            <div class="col-md-12 col-lg-6 my-2">
+                                                <div class="row">
+                                                    <div class="col-md-5 col-lg-12">
+                                                        <div class="news news__bottom">
+                                                            <div class="news__viewed d-md-none d-lg-block d-block"><i
+                                                                    class="fas fa-eye"></i> {{ $post->count_view }}
+                                                            </div>
+                                                            <div class="news__img d-block">
+                                                                <a href="{{ route('post', [$post->category, $post]) }}">
+                                                                    <img class="newsImg__mini" src="{{ Storage::url($post->img) }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="my-2 news__dates">
+                                                                <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                <!-- <div class="news__time mr-1">19:00</div> -->
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-7 col-lg-12">
-                                                    <div class="news news__bottom">
-                                                        <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                                class="fas fa-eye"></i> 133</div>
-                                                        <div class="news__content mt-3 mt-md-0 mt-lg-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="news__category mr-2">
-                                                                    <span><a href="">Политика</a></span>
-                                                                    <span><a href="">Спорт</a></span>
-                                                                    <span><a href="">Технологии</a></span>
+                                                    <div class="col-md-7 col-lg-12">
+                                                        <div class="news news__bottom">
+                                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
+                                                                    class="fas fa-eye"></i> {{ $post->count_view }}</div>
+                                                            <div class="news__content mt-3 mt-md-0 mt-lg-3">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="news__category mr-2">
+                                                                        @foreach($post->tags as $tag)
+                                                                            <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        @endforeach()
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <h2 class="news__title--small my-1">
-                                                                <a href="news-item.html">
-                                                                    Президент рассказал о раскрытии коррупционных
-                                                                </a>
-                                                            </h2>
-                                                            <div class="news__subtitle">
-                                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                                eiusmod
-                                                                tempor
-                                                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                                veniam,
-                                                                quis
-                                                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                                commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                                voluptate
-                                                                velit
-                                                                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                                cupidatat
-                                                                non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                                laborum.
-                                                                Sed
-                                                                ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                                accusantium
-                                                                doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                                inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                                explicabo.
-                                                                Nemo
-                                                                enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                                fugit,
-                                                                sed
-                                                                quia
-                                                                consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                                nesciunt.
-                                                                Neque
-                                                                porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                                consectetur,
-                                                                adipisci
-                                                                velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                                dolore
-                                                                magnam aliquam quaerat voluptatem.
-                                                            </div>
-                                                            <div class="my-border">
-                                                                <div class="news__dates--two">
-                                                                    <!-- <div class="news__date mr-1">17 октября</div> -->
-                                                                    <div class="news__time mr-1">19:00</div>
-                                                                    <div class="news__category--title">• Парламентская газета</div>
+                                                                <h2 class="news__title--small my-1">
+                                                                    <a href="{{ route('post', [$post->category, $post]) }}">
+                                                                        {{ $post->title }}
+                                                                    </a>
+                                                                </h2>
+                                                                <div class="news__subtitle">
+                                                                    {!! $post->description !!}
+                                                                </div>
+                                                                <div class="my-border">
+                                                                    <div class="news__dates--two">
+                                                                        <!-- <div class="news__date mr-1">17 октября</div> -->
+                                                                        <div class="news__time mr-1">19:00</div>
+                                                                        <div class="news__category--title">• Парламентская газета</div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div id="menu1" class="tab-pane">
                                     <div class="row">
-                                        <div class="col-md-12 col-lg-6 my-2">
+                                        @foreach($tag->popularPosts as $post)
+                                            <div class="col-md-12 col-lg-6 my-2">
                                             <div class="row">
                                                 <div class="col-md-5 col-lg-12">
                                                     <div class="news news__bottom">
                                                         <div class="news__viewed d-md-none d-lg-block d-block"><i
-                                                                class="fas fa-eye"></i> 133
+                                                                class="fas fa-eye"></i> {{ $post->count_view }}
                                                         </div>
                                                         <div class="news__img d-block">
-                                                            <a href="news-item.html">
-                                                                <img class="newsImg__mini" src="https://picsum.photos/id/44/900/600">
+                                                            <a href="{{ route('post', [$post->category, $post]) }}">
+                                                                <img class="newsImg__mini" src="{{ Storage::url($post->img) }}">
                                                             </a>
                                                         </div>
                                                         <div class="my-2 news__dates">
-                                                            <div class="news__date mr-1">17 октября</div>
+                                                            <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
                                                             <!-- <div class="news__time mr-1">19:00</div> -->
-                                                            <div class="news__category--title">• Парламентская газета</div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7 col-lg-12">
                                                     <div class="news news__bottom">
                                                         <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
-                                                                class="fas fa-eye"></i> 133</div>
+                                                                class="fas fa-eye"></i> {{ $post->count_view }}</div>
                                                         <div class="news__content mt-3 mt-md-0 mt-lg-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
-                                                                    <span><a href="">Политика</a></span>
-                                                                    <span><a href="">Спорт</a></span>
-                                                                    <span><a href="">Технологии</a></span>
+                                                                    @foreach($post->tags as $tag)
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    @endforeach()
                                                                 </div>
                                                             </div>
                                                             <h2 class="news__title--small my-1">
-                                                                <a href="news-item.html">
-                                                                    Президент рассказал о раскрытии коррупционных
+                                                                <a href="{{ route('post', [$post->category, $post]) }}">
+                                                                    {{ $post->title }}
                                                                 </a>
                                                             </h2>
                                                             <div class="news__subtitle">
-                                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                                eiusmod
-                                                                tempor
-                                                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                                veniam,
-                                                                quis
-                                                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                                commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                                voluptate
-                                                                velit
-                                                                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                                cupidatat
-                                                                non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                                laborum.
-                                                                Sed
-                                                                ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                                accusantium
-                                                                doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                                                inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                                                explicabo.
-                                                                Nemo
-                                                                enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                                                fugit,
-                                                                sed
-                                                                quia
-                                                                consequuntur magni dolores eos qui ratione voluptatem sequi
-                                                                nesciunt.
-                                                                Neque
-                                                                porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                                consectetur,
-                                                                adipisci
-                                                                velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                                                dolore
-                                                                magnam aliquam quaerat voluptatem.
+                                                                {!! $post->description !!}
                                                             </div>
                                                             <div class="my-border">
                                                                 <div class="news__dates--two">
@@ -212,8 +148,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
-
                                 </div>
                             </div>
 

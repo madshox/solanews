@@ -293,7 +293,7 @@
             <ul>
                 <li><a href="{{ route('ads') }}">Реклама</a></li>
 
-                <li><a href="https://solanews.uz/ru/pages/2/polzovatelskoe-soglasenie">Пользовательское соглашение</a>
+                <li><a href="{{ route('policy') }}">Пользовательское соглашение</a>
                 </li>
             </ul>
             <ul>
@@ -626,7 +626,7 @@
 
 
 <script src="{{ asset('front/js/main.min.js') }}"></script>
-
+@yield('java')
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
