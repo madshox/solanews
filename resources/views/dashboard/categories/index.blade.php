@@ -32,7 +32,8 @@
                                         <th scope="row">{{ $category->id }}</th>
                                         <td>{{ $category->title }}</td>
                                         <td>{{ $category->position }}</td>
-                                        <td style="display: flex; justify-content: center;">
+                                        <td>
+                                            <div style="display: flex">
                                             <a href="{{ route('categories.edit', $category) }}">
 {{--                                                <input type="hidden" name="current_page" value="{{ $category->currentPage() }}">--}}
                                                 <button type="button"
@@ -49,6 +50,7 @@
                                                     <i class="feather icon-trash-2"></i>
                                                 </div>
                                             </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

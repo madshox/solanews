@@ -11,6 +11,7 @@
                     </div>
                     <form id="form" method="POST" enctype="multipart/form-data"
                           action="{{ route('posts.update', $post['id']) }}">
+                        <input type="hidden" name="page" value="{{ $page }}">
                         @method('PUT')
                         <div class="card-content">
                             <div class="card-body">
@@ -76,6 +77,9 @@
 
                                     {{--tag--}}
                                     <div class="col-12" style="margin-top: 30px">
+                                        @error('tags')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <select name="tags[]" id="tagId" class="form-control" multiple>
                                             @foreach($tags as $tag)
                                                 <option value="{{ $tag->id }}"
@@ -122,7 +126,7 @@
 
                                             </div>
                                             <div class="col-6">
-                                                <a href="{{ route('posts.index') }}">
+                                                <a href="{{ route('posts.index', ['page' => $page]) }}">
                                                     <button type="button"
                                                             class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light">
                                                         Отмена

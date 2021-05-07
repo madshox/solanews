@@ -19,11 +19,11 @@ class Tag extends Model
 
     public function latestPosts() {
         return $this->belongsToMany(Post::class)->where('status', 1)
-            ->orderBy('created_at', 'desc')->limit(5);
+            ->orderBy('updated_at', 'desc');
     }
 
     public function popularPosts() {
         return $this->belongsToMany(Post::class)->where('status', 1)
-            ->orderBy('count_view', 'desc')->limit(5);
+            ->orderBy('count_view', 'desc');
     }
 }

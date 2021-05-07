@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -61,11 +62,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $page = request('page')?? 1;
+
         $tagg = $post->tags->map(function ($item, $key) {
             return $item['id'];
         });
         $categories = Category::get();
-        return view('dashboard.posts.form', compact( 'post', 'categories', 'tagg'));
+        return view('dashboard.posts.form', compact( 'post', 'categories', 'tagg', 'page'));
     }
 
     /**
@@ -73,10 +76,11 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
+        $page = $request->get('page');
         $post->update([
             'title' => $request->title,
             'description' => $request->description,
@@ -97,8 +101,7 @@ class PostController extends Controller
             }
         }
 
-        return redirect()->route('posts.index')
-            ->with('warning', 'Пост успешно отредактирован');
+        return redirect("/admin/posts?page=$page")->with('warning', 'Пост успешно отредактирован');
     }
 
     /**

@@ -40,8 +40,8 @@
                             <div class="tab-content container">
                                 <div id="home" class="tab-pane active">
                                     <div class="row">
-{{--                                        @dd($tag->popularPosts)--}}
-                                        @foreach($tag->latestPosts as $post)
+{{--                                        @dd()--}}
+                                        @foreach($latestPost as $post)
                                             <div class="col-md-12 col-lg-6 my-2">
                                                 <div class="row">
                                                     <div class="col-md-5 col-lg-12">
@@ -154,34 +154,7 @@
                             </div>
 
                             <div class="col-md-12  my-pagination">
-                                <nav>
-                                    <ul class="pagination">
-
-                                        <li class="page-item disabled" aria-disabled="true"
-                                            aria-label="pagination.previous">
-                                            <span class="page-link" aria-hidden="true"><i
-                                                    class="fas fa-chevron-left"></i></span>
-                                        </li>
-
-                                        <li class="page-item active" aria-current="page"><span
-                                                class="page-link">1</span></li>
-
-                                        <li class="page-item disabled" aria-disabled="true"><span
-                                                class="page-link">...</span></li>
-
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/tags/view/1/7/finansy/new?page=25">25</a>
-                                        </li>
-
-
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                               href="https://solanews.uz/ru/tags/view/1/7/finansy/new?page=2" rel="next"
-                                               aria-label="pagination.next"><i class="fas fa-chevron-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
-
+                                {{ $latestPost->links() }}
                             </div>
 
                         </div>

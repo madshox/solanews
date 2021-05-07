@@ -26,7 +26,8 @@
                     <form action="{{ route('delete_all_select') }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light delete_all_select"><i
+                        <button type="submit"
+                                class="btn btn-outline-danger mr-1 mb-1 waves-effect waves-light delete_all_select"><i
                                 class="feather icon-trash" id="delete_all_select"></i>Удалить все выделенные посты
                         </button>
                     </form>
@@ -78,29 +79,31 @@
                                         </td>
                                         <td><img src="{{ Storage::url($post->img) }}" height="auto" width="150" alt="">
                                         </td>
-                                        <td style="display: flex; justify-content: center;">
-                                            <a href="{{ route('posts.edit', $post) }}">
-{{--                                                <input type="hidden" name="current_page" value="{{ $posts->currentPage() }}">--}}
-                                                <button type="button"
-                                                        class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">
+                                        <td>
+                                            <div style="display: flex">
+                                                <a href="{{ route('posts.edit', ['post' => $post, 'page'=> $posts->currentPage()]) }}">
+                                                    <button type="button"
+                                                            class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light">
+                                                        <div class="fonticon-wrap">
+                                                            <i class="feather icon-edit"></i>
+                                                        </div>
+                                                    </button>
+                                                </a>
+                                                <a class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light postId"
+                                                   data-toggle="modal" data-target="#DeleteModal"
+                                                   data-post-id="{{ $post->id }}">
                                                     <div class="fonticon-wrap">
-                                                        <i class="feather icon-edit"></i>
+                                                        <i class="feather icon-trash-2"></i>
                                                     </div>
-                                                </button>
-                                            </a>
-                                            <a class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light postId"
-                                                    data-toggle="modal" data-target="#DeleteModal"
-                                                    data-post-id="{{ $post->id }}">
-                                                <div class="fonticon-wrap">
-                                                    <i class="feather icon-trash-2"></i>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            </div>
                                         </td>
                                         <td id="{{$post->id}}">
                                             <li class="d-inline-block mr-2">
                                                 <fieldset>
                                                     <div class="vs-checkbox-con vs-checkbox-danger sub_chk">
-                                                        <input type="checkbox" class="delete_check checkbox" data-id="{{$post->id}}">
+                                                        <input type="checkbox" class="delete_check checkbox"
+                                                               data-id="{{$post->id}}">
                                                         <span class="vs-checkbox">
                                                             <span class="vs-checkbox--check">
                                                                 <i class="vs-icon feather icon-check"></i>
@@ -157,7 +160,7 @@
                 $('.postId').text(id);
                 $('#deleteModal').modal();
                 $('#deletePost').on('click', function () {
-                    $('#deletePostForm').attr('action', "/admin/posts/"+id).submit();
+                    $('#deletePostForm').attr('action', "/admin/posts/" + id).submit();
                 });
             });
         });
@@ -167,7 +170,7 @@
         $(document).ready(function () {
             //select all
             $('#checkall').on('click', function () {
-                if($(this).is(":checked", true)) {
+                if ($(this).is(":checked", true)) {
                     $('.checkbox').prop('checked', true);
                 } else {
                     $('.checkbox').prop('checked', false);
@@ -176,7 +179,7 @@
 
             //select checkbox all
             $('.checkbox').on('click', function () {
-                if($('.checkbox:checked').length == $('.checkbox').length) {
+                if ($('.checkbox:checked').length == $('.checkbox').length) {
                     $('#checkall').prop('checked', true)
                 } else {
                     $('#checkall').prop('checked', false)
@@ -188,7 +191,7 @@
                 $('.checkbox:checked').each(function () {
                     idsArr.push($(this).attr('data-id'));
                 });
-                if(idsArr.length < 1) {
+                if (idsArr.length < 1) {
                     alert('please select atleast one record to delete');
                     return false;
                 } else {
@@ -196,13 +199,13 @@
                     // $('#deletePost').on('click', function () {
                     //
                     // });
-                    if(confirm('Are you sure?')) {
+                    if (confirm('Are you sure?')) {
                         let strIds = idsArr.join(',');
                         $.ajax({
                             url: "{{ route('delete_all_select') }}",
                             type: 'DELETE',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                            data: 'ids='+strIds,
+                            data: 'ids=' + strIds,
                         });
                     } else {
                         return false;

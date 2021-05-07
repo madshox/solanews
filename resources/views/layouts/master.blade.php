@@ -180,33 +180,47 @@
 
             </div>
             <div class="weather">
+                <?php
+                $apiKey = "7b1fa84582ef855b27a0d876415133be";
+                $cityId = "1512569";
+                $googleApiUrl = "http://api.openweathermap.org/data/2.5/weather?id=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
+
+                $ch = curl_init();
+
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+                curl_setopt($ch, CURLOPT_VERBOSE, 0);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($ch);
+
+                curl_close($ch);
+                $data = json_decode($response);
+                $currentTime = time();
+                ?>
                 <div>
-                    <a href="https://solanews.uz/ru/weather">
+                    <a href="https://solanews.uz/uz/weather">
                         <div class="weather__content">
                             <div class="weather__icon">
-
-                                <!-- <i class="fal fa-thunderstorm"></i> -->
-                                <!-- <i class="fal fa-smog"></i> -->
-                                <!-- <i class="fal fa-wind"></i> -->
-                                <!-- <i class="fal fa-sun-cloud"></i> -->
-                                <!-- <i class="fal fa-clouds"></i> -->
-                                <!-- <i class="fal fa-fog"></i> -->
-                                <!-- <i class="fal fa-thunderstorm-sun"></i> -->
-                                <!-- <i class="fal fa-thunderstorm-moon"></i> -->
-                                <i class="fal fa-moon"></i>
+                                <div class="weather-forecast">
+                                    <img
+                                        src="http://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"
+                                        class="weather-icon" />
+                                </div>
                             </div>
 
                             <div class="weather__count">
-                                2<sup><i class="far fa-circle"></i></sup>
+                                <?php echo $data->main->temp ?>
+                                <sup><i class="far fa-circle"></i></sup>
                             </div>
 
                             <div class="weather__region">
-                                Ташкент
+                                <?php echo $data->name; ?>
                             </div>
                         </div>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>

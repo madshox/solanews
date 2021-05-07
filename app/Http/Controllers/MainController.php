@@ -44,8 +44,10 @@ class MainController extends Controller
 
     public function tag($tag) {
         $tag = Tag::where('name', $tag)->first();
+        $latestPost = $tag->latestPosts()->paginate(4);
+        $popularPost = $tag->popularPosts()->paginate(4);
         $tagList = Tag::get();
-        return view('tag', compact('tag', 'tagList'));
+        return view('tag', compact('tag', 'tagList', 'latestPost', 'popularPost'));
     }
 
     public function post($slug, $post) {

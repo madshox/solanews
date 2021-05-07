@@ -225,7 +225,7 @@
                                                                     </div>
                                                                     <div class="my-2 news__dates">
                                                                         <div
-                                                                            class="news__time mr-1"><?php setlocale('russian') ?>{{ $post->updated_at->format('j F') }}</div>
+                                                                            class="news__time mr-1">{{ $post->updated_at->format('j F') }}</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
