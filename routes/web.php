@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('lang/{locale}', 'App\Http\Controllers\LocalizationController@index');
+
 //pages
 Route::group(['prefix' => 'page'], function () {
     Route::get('ads', 'App\Http\Controllers\MainController@ads')->name('ads');

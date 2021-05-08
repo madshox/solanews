@@ -24,141 +24,138 @@
                             <div class="col-12 my-3">
                                 <div
                                     class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
-                                    <h1 class="section__title">В мире</h1>
+                                    <h1 class="section__title">{{ $cat->title }}</h1>
                                     <!-- Filter -->
+
+                                    {{--Tab-start--}}
                                     <section class="section-filter">
-                                        <div class="filter">
-                                            <div class="filter__item">
-                                                <a class="active" href="https://solanews.uz/ru/category/view/5/v-mire">
-                                                    Последние </a>
-                                            </div>
-                                            <div class="filter__item">
-                                                <a href="https://solanews.uz/ru/category/view/5/v-mire/popular">
-                                                    Популярные </a>
-                                            </div>
-                                        </div>
+                                        <ul class="nav mb-3 filter">
+                                            <li class="nav-item filter__item"><a class="active" data-toggle="tab" href="#home">Последние</a></li>
+                                            <li class="filter__item"><a class="" data-toggle="tab" href="#menu1">Популярные</a></li>
+                                        </ul>
                                     </section>
+                                    {{--Tab-end--}}
                                 </div>
                             </div>
 
-{{--                            @foreach($cats as $cat)--}}
-                                @foreach($cat->latestPosts as $post)
-                                    <div class="col-md-12 col-lg-6 my-2">
-                                        <div class="row">
-                                            <div class="col-md-5 col-lg-12">
-                                                <div class="news news__bottom">
-                                                    <div class="news__viewed d-md-none d-lg-block d-block"><i
-                                                            class="fas fa-eye"></i> 228
-                                                    </div>
-                                                    <div class="news__img d-block">
-                                                        <a href="{{ route('post', [$cat->slug, $post->id]) }}">
-                                                            <img class="newsImg__mini"
-                                                                 src="{{ Storage::url($post->img) }}"
-                                                                 alt="gazeta.uz - Четыре человека погибли при стрельбе в офисе в Калифорнии">
-                                                        </a>
-                                                    </div>
-                                                    <div class="my-2 news__dates">
-                                                        <div class="news__date mr-1">02 апреля</div>
-                                                        <!--<div class="news__category--title">• gazeta.uz</div>-->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7 col-lg-12">
-                                                <div class="news news__bottom">
-                                                    <div class="news__viewed mb-0 d-none d-md-block d-lg-none">
-                                                        <i class="fas fa-eye"></i> 228
-                                                    </div>
-
-                                                    <div class="news__content mt-3 mt-md-0 mt-lg-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="news__category mr-2">
-                                                                                                                    <span>
-                                                                <a href="https://solanews.uz/ru/tags/view/5/31/prestupleniya/popular">
-                                                                    Преступления
+                            <div class="tab-content container">
+                                <div id="home" class="tab-pane active">
+                                    <div class="row">
+                                        {{--@dd()--}}
+                                        @foreach($latestPost as $post)
+                                            <div class="col-md-12 col-lg-6 my-2">
+                                                <div class="row">
+                                                    <div class="col-md-5 col-lg-12">
+                                                        <div class="news news__bottom">
+                                                            <div class="news__viewed d-md-none d-lg-block d-block"><i
+                                                                    class="fas fa-eye"></i> {{ $post->count_view }}
+                                                            </div>
+                                                            <div class="news__img d-block">
+                                                                <a href="{{ route('post', [$post->category, $post]) }}">
+                                                                    <img class="newsImg__mini" src="{{ Storage::url($post->img) }}">
                                                                 </a>
-                                                            </span>
-                                                                <span>
-                                                                <a href="https://solanews.uz/ru/tags/view/5/30/proissestviya/popular">
-                                                                    Происшествия
-                                                                </a>
-                                                            </span>
+                                                            </div>
+                                                            <div class="my-2 news__dates">
+                                                                <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                <!-- <div class="news__time mr-1">19:00</div> -->
                                                             </div>
                                                         </div>
-                                                        <h2 class="news__title--small my-1">
-                                                            <a href="{{ route('post', [$cat->slug, $post->id]) }}">
-                                                                {{ $post->title }}
-                                                            </a>
-                                                        </h2>
-                                                        <div class="news__subtitle">
-                                                            {{ $post->description }}
-                                                        </div>
-                                                        <div class="my-border">
-                                                            <div class="news__dates--two">
-                                                                <div class="news__date mr-1">02 апреля</div>
-                                                                <!--<div class="news__category--title">• gazeta.uz</div>-->
+                                                    </div>
+                                                    <div class="col-md-7 col-lg-12">
+                                                        <div class="news news__bottom">
+                                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
+                                                                    class="fas fa-eye"></i> {{ $post->count_view }}</div>
+                                                            <div class="news__content mt-3 mt-md-0 mt-lg-3">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="news__category mr-2">
+                                                                        @foreach($post->tags as $tag)
+                                                                            <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        @endforeach()
+                                                                    </div>
+                                                                </div>
+                                                                <h2 class="news__title--small my-1">
+                                                                    <a href="{{ route('post', [$post->category, $post]) }}">
+                                                                        {{ $post->title }}
+                                                                    </a>
+                                                                </h2>
+                                                                <div class="news__subtitle">
+                                                                    {!! $post->description !!}
+                                                                </div>
+                                                                <div class="my-border">
+                                                                    <div class="news__dates--two">
+                                                                        <!-- <div class="news__date mr-1">17 октября</div> -->
+                                                                        <div class="news__time mr-1">19:00</div>
+                                                                        <div class="news__category--title">• Парламентская газета</div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
-{{--                            @endforeach--}}
+                                </div>
+                                <div id="menu1" class="tab-pane">
+                                    <div class="row">
+                                        @foreach($popularPost as $post)
+                                            <div class="col-md-12 col-lg-6 my-2">
+                                                <div class="row">
+                                                    <div class="col-md-5 col-lg-12">
+                                                        <div class="news news__bottom">
+                                                            <div class="news__viewed d-md-none d-lg-block d-block"><i
+                                                                    class="fas fa-eye"></i> {{ $post->count_view }}
+                                                            </div>
+                                                            <div class="news__img d-block">
+                                                                <a href="{{ route('post', [$post->category, $post]) }}">
+                                                                    <img class="newsImg__mini" src="{{ Storage::url($post->img) }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="my-2 news__dates">
+                                                                <div class="news__date mr-1">{{ $post->updated_at->format('j F') }}</div>
+                                                                <!-- <div class="news__time mr-1">19:00</div> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7 col-lg-12">
+                                                        <div class="news news__bottom">
+                                                            <div class="news__viewed mb-0 d-none d-md-block d-lg-none"><i
+                                                                    class="fas fa-eye"></i> {{ $post->count_view }}</div>
+                                                            <div class="news__content mt-3 mt-md-0 mt-lg-3">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="news__category mr-2">
+                                                                        @foreach($post->tags as $tag)
+                                                                            <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        @endforeach()
+                                                                    </div>
+                                                                </div>
+                                                                <h2 class="news__title--small my-1">
+                                                                    <a href="{{ route('post', [$post->category, $post]) }}">
+                                                                        {{ $post->title }}
+                                                                    </a>
+                                                                </h2>
+                                                                <div class="news__subtitle">
+                                                                    {!! $post->description !!}
+                                                                </div>
+                                                                <div class="my-border">
+                                                                    <div class="news__dates--two">
+                                                                        <!-- <div class="news__date mr-1">17 октября</div> -->
+                                                                        <div class="news__time mr-1">19:00</div>
+                                                                        <div class="news__category--title">• Парламентская газета</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
 
-                            <div class="col-md-12 my-pagination">
-                                <nav>
-                                    <ul class="pagination">
-
-                                        <li class="page-item disabled" aria-disabled="true"
-                                            aria-label="pagination.previous">
-                                            <span class="page-link" aria-hidden="true"><i
-                                                    class="fas fa-chevron-left"></i></span>
-                                        </li>
-
-                                        <li class="page-item active" aria-current="page"><span
-                                                class="page-link">1</span></li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=2">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=3">3</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=4">4</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=5">5</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=6">6</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=7">7</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=8">8</a>
-                                        </li>
-
-                                        <li class="page-item disabled" aria-disabled="true"><span
-                                                class="page-link">...</span></li>
-
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=70">70</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://solanews.uz/ru/category/view/5/world?page=71">71</a>
-                                        </li>
-
-
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                               href="https://solanews.uz/ru/category/view/5/world?page=2" rel="next"
-                                               aria-label="pagination.next"><i class="fas fa-chevron-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
-
+                            <div class="col-md-12  my-pagination">
+                                {{ $latestPost->links() }}
                             </div>
 
                         </div>

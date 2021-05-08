@@ -97,7 +97,7 @@
                                 </div>
                                 <div id="menu1" class="tab-pane">
                                     <div class="row">
-                                        @foreach($tag->popularPosts as $post)
+                                        @foreach($popularPost as $post)
                                             <div class="col-md-12 col-lg-6 my-2">
                                             <div class="row">
                                                 <div class="col-md-5 col-lg-12">

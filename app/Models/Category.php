@@ -15,6 +15,11 @@ class Category extends Model
       'id'
     ];
 
+    public function posts() {
+        return $this->hasMany(Post::class)->where('status', 1)
+            ->orderBy('created_at', 'desc');
+    }
+
     public function latestPosts() {
         return $this->hasMany(Post::class)->where('status', 1)
             ->orderBy('created_at', 'desc')->limit(5);

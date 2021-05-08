@@ -38,8 +38,9 @@ class MainController extends Controller
 
     public function category($slug) {
         $cat = Category::where('slug', $slug)->first();
-        $posts = Post::get();
-        return view('category', compact('cat', 'posts'));
+        $latestPost = $cat->latestPosts()->paginate(4);
+        $popularPost = $cat->popularPosts()->paginate(4);
+        return view('category', compact('cat', 'latestPost', 'popularPost'));
     }
 
     public function tag($tag) {

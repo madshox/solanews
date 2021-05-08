@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <title>@yield('title')</title>
@@ -147,8 +147,11 @@
                     <i class="fal fa-search"></i>
                 </a>
             </div>
+
+            @php $locale = session()->get('locale'); @endphp
             <div class="lang d-lg-flex d-none">
-                <a class="active" href="/ru">РУ</a>
+                @dd($locale)
+                <a class="active" href="{{ route('/') }}">РУ</a>
                 <a href="/kr">ЎЗ</a>
                 <a href="/uz">O'z</a>
             </div>

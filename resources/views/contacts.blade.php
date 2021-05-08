@@ -5,20 +5,16 @@
     <main id="app">
         <section class="section-contact py-4">
             <div class="container">
-                <h1 class="section__title">Контакты</h1>
-
-
-
+                <h1 class="section__title">@lang("contacts")</h1>
             </div>
-
 
             <div class="my-container-fluid mt-4">
                 <div class="my-map">
-
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1498.9029941930112!2d69.25906061460928!3d41.2913267277858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bfd74ca4815%3A0x9b659c94c50aa00a!2sSOLA!5e0!3m2!1sru!2s!4v1589453958071!5m2!1sru!2s"
                         width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen=""
-                        aria-hidden="false" tabindex="0"></iframe>
+                        aria-hidden="false" tabindex="0">
+                    </iframe>
                 </div>
                 <div class="container">
                     <div class="row">
