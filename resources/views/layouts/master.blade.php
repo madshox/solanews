@@ -96,16 +96,16 @@
 
     </style>
 
-    <script data-ad-client="ca-pub-3471883509518767" async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script src="https://cdn.gravitec.net/storage/e5d7a4b44a86092fb3800c03ef0426d4/client.js" async></script>
-    <script src="https://yastatic.net/pcode/adfox/loader.js" crossorigin="anonymous"></script>
+{{--    <script data-ad-client="ca-pub-3471883509518767" async--}}
+{{--            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--    <script src="https://cdn.gravitec.net/storage/e5d7a4b44a86092fb3800c03ef0426d4/client.js" async></script>--}}
+{{--    <script src="https://yastatic.net/pcode/adfox/loader.js" crossorigin="anonymous"></script>--}}
     <!-- SAPE RTB JS -->
-    <script
-        async="async"
-        src="//cdn-rtb.sape.ru/rtb-b/js/929/2/115929.js"
-        type="text/javascript">
-    </script>
+{{--    <script--}}
+{{--        async="async"--}}
+{{--        src="//cdn-rtb.sape.ru/rtb-b/js/929/2/115929.js"--}}
+{{--        type="text/javascript">--}}
+{{--    </script>--}}
     <!-- SAPE RTB END -->
 </head>
 
@@ -150,10 +150,9 @@
 
             @php $locale = session()->get('locale'); @endphp
             <div class="lang d-lg-flex d-none">
-                @dd($locale)
-                <a class="active" href="{{ route('/') }}">РУ</a>
-                <a href="/kr">ЎЗ</a>
-                <a href="/uz">O'z</a>
+                <a @if($locale == 'ru') class="active" @endif href="{{ route('lang', 'ru') }}">РУ</a>
+                <a @if($locale == 'kr') class="active" @endif href="{{ route('lang', 'kr') }}">ЎЗ</a>
+                <a @if($locale == 'uz') class="active" @endif href="{{ route('lang', 'uz') }}">O'z</a>
             </div>
         </div>
     </div>
@@ -233,24 +232,24 @@
             <div class="rek__big d-none d-md-block">
                 <!-- Yandex.RTB R-A-583185-1 -->
                 <div id="yandex_rtb_R-A-583185-1"></div>
-                <script type="text/javascript">
-                    (function (w, d, n, s, t) {
-                        w[n] = w[n] || [];
-                        w[n].push(function () {
-                            Ya.Context.AdvManager.render({
-                                blockId: "R-A-583185-1",
-                                renderTo: "yandex_rtb_R-A-583185-1",
-                                async: true
-                            });
-                        });
-                        t = d.getElementsByTagName("script")[0];
-                        s = d.createElement("script");
-                        s.type = "text/javascript";
-                        s.src = "//an.yandex.ru/system/context.js";
-                        s.async = true;
-                        t.parentNode.insertBefore(s, t);
-                    })(this, this.document, "yandexContextAsyncCallbacks");
-                </script>
+{{--                <script type="text/javascript">--}}
+{{--                    (function (w, d, n, s, t) {--}}
+{{--                        w[n] = w[n] || [];--}}
+{{--                        w[n].push(function () {--}}
+{{--                            Ya.Context.AdvManager.render({--}}
+{{--                                blockId: "R-A-583185-1",--}}
+{{--                                renderTo: "yandex_rtb_R-A-583185-1",--}}
+{{--                                async: true--}}
+{{--                            });--}}
+{{--                        });--}}
+{{--                        t = d.getElementsByTagName("script")[0];--}}
+{{--                        s = d.createElement("script");--}}
+{{--                        s.type = "text/javascript";--}}
+{{--                        s.src = "//an.yandex.ru/system/context.js";--}}
+{{--                        s.async = true;--}}
+{{--                        t.parentNode.insertBefore(s, t);--}}
+{{--                    })(this, this.document, "yandexContextAsyncCallbacks");--}}
+{{--                </script>--}}
             </div>
         </div>
     </div>
@@ -308,14 +307,14 @@
             </ul>
 
             <ul>
-                <li><a href="{{ route('ads') }}">Реклама</a></li>
+                <li><a href="{{ route('ads') }}">@lang("ads")</a></li>
 
-                <li><a href="{{ route('policy') }}">Пользовательское соглашение</a>
+                <li><a href="{{ route('policy') }}">@lang('policy')</a>
                 </li>
             </ul>
             <ul>
 
-                <li><a href="{{ route('contacts') }}">Контакты</a></li>
+                <li><a href="{{ route('contacts') }}">@lang("contacts")</a></li>
 
             </ul>
 
@@ -332,9 +331,9 @@
     </div>
     <div class="footer__bottom">
         <div class="copyright">
-            <span>Sola News © 2021. Все права защищены</span>
+            <span>Sola News © 2021. @lang("rights")</span>
             <span class="d-md-inline-block d-none">|</span>
-            <span>Разработка и дизайн <a href="https://usoft.uz">Usoft</a></span>
+            <span>@lang("design") <a href="https://usoft.uz">Usoft</a></span>
         </div>
     </div>
 </footer>
@@ -362,310 +361,310 @@
     <i class="fal fa-arrow-up"></i>
 </button>
 
-<script type="application/javascript">
-    setTimeout(function () {
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-2",
-                    renderTo: "yandex_rtb_R-A-583185-2",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--<script type="application/javascript">--}}
+{{--    setTimeout(function () {--}}
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-2",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-2",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-4",
-                    renderTo: "yandex_rtb_R-A-583185-4",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-4",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-4",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-5",
-                    renderTo: "yandex_rtb_R-A-583185-5",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-5",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-5",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-7",
-                    renderTo: "yandex_rtb_R-A-583185-7",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-7",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-7",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-9",
-                    renderTo: "yandex_rtb_R-A-583185-9",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-9",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-9",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-10",
-                    renderTo: "yandex_rtb_R-A-583185-10",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-10",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-10",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-11",
-                    renderTo: "yandex_rtb_R-A-583185-11",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-11",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-11",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-31",
-                    renderTo: "yandex_rtb_R-A-583185-31",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-31",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-31",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-32",
-                    renderTo: "yandex_rtb_R-A-583185-32",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-32",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-32",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-19",
-                    renderTo: "yandex_rtb_R-A-583185-19",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-19",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-19",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-20",
-                    renderTo: "yandex_rtb_R-A-583185-20",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-20",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-20",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-21",
-                    renderTo: "yandex_rtb_R-A-583185-21",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-21",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-21",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-22",
-                    renderTo: "yandex_rtb_R-A-583185-22",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-22",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-22",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-23",
-                    renderTo: "yandex_rtb_R-A-583185-23",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-23",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-23",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-24",
-                    renderTo: "yandex_rtb_R-A-583185-24",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-24",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-24",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
 
-        (function (w, d, n, s, t) {
-            w[n] = w[n] || [];
-            w[n].push(function () {
-                Ya.Context.AdvManager.render({
-                    blockId: "R-A-583185-25",
-                    renderTo: "yandex_rtb_R-A-583185-25",
-                    async: true
-                });
-            });
-            t = d.getElementsByTagName("script")[0];
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.src = "//an.yandex.ru/system/context.js";
-            s.async = true;
-            t.parentNode.insertBefore(s, t);
-        })(this, this.document, "yandexContextAsyncCallbacks");
-    }, 1000)
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+{{--        (function (w, d, n, s, t) {--}}
+{{--            w[n] = w[n] || [];--}}
+{{--            w[n].push(function () {--}}
+{{--                Ya.Context.AdvManager.render({--}}
+{{--                    blockId: "R-A-583185-25",--}}
+{{--                    renderTo: "yandex_rtb_R-A-583185-25",--}}
+{{--                    async: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--            t = d.getElementsByTagName("script")[0];--}}
+{{--            s = d.createElement("script");--}}
+{{--            s.type = "text/javascript";--}}
+{{--            s.src = "//an.yandex.ru/system/context.js";--}}
+{{--            s.async = true;--}}
+{{--            t.parentNode.insertBefore(s, t);--}}
+{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
+{{--    }, 1000)--}}
+{{--</script>--}}
+{{--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
 
-<script src="/js/app.js"></script>
+{{--<script src="{{ asset('front/js/app.js') }}"></script>--}}
 
 
 <script src="{{ asset('front/js/main.min.js') }}"></script>
 @yield('java')
 
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-        m[i] = m[i] || function () {
-            (m[i].a = m[i].a || []).push(arguments)
-        };
-        m[i].l = 1 * new Date();
-        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+{{--<script type="text/javascript">--}}
+{{--    (function (m, e, t, r, i, k, a) {--}}
+{{--        m[i] = m[i] || function () {--}}
+{{--            (m[i].a = m[i].a || []).push(arguments)--}}
+{{--        };--}}
+{{--        m[i].l = 1 * new Date();--}}
+{{--        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)--}}
+{{--    })--}}
+{{--    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");--}}
 
-    ym(62869513, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true
-    });
-</script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/62869513" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript>
+{{--    ym(62869513, "init", {--}}
+{{--        clickmap: true,--}}
+{{--        trackLinks: true,--}}
+{{--        accurateTrackBounce: true,--}}
+{{--        webvisor: true--}}
+{{--    });--}}
+{{--</script>--}}
+{{--<noscript>--}}
+{{--    <div><img src="https://mc.yandex.ru/watch/62869513" style="position:absolute; left:-9999px;" alt=""/></div>--}}
+{{--</noscript>--}}
 <!-- /Yandex.Metrika counter -->
 
 

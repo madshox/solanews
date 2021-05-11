@@ -30,8 +30,8 @@
                                     {{--Tab-start--}}
                                     <section class="section-filter">
                                         <ul class="nav mb-3 filter">
-                                            <li class="nav-item filter__item"><a class="active" data-toggle="tab" href="#home">Последние</a></li>
-                                            <li class="filter__item"><a class="" data-toggle="tab" href="#menu1">Популярные</a></li>
+                                            <li class="nav-item filter__item"><a class="active" data-toggle="tab" href="#home">@lang("latest")</a></li>
+                                            <li class="filter__item"><a class="" data-toggle="tab" href="#menu1">@lang("popular")</a></li>
                                         </ul>
                                     </section>
                                     {{--Tab-end--}}
@@ -70,7 +70,7 @@
                                                                     <div class="news__category mr-2">
                                                                         @foreach($post->tags as $tag)
                                                                             <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
-                                                                        @endforeach()
+                                                                        @endforeach
                                                                     </div>
                                                                 </div>
                                                                 <h2 class="news__title--small my-1">
