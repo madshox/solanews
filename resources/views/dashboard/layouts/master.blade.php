@@ -98,12 +98,12 @@
                                     class="feather icon-check-square"></i> Task</a><a class="dropdown-item"
                                                                                       href="app-chat.html"><i
                                     class="feather icon-message-square"></i> Chats</a>
-{{--                            <form action="{{ route('logout') }}" method="POST">--}}
-{{--                                @csrf--}}
-{{--                                <div class="dropdown-divider"></div>--}}
-{{--                                <button class="dropdown-item" type="submit"><i class="feather icon-power"></i> Logout--}}
-{{--                                </button>--}}
-{{--                            </form>--}}
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <div class="dropdown-divider"></div>
+                                <button class="dropdown-item" type="submit"><i class="feather icon-power"></i> Logout
+                                </button>
+                            </form>
                         </div>
                     </li>
                 </ul>

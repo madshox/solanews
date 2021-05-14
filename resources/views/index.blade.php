@@ -2,6 +2,18 @@
 @section('title', 'Solanews.uz — Новости сегодня: самые свежие и последние новости Узбекистана и мира.')
 
 @section('content')
+<<<<<<< Updated upstream
+=======
+    @if(session()->has('warning'))
+        <div class="container">
+            <div class="row">
+                <div class="col-4 alert-danger" role="alert">
+                    <strong>{{ session()->get('warning') }}</strong>
+                </div>
+            </div>
+        </div>
+    @endif
+>>>>>>> Stashed changes
     <main>
         <!-- 1 -->
         <section class="section-news" id="news">
