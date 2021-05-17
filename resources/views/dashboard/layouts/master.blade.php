@@ -241,9 +241,23 @@
             <li class="nav-item @if(Route::current()->getName() == ('categories.index')) active @endif"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span
                         class="menu-title">Категории</span></a>
             </li>
-            <li class="nav-item @if(Route::current()->getName() == ('posts.index')) active @endif"><a href="{{ route('posts.index') }}"><i class="feather icon-message-square"></i><span
-                        class="menu-title" data-i18n="Chat">Посты</span></a>
+            <li class=" nav-item @if(Route::current()->getName() == ('posts.index')) active @endif"><a href=""><i class="feather icon-briefcase"></i><span class="menu-title"
+                                                                                          data-i18n="Components">Posts</span></a>
+                <ul class="menu-content">
+                    <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item"
+                                                                                                 data-i18n="Alerts">Ru</span></a>
+                    </li>
+                    <li><a href="{{ route('posts.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="Buttons">Uz</span></a>
+                    </li>
+                    <li><a href="component-breadcrumbs.html"><i class="feather icon-circle"></i><span class="menu-item"
+                                                                                                      data-i18n="Breadcrumbs">Kr</span></a>
+                    </li>
+                </ul>
             </li>
+{{--            <li class="nav-item "><a href=""><i class="feather icon-message-square"></i><span--}}
+{{--                        class="menu-title" data-i18n="Chat">Посты</span></a>--}}
+{{--            </li>--}}
             <li class="nav-item @if(Route::current()->getName() == ('tags.index')) active @endif"><a href="{{ route('tags.index') }}"><i class="feather icon-check-square"></i><span
                         class="menu-title" data-i18n="Todo">Теги</span></a>
             </li>
@@ -264,74 +278,7 @@
 {{--                    </li>--}}
 {{--                </ul>--}}
 {{--            </li>--}}
-{{--            <li class=" nav-item"><a href="#"><i class="feather icon-briefcase"></i><span class="menu-title"--}}
-{{--                                                                                          data-i18n="Components">Components</span></a>--}}
-{{--                <ul class="menu-content">--}}
-{{--                    <li><a href="component-alerts.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                 data-i18n="Alerts">Alerts</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-buttons-basic.html"><i class="feather icon-circle"></i><span--}}
-{{--                                class="menu-item" data-i18n="Buttons">Buttons</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-breadcrumbs.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                      data-i18n="Breadcrumbs">Breadcrumbs</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-carousel.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                   data-i18n="Carousel">Carousel</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-collapse.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                   data-i18n="Collapse">Collapse</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-dropdowns.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                    data-i18n="Dropdowns">Dropdowns</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-list-group.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                     data-i18n="List Group">List Group</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-modals.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                 data-i18n="Modals">Modals</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-pagination.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                     data-i18n="Pagination">Pagination</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-navs-component.html"><i class="feather icon-circle"></i><span--}}
-{{--                                class="menu-item" data-i18n="Navs Component">Navs Component</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-navbar.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                 data-i18n="Navbar">Navbar</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-tabs-component.html"><i class="feather icon-circle"></i><span--}}
-{{--                                class="menu-item" data-i18n="Tabs Component">Tabs Component</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-pills-component.html"><i class="feather icon-circle"></i><span--}}
-{{--                                class="menu-item" data-i18n="Pills Component">Pills Component</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-tooltips.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                   data-i18n="Tooltips">Tooltips</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-popovers.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                   data-i18n="Popovers">Popovers</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-badges.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                 data-i18n="Badges">Badges</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-pill-badges.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                      data-i18n="Pill Badges">Pill Badges</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-progress.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                   data-i18n="Progress">Progress</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-media-objects.html"><i class="feather icon-circle"></i><span--}}
-{{--                                class="menu-item">Media Objects</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-spinner.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                  data-i18n="Spinner">Spinner</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="component-bs-toast.html"><i class="feather icon-circle"></i><span class="menu-item"--}}
-{{--                                                                                                   data-i18n="Toasts">Toasts</span></a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
+
 {{--            <li class=" nav-item"><a href="#"><i class="feather icon-box"></i><span class="menu-title"--}}
 {{--                                                                                    data-i18n="Extra Components">Extra Components</span></a>--}}
 {{--                <ul class="menu-content">--}}

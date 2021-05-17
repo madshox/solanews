@@ -1,19 +1,16 @@
 @extends('layouts.master')
-@section('title', 'Solanews.uz — Новости сегодня: самые свежие и последние новости Узбекистана и мира.')
+@section('title', 'Solanews.uz — Новости сегодня: самые свежие и @lang("latest") новости Узбекистана и мира.')
 
 @section('content')
-<<<<<<< Updated upstream
-=======
     @if(session()->has('warning'))
         <div class="container">
             <div class="row">
-                <div class="col-4 alert-danger" role="alert">
+                <div class="col-4">
                     <strong>{{ session()->get('warning') }}</strong>
                 </div>
             </div>
         </div>
     @endif
->>>>>>> Stashed changes
     <main>
         <!-- 1 -->
         <section class="section-news" id="news">
@@ -34,7 +31,7 @@
                                                    id="first-tab" data-toggle="tab"
                                                    href="#first" aria-controls="first"
                                                    role="tab" aria-selected="true">
-                                                    Последние
+                                                    @lang("latest")
                                                 </a>
                                             </li>
                                             <li class="filter__item">
@@ -42,7 +39,7 @@
                                                    id="first2-tab" data-toggle="tab"
                                                    href="#first2" aria-controls="first2"
                                                    role="tab" aria-selected="true">
-                                                    Популярные
+                                                    @lang("popular")
                                                 </a>
                                             </li>
                                         </ul>
@@ -198,9 +195,9 @@
                                                     <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                                     <div class="d-flex align-items-center py-2">
                                                         <div class="news__category mr-2">
-                                                            <span><a href="category.html">Политика</a></span>
-                                                            <span><a href="category.html">Законодательство</a></span>
-                                                            <span><a href="category.html">Спорт</a></span>
+                                                            @foreach($post->tags as $tag)
+                                                                <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                     <h2 class="news__title--big">
@@ -250,11 +247,9 @@
                                                                     <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                                <span><a href="category.html">Спорт</a></span>
-                                                                                <span><a
-                                                                                        href="category.html">Технологии</a></span>
+                                                                                @foreach($post->tags as $tag)
+                                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                @endforeach
                                                                             </div>
                                                                         </div>
                                                                         <h3 class="news__title--small my-1">
@@ -321,7 +316,7 @@
                                                    id="second-tab" data-toggle="tab"
                                                    href="#second" aria-controls="second"
                                                    role="tab" aria-selected="true">
-                                                    Последние
+                                                    @lang("latest")
                                                 </a>
                                             </li>
                                             <li class="filter__item">
@@ -329,7 +324,7 @@
                                                    id="second2-tab" data-toggle="tab"
                                                    href="#second2" aria-controls="second2"
                                                    role="tab" aria-selected="true">
-                                                    Популярные
+                                                    @lang("popular")
                                                 </a>
                                             </li>
                                         </ul>
@@ -366,9 +361,9 @@
                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
-                                                <span><a href="category.html">Политика</a></span>
-                                                <span><a href="category.html">Законодательство</a></span>
-                                                <span><a href="category.html">Спорт</a></span>
+                                                @foreach($post->tags as $tag)
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <h2 class="news__title--big">
@@ -418,11 +413,9 @@
                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                    <span><a
-                                                                            href="category.html">Технологии</a></span>
+                                                                    @foreach($post->tags as $tag)
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                             <h3 class="news__title--small my-1">
@@ -487,9 +480,9 @@
                                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
-                                                                <span><a href="category.html">Политика</a></span>
-                                                                <span><a href="category.html">Законодательство</a></span>
-                                                                <span><a href="category.html">Спорт</a></span>
+                                                                @foreach($post->tags as $tag)
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                         <h2 class="news__title--big">
@@ -539,11 +532,9 @@
                                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                                    <span><a
-                                                                                            href="category.html">Технологии</a></span>
+                                                                                    @foreach($post->tags as $tag)
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                    @endforeach
                                                                                 </div>
                                                                             </div>
                                                                             <h3 class="news__title--small my-1">
@@ -610,7 +601,7 @@
                                                    id="third-tab" data-toggle="tab"
                                                    href="#third" aria-controls="third"
                                                    role="tab" aria-selected="true">
-                                                    Последние
+                                                    @lang("latest")
                                                 </a>
                                             </li>
                                             <li class="filter__item">
@@ -618,7 +609,7 @@
                                                    id="third2-tab" data-toggle="tab"
                                                    href="#third2" aria-controls="third2"
                                                    role="tab" aria-selected="true">
-                                                    Популярные
+                                                    @lang("popular")
                                                 </a>
                                             </li>
                                         </ul>
@@ -655,9 +646,9 @@
                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
-                                                <span><a href="category.html">Политика</a></span>
-                                                <span><a href="category.html">Законодательство</a></span>
-                                                <span><a href="category.html">Спорт</a></span>
+                                                @foreach($post->tags as $tag)
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <h2 class="news__title--big">
@@ -707,11 +698,9 @@
                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                    <span><a
-                                                                            href="category.html">Технологии</a></span>
+                                                                    @foreach($post->tags as $tag)
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                             <h3 class="news__title--small my-1">
@@ -776,9 +765,9 @@
                                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
-                                                                <span><a href="category.html">Политика</a></span>
-                                                                <span><a href="category.html">Законодательство</a></span>
-                                                                <span><a href="category.html">Спорт</a></span>
+                                                                @foreach($post->tags as $tag)
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                         <h2 class="news__title--big">
@@ -828,11 +817,9 @@
                                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                                    <span><a
-                                                                                            href="category.html">Технологии</a></span>
+                                                                                    @foreach($post->tags as $tag)
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                    @endforeach
                                                                                 </div>
                                                                             </div>
                                                                             <h3 class="news__title--small my-1">
@@ -880,10 +867,10 @@
             </div>
         </section>
 
-        <!-- Популярные новости -->
+        <!-- @lang("popular") новости -->
         <section id="popular_news" class="section-popular_news">
             <div class="container"><h2 class="section__title text-white mb-4">
-                    Популярные <a href="#">новости</a></h2>
+                    @lang("popular") <a href="#">новости</a></h2>
                 <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                     <div class="swiper-wrapper"
                          style="transition-duration: 0ms; transform: translate3d(-2506.67px, 0px, 0px);">
@@ -945,7 +932,7 @@
                                                    id="fourth-tab" data-toggle="tab"
                                                    href="#fourth" aria-controls="fourth"
                                                    role="tab" aria-selected="true">
-                                                    Последние
+                                                    @lang("latest")
                                                 </a>
                                             </li>
                                             <li class="filter__item">
@@ -953,7 +940,7 @@
                                                    id="fourth2-tab" data-toggle="tab"
                                                    href="#fourth2" aria-controls="fourth2"
                                                    role="tab" aria-selected="true">
-                                                    Популярные
+                                                    @lang("popular")
                                                 </a>
                                             </li>
                                         </ul>
@@ -990,9 +977,9 @@
                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
-                                                <span><a href="category.html">Политика</a></span>
-                                                <span><a href="category.html">Законодательство</a></span>
-                                                <span><a href="category.html">Спорт</a></span>
+                                                @foreach($post->tags as $tag)
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <h2 class="news__title--big">
@@ -1042,11 +1029,9 @@
                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                    <span><a
-                                                                            href="category.html">Технологии</a></span>
+                                                                    @foreach($post->tags as $tag)
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                             <h3 class="news__title--small my-1">
@@ -1111,9 +1096,9 @@
                                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
-                                                                <span><a href="category.html">Политика</a></span>
-                                                                <span><a href="category.html">Законодательство</a></span>
-                                                                <span><a href="category.html">Спорт</a></span>
+                                                                @foreach($post->tags as $tag)
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                         <h2 class="news__title--big">
@@ -1163,11 +1148,9 @@
                                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                                    <span><a
-                                                                                            href="category.html">Технологии</a></span>
+                                                                                    @foreach($post->tags as $tag)
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                    @endforeach
                                                                                 </div>
                                                                             </div>
                                                                             <h3 class="news__title--small my-1">
@@ -1234,7 +1217,7 @@
                                                    id="fifth-tab" data-toggle="tab"
                                                    href="#fifth" aria-controls="fifth"
                                                    role="tab" aria-selected="true">
-                                                    Последние
+                                                    @lang("latest")
                                                 </a>
                                             </li>
                                             <li class="filter__item">
@@ -1242,7 +1225,7 @@
                                                    id="fifth2-tab" data-toggle="tab"
                                                    href="#fifth2" aria-controls="fifth2"
                                                    role="tab" aria-selected="true">
-                                                    Популярные
+                                                    @lang("popular")
                                                 </a>
                                             </li>
                                         </ul>
@@ -1279,9 +1262,9 @@
                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
-                                                <span><a href="category.html">Политика</a></span>
-                                                <span><a href="category.html">Законодательство</a></span>
-                                                <span><a href="category.html">Спорт</a></span>
+                                                @foreach($post->tags as $tag)
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <h2 class="news__title--big">
@@ -1331,11 +1314,9 @@
                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                    <span><a
-                                                                            href="category.html">Технологии</a></span>
+                                                                    @foreach($post->tags as $tag)
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                             <h3 class="news__title--small my-1">
@@ -1400,9 +1381,9 @@
                                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
-                                                                <span><a href="category.html">Политика</a></span>
-                                                                <span><a href="category.html">Законодательство</a></span>
-                                                                <span><a href="category.html">Спорт</a></span>
+                                                                @foreach($post->tags as $tag)
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                         <h2 class="news__title--big">
@@ -1452,11 +1433,9 @@
                                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                                    <span><a
-                                                                                            href="category.html">Технологии</a></span>
+                                                                                    @foreach($post->tags as $tag)
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                    @endforeach
                                                                                 </div>
                                                                             </div>
                                                                             <h3 class="news__title--small my-1">
@@ -1523,7 +1502,7 @@
                                                    id="sixth-tab" data-toggle="tab"
                                                    href="#sixth" aria-controls="sixth"
                                                    role="tab" aria-selected="true">
-                                                    Последние
+                                                    @lang("latest")
                                                 </a>
                                             </li>
                                             <li class="filter__item">
@@ -1531,7 +1510,7 @@
                                                    id="sixth2-tab" data-toggle="tab"
                                                    href="#sixth2" aria-controls="sixth2"
                                                    role="tab" aria-selected="true">
-                                                    Популярные
+                                                    @lang("popular")
                                                 </a>
                                             </li>
                                         </ul>
@@ -1568,9 +1547,9 @@
                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
-                                                <span><a href="category.html">Политика</a></span>
-                                                <span><a href="category.html">Законодательство</a></span>
-                                                <span><a href="category.html">Спорт</a></span>
+                                                @foreach($post->tags as $tag)
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <h2 class="news__title--big">
@@ -1620,11 +1599,9 @@
                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                    <span><a
-                                                                            href="category.html">Технологии</a></span>
+                                                                    @foreach($post->tags as $tag)
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                             <h3 class="news__title--small my-1">
@@ -1689,9 +1666,9 @@
                                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
-                                                                <span><a href="category.html">Политика</a></span>
-                                                                <span><a href="category.html">Законодательство</a></span>
-                                                                <span><a href="category.html">Спорт</a></span>
+                                                                @foreach($post->tags as $tag)
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                         <h2 class="news__title--big">
@@ -1741,11 +1718,9 @@
                                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                                    <span><a
-                                                                                            href="category.html">Технологии</a></span>
+                                                                                    @foreach($post->tags as $tag)
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                    @endforeach
                                                                                 </div>
                                                                             </div>
                                                                             <h3 class="news__title--small my-1">
@@ -1812,7 +1787,7 @@
                                                    id="seventh-tab" data-toggle="tab"
                                                    href="#seventh" aria-controls="seventh"
                                                    role="tab" aria-selected="true">
-                                                    Последние
+                                                    @lang("latest")
                                                 </a>
                                             </li>
                                             <li class="filter__item">
@@ -1820,7 +1795,7 @@
                                                    id="seventh2-tab" data-toggle="tab"
                                                    href="#seventh2" aria-controls="seventh2"
                                                    role="tab" aria-selected="true">
-                                                    Популярные
+                                                    @lang("popular")
                                                 </a>
                                             </li>
                                         </ul>
@@ -1857,9 +1832,9 @@
                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
-                                                <span><a href="category.html">Политика</a></span>
-                                                <span><a href="category.html">Законодательство</a></span>
-                                                <span><a href="category.html">Спорт</a></span>
+                                                @foreach($post->tags as $tag)
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <h2 class="news__title--big">
@@ -1909,11 +1884,9 @@
                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                    <span><a
-                                                                            href="category.html">Технологии</a></span>
+                                                                    @foreach($post->tags as $tag)
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                             <h3 class="news__title--small my-1">
@@ -1978,9 +1951,9 @@
                                                         <div class="news__viewed"><i class="fa fa-eye"></i> {{ $post->count_view }}</div>
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
-                                                                <span><a href="category.html">Политика</a></span>
-                                                                <span><a href="category.html">Законодательство</a></span>
-                                                                <span><a href="category.html">Спорт</a></span>
+                                                                @foreach($post->tags as $tag)
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                         <h2 class="news__title--big">
@@ -2030,11 +2003,9 @@
                                                                         <div class="news__content mt-0 mt-md-0 mt-lg-3">
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
-                                                                        <span><a
-                                                                                href="category.html">Политика</a></span>
-                                                                                    <span><a href="category.html">Спорт</a></span>
-                                                                                    <span><a
-                                                                                            href="category.html">Технологии</a></span>
+                                                                                    @foreach($post->tags as $tag)
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                    @endforeach
                                                                                 </div>
                                                                             </div>
                                                                             <h3 class="news__title--small my-1">

@@ -13,13 +13,13 @@
                                 <div class="news news__item news__top">
                                     <h1 class="news__title--big mt-1 mb-3">
                                         <a href="#">
-                                            Пользовательское соглашение
+                                            @lang("policy")
                                         </a>
                                     </h1>
 
                                     <div class="news__content mt-2 border-bottom pb-3 pb-md-3">
                                         <div class="news__subtitle">
-                                            Пользовательское соглашение
+                                            @lang("policy")
                                         </div>
                                     </div>
                                 </div>

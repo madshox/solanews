@@ -26,8 +26,7 @@ class CheckIsAdmin
         }else {
             return redirect()->route('index');
         }
-
-
+        
         return $next($request);
     }
 }

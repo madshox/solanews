@@ -21,22 +21,22 @@
                         <div class="col-md-6"></div>
                         <div class="col-md-6 position-relative">
                             <div class="contact">
-                                <div class="contact__title">Центральный офис</div>
+                                <div class="contact__title">@lang("central_office")</div>
                                 <div class="contact__item">
-                                    <p>Телефон</p>
+                                    <p>@lang("phone")</p>
                                     <div><a href="tel:1130">1130</a></div>
                                     <div><a href="tel:+998 (71) 207 08 06">+998 (71) 207 08 06</a></div>
                                 </div>
                                 <div class="contact__item">
-                                    <p>Адрес</p>
+                                    <p>@lang("address")</p>
                                     <div>
                                         г.Ташкент, ул. Шота Руставели, 32А
                                     </div>
                                 </div>
                                 <div class="contact__item">
-                                    <p>Режим работы</p>
+                                    <p>@lang("working")</p>
                                     <div>
-                                        Ежедневно: 8:00 - 20:00
+                                        @lang("daily"): 8:00 - 20:00
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
 
             <div class="container py-4 mt-3">
                 <div class="feedback">
-                    <div class="feedback__title">Обратная связь</div>
+                    <div class="feedback__title">@lang("feedback")</div>
                     <form action="{{ route('feedback') }}" class="my-form" method="POST">
                         @csrf
                         <div class="row">
@@ -56,22 +56,22 @@
                                     @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <input type="text" name="name" placeholder="Ваше имя*">
+                                    <input type="text" name="name" placeholder="@lang("first_name")*">
                                 </div>
                                 <div class="faedback__item my-3">
                                     @error('phone')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <input type="tel" name="phone" placeholder="Телефон*">
+                                    <input type="tel" name="phone" placeholder="@lang("phone")*">
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="feedback__item mb-3 mt-0 mt-md-3">
-                                    <textarea name="description" id="" cols="30" rows="5" placeholder="Сообщение"></textarea>
+                                    <textarea name="description" id="" cols="30" rows="5" placeholder="@lang("message")"></textarea>
                                 </div>
                             </div>
                             <div class="col-12 mt-3 d-flex justify-content-md-end justify-content-center">
-                                <button class="my-btn-send" type="submit">Отправить</button>
+                                <button class="my-btn-send" type="submit">@lang("send")</button>
                             </div>
                         </div>
                     </form>

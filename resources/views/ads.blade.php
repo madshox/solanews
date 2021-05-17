@@ -13,13 +13,13 @@
                                 <div class="news news__item news__top">
                                     <h1 class="news__title--big mt-1 mb-3">
                                         <a href="#">
-                                            Reklama
+                                            @lang("ads")
                                         </a>
                                     </h1>
 
                                     <div class="news__content mt-2 border-bottom pb-3 pb-md-3">
                                         <div class="news__subtitle">
-                                            <p>Reklama joylashtirish masalalari bo'yicha: <br>Yozish: info@sola.uz; <br>Qo'ng'iroq qilish: (71) 207-08-06</p>
+                                            <p>@lang("ads_long"): <br>@lang("write"): info@sola.uz; <br>@lang("call"): (71) 207-08-06</p>
                                         </div>
                                     </div>
                                 </div>
