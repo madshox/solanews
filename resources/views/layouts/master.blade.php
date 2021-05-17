@@ -95,18 +95,6 @@
         }
 
     </style>
-
-{{--    <script data-ad-client="ca-pub-3471883509518767" async--}}
-{{--            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
-{{--    <script src="https://cdn.gravitec.net/storage/e5d7a4b44a86092fb3800c03ef0426d4/client.js" async></script>--}}
-{{--    <script src="https://yastatic.net/pcode/adfox/loader.js" crossorigin="anonymous"></script>--}}
-    <!-- SAPE RTB JS -->
-{{--    <script--}}
-{{--        async="async"--}}
-{{--        src="//cdn-rtb.sape.ru/rtb-b/js/929/2/115929.js"--}}
-{{--        type="text/javascript">--}}
-{{--    </script>--}}
-    <!-- SAPE RTB END -->
 </head>
 
 <body>
@@ -122,14 +110,14 @@
             <button class="navbar-toggler toggler-spin">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            @php $locale = session()->get('locale'); @endphp
             <div class="collapse navbar-collapse ml-5">
                 <ul class="navbar-nav navbar-mobile">
                     <li class="nav-item">
                         <div class="lang lang-mobile d-lg-none d-flex">
-                            <a class="active" href="/ru">РУ</a>
-                            <a href="/kr">ЎЗ</a>
-                            <a href="/uz">O'z</a>
+                            <a @if($locale == 'ru') class="active" @endif href="{{ route('lang', 'ru') }}">РУ</a>
+                            <a @if($locale == 'kr') class="active" @endif href="{{ route('lang', 'kr') }}">ЎЗ</a>
+                            <a @if($locale == 'uz') class="active" @endif href="{{ route('lang', 'uz') }}">O'z</a>
                         </div>
                     </li>
                     @foreach($categories as $category)
@@ -147,8 +135,6 @@
                     <i class="fal fa-search"></i>
                 </a>
             </div>
-
-            @php $locale = session()->get('locale'); @endphp
             <div class="lang d-lg-flex d-none">
                 <a @if($locale == 'ru') class="active" @endif href="{{ route('lang', 'ru') }}">РУ</a>
                 <a @if($locale == 'kr') class="active" @endif href="{{ route('lang', 'kr') }}">ЎЗ</a>
@@ -257,6 +243,23 @@
 
 </header>
 
+@if(session()->has('warning'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ session()->get('warning') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+@if(session()->has('danger'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session()->get('danger') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+
 @yield('content')
 
 <!-- Footer -->
@@ -361,363 +364,9 @@
     <i class="fal fa-arrow-up"></i>
 </button>
 
-{{--<script type="application/javascript">--}}
-{{--    setTimeout(function () {--}}
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-2",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-2",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-4",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-4",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-5",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-5",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-7",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-7",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-9",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-9",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-10",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-10",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-11",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-11",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-31",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-31",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-32",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-32",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-19",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-19",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-20",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-20",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-21",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-21",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-22",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-22",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-23",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-23",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-24",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-24",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-
-{{--        (function (w, d, n, s, t) {--}}
-{{--            w[n] = w[n] || [];--}}
-{{--            w[n].push(function () {--}}
-{{--                Ya.Context.AdvManager.render({--}}
-{{--                    blockId: "R-A-583185-25",--}}
-{{--                    renderTo: "yandex_rtb_R-A-583185-25",--}}
-{{--                    async: true--}}
-{{--                });--}}
-{{--            });--}}
-{{--            t = d.getElementsByTagName("script")[0];--}}
-{{--            s = d.createElement("script");--}}
-{{--            s.type = "text/javascript";--}}
-{{--            s.src = "//an.yandex.ru/system/context.js";--}}
-{{--            s.async = true;--}}
-{{--            t.parentNode.insertBefore(s, t);--}}
-{{--        })(this, this.document, "yandexContextAsyncCallbacks");--}}
-{{--    }, 1000)--}}
-{{--</script>--}}
-{{--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
-
-{{--<script src="{{ asset('front/js/app.js') }}"></script>--}}
-
-
 <script src="{{ asset('front/js/main.min.js') }}"></script>
 @yield('java')
 
-<!-- Yandex.Metrika counter -->
-{{--<script type="text/javascript">--}}
-{{--    (function (m, e, t, r, i, k, a) {--}}
-{{--        m[i] = m[i] || function () {--}}
-{{--            (m[i].a = m[i].a || []).push(arguments)--}}
-{{--        };--}}
-{{--        m[i].l = 1 * new Date();--}}
-{{--        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)--}}
-{{--    })--}}
-{{--    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");--}}
-
-{{--    ym(62869513, "init", {--}}
-{{--        clickmap: true,--}}
-{{--        trackLinks: true,--}}
-{{--        accurateTrackBounce: true,--}}
-{{--        webvisor: true--}}
-{{--    });--}}
-{{--</script>--}}
-{{--<noscript>--}}
-{{--    <div><img src="https://mc.yandex.ru/watch/62869513" style="position:absolute; left:-9999px;" alt=""/></div>--}}
-{{--</noscript>--}}
-<!-- /Yandex.Metrika counter -->
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166874802-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'UA-166874802-1');
-</script>
-
-<!-- START WWW.UZ TOP-RATING -->
-<SCRIPT language="javascript" type="text/javascript">
-    <!--
-    top_js = "1.0";
-    top_r = "id=44820&r=" + escape(document.referrer) + "&pg=" + escape(window.location.href);
-    document.cookie = "smart_top=1; path=/";
-    top_r += "&c=" + (document.cookie ? "Y" : "N")
-    //-->
-</SCRIPT>
-<SCRIPT language="javascript1.1" type="text/javascript">
-    <!--
-    top_js = "1.1";
-    top_r += "&j=" + (navigator.javaEnabled() ? "Y" : "N")
-    //-->
-</SCRIPT>
-<SCRIPT language="javascript1.2" type="text/javascript">
-    <!--
-    top_js = "1.2";
-    top_r += "&wh=" + screen.width + 'x' + screen.height + "&px=" +
-        (((navigator.appName.substring(0, 3) == "Mic")) ? screen.colorDepth : screen.pixelDepth)
-    //-->
-</SCRIPT>
-<SCRIPT language="javascript1.3" type="text/javascript">
-    <!--
-    top_js = "1.3";
-    //-->
-</SCRIPT>
-<SCRIPT language="JavaScript" type="text/javascript">
-    <!--
-    top_rat = "&col=340F6E&t=ffffff&p=BD6F6F";
-    top_r += "&js=" + top_js + "";
-    document.write('<img src="https://cnt0.www.uz/counter/collect?' + top_r + top_rat + '" width=0 height=0 border=0 />')//-->
-</SCRIPT>
-<NOSCRIPT><IMG height=0
-               src="https://cnt0.www.uz/counter/collect?id=44820&pg=http%3A//uzinfocom.uz&col=340F6E&t=ffffff&p=BD6F6F"
-               width=0 border=0/></NOSCRIPT><!-- FINISH WWW.UZ TOP-RATING -->
 </body>
 
 </html>

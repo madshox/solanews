@@ -20,13 +20,14 @@ class CheckIsAdmin
         $user = Auth::user();
         if($user){
             if(!$user->isAdmin()) {
-                session()->flash('warning', 'У вас не достаточно прав');
+                session()->flash('danger', 'У вас не достаточно прав');
                 return redirect()->route('index');
             }
         }else {
+            session()->flash('warning', 'Требуется авторизация');
             return redirect()->route('index');
         }
-        
+
         return $next($request);
     }
 }

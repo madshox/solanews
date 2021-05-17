@@ -2,15 +2,6 @@
 @section('title', 'Solanews.uz — Новости сегодня: самые свежие и @lang("latest") новости Узбекистана и мира.')
 
 @section('content')
-    @if(session()->has('warning'))
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <strong>{{ session()->get('warning') }}</strong>
-                </div>
-            </div>
-        </div>
-    @endif
     <main>
         <!-- 1 -->
         <section class="section-news" id="news">
