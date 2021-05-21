@@ -241,17 +241,19 @@
             <li class="nav-item @if(Route::current()->getName() == ('categories.index')) active @endif"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span
                         class="menu-title">Категории</span></a>
             </li>
-            <li class=" nav-item @if(Route::current()->getName() == ('posts.index')) active @endif"><a href=""><i class="feather icon-briefcase"></i><span class="menu-title"
+            <li class=" nav-item @if(Route::current()->getName() == ('posts.index') || Route::current()->getName() == ('post_k')) active open @endif"><a href=""><i class="feather icon-briefcase"></i><span class="menu-title"
                                                                                           data-i18n="Components">Posts</span></a>
                 <ul class="menu-content">
                     <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item"
-                                                                                                 data-i18n="Alerts">Ru</span></a>
+                                                                             data-i18n="Alerts">Ru</span></a>
                     </li>
-                    <li><a href="{{ route('posts.index') }}"><i class="feather icon-circle"></i><span
+                    <li><a href="{{ route('posts.index') }}"><i class="feather icon-circle
+@if(Route::current()->getName() == ('posts.index')) active @endif"></i><span
                                 class="menu-item" data-i18n="Buttons">Uz</span></a>
                     </li>
-                    <li><a href="component-breadcrumbs.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                                                                                      data-i18n="Breadcrumbs">Kr</span></a>
+                    <li><a href="{{ route('post_k') }}"><i class="feather icon-circle
+@if(Route::current()->getName() == ('post_k')) active @endif"></i><span class="menu-item"
+                                                                             data-i18n="Breadcrumbs">Kr</span></a>
                     </li>
                 </ul>
             </li>

@@ -28,14 +28,15 @@ Route::group(['prefix' => 'page'], function () {
 });
 
 
-Route::get('/parse','App\Http\Controllers\MainController@parse')->name('parse');
+Route::get('/parse/{u_lang}','App\Http\Controllers\MainController@parse')->name('parse');
 Route::delete('/deleteAllPosts', 'App\Http\Controllers\MainController@deleteAllPosts')->name('delete_all_posts');
 Route::delete('/deleteAllSelect', 'App\Http\Controllers\MainController@deleteAllSelect')->name('delete_all_select');
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
     Route::group(['middleware' => 'is_admin'], function () {
-        Route::get('/', 'DashboardController@index');
+        Route::get('/', 'DashboardController@index')->name('admin');
         Route::resource('posts', 'PostController');
+        Route::get('/posts_k', 'PostController@index_k')->name('post_k');
         Route::resource('categories', 'CategoryController');
         Route::resource('tags', 'TagController');
     });

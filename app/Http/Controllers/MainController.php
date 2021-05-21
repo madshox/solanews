@@ -92,11 +92,12 @@ class MainController extends Controller
         return view('policy');
     }
 
-    public function parse()
+    public function parse($u_lang)
     {
+        $url_lang = $u_lang;
         try {
             $client = new Client();
-            $crawler = $client->request('GET', 'https://daryo.uz/uz/feed/');
+            $crawler = $client->request('GET', "https://daryo.uz/{$url_lang}/feed/");
 
             //get posts links
             $links = $crawler->filter('item')->filter('link')->each(function ($node) {
@@ -164,7 +165,8 @@ class MainController extends Controller
                         'category' => $category->title,
                         'description' => $description,
                         'img' => str_replace(storage_path() . '/app/public/', '', $images_url),
-                        'news_source' => $link
+                        'news_source' => $link,
+                        'lang' => $url_lang
                     ]);
 
                     ProcessPostReady::dispatch($create_post);

@@ -25,7 +25,7 @@ class CheckIsAdmin
             }
         }else {
             session()->flash('warning', 'Требуется авторизация');
-            return redirect()->route('index');
+            return redirect()->route('login');
         }
 
         return $next($request);

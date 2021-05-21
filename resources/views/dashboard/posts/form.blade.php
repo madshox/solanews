@@ -126,7 +126,12 @@
 
                                             </div>
                                             <div class="col-6">
-                                                <a href="{{ route('posts.index', ['page' => $page]) }}">
+                                                <a @if($post->lang === 'uz')
+                                                   href="{{ route('posts.index', ['page' => $page]) }}"
+                                                    @else
+                                                    href="{{ route('post_k', ['page' => $page]) }}"
+                                                    @endif
+                                                >
                                                     <button type="button"
                                                             class="btn btn-outline-danger round mr-1 mb-1 waves-effect waves-light">
                                                         Отмена

@@ -7,6 +7,7 @@
         <section class="section-news" id="news">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
+                    @if(session()->get('locale') === 'uz')
                 @foreach($categories as $category)
                     @if($category->position == 1)
                         @foreach($category->latestPosts as $post)

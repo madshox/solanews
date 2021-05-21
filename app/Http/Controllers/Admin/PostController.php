@@ -14,12 +14,18 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::where('lang', 'uz')->paginate(10);
         return view('dashboard.posts.index', compact('posts'));
+    }
+
+    public function index_k()
+    {
+        $posts = Post::where('lang', 'k')->paginate(10);
+        return view('dashboard.posts.index_k', compact('posts'));
     }
 
     /**
@@ -58,7 +64,7 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Post $post)
     {
@@ -68,6 +74,7 @@ class PostController extends Controller
             return $item['id'];
         });
         $categories = Category::get();
+
         return view('dashboard.posts.form', compact( 'post', 'categories', 'tagg', 'page'));
     }
 
@@ -101,19 +108,27 @@ class PostController extends Controller
             }
         }
 
-        return redirect("/admin/posts?page=$page")->with('warning', 'Пост успешно отредактирован');
+        if ($post->lang === 'uz') {
+            return redirect("/admin/posts?page=$page")->with('warning', 'Пост успешно отредактирован');
+        } else {
+            return redirect("/admin/posts_k?page=$page")->with('warning', 'Пост успешно отредактирован');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Post $post)
     {
         $url = $_POST['current_page'];
         $post->delete();
-        return redirect()->to('admin/posts' . '?page=' . $url)->with('danger', 'Пост успешно удален');
+        if ($post->lang === 'uz') {
+            return redirect()->to('admin/posts' . '?page=' . $url)->with('danger', 'Пост успешно удален');
+        } else {
+            return redirect()->to('admin/posts_k' . '?page=' . $url)->with('danger', 'Пост успешно удален');
+        }
     }
 }
