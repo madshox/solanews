@@ -30,7 +30,7 @@
                                 @foreach($tags as $tag)
                                     <tr>
                                         <th scope="row">{{ $tag->id }}</th>
-                                        <td>{{ $tag->name }}</td>
+                                        <td>{{ $tag->name['uz'] }}</td>
                                         <td style="display: flex; justify-content: center;">
                                             <a href="{{ route('tags.edit', $tag) }}">
                                             <input type="hidden" name="current_page" value="{{ $tags->currentPage() }}">

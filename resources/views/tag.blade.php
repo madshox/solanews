@@ -1,5 +1,6 @@
 @extends('layouts.master')
-@section('title', $tag['name'])
+<?php $loc = session()->get('locale') ? : Config::get('app.locale') ?>
+@section('title', $tag->name[$loc])
 
 @section('content')
     <main id="app">
@@ -12,9 +13,9 @@
                                 <div class="catalogBtn">
                                     @foreach($tagList as $tagItem)
                                         <div
-                                            class="catalogBtn__item @if(Route::current()->tag == $tagItem->name) active @endif">
-                                            <a class="mybtn mybtn__green" href="{{ route('tag', $tagItem->name) }}">
-                                                {{ $tagItem->name }}
+                                            class="catalogBtn__item @if(Route::current()->tag == $tagItem->name[$loc]) active @endif">
+                                            <a class="mybtn mybtn__green" href="{{ route('tag', $tagItem->slug) }}">
+                                                {{ $tagItem->name[$loc] }}
                                             </a>
                                         </div>
                                     @endforeach
@@ -24,23 +25,22 @@
                             <div class="col-12 my-3">
                                 <div
                                     class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
-                                    <h1 class="section__title">{{ $tag->name }}</h1>
+                                    <h1 class="section__title">{{ $tag->name[$loc] }}</h1>
 
-                                    {{--Tab-start--}}
+{{--                                    Tab-start--}}
                                     <section class="section-filter">
                                         <ul class="nav mb-3 filter">
                                             <li class="nav-item filter__item"><a class="active" data-toggle="tab" href="#home">@lang("latest")</a></li>
                                             <li class="filter__item"><a class="" data-toggle="tab" href="#menu1">@lang("popular")</a></li>
                                         </ul>
                                     </section>
-                                    {{--Tab-end--}}
+{{--                                    Tab-end--}}
 
                                 </div>
                             </div>
                             <div class="tab-content container">
                                 <div id="home" class="tab-pane active">
                                     <div class="row">
-{{--                                        @dd()--}}
                                         @foreach($latestPost as $post)
                                             <div class="col-md-12 col-lg-6 my-2">
                                                 <div class="row">
@@ -68,7 +68,7 @@
                                                                 <div class="d-flex align-items-center">
                                                                     <div class="news__category mr-2">
                                                                         @foreach($post->tags as $tag)
-                                                                            <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                            <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                         @endforeach
                                                                     </div>
                                                                 </div>
@@ -124,7 +124,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
                                                                     @foreach($post->tags as $tag)
-                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                     @endforeach
                                                                 </div>
                                                             </div>

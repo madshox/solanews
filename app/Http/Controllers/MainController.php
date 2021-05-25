@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Goutte\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -57,9 +58,9 @@ class MainController extends Controller
         return view('category', compact('cat', 'latestPost', 'popularPost'));
     }
 
-    public function tag($tag)
+    public function tag($slug)
     {
-        $tag = Tag::where('name', $tag)->first();
+        $tag = Tag::where('slug', $slug)->first();
 
         if (session()->get('locale') === 'uz') {
             $latestPost = $tag->latestPosts()->paginate(4);

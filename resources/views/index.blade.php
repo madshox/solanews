@@ -15,13 +15,8 @@
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">
-                                            @if(session()->get('locale') === 'uz')
-                                                {{ $category->title['uz'] }}
-                                            @elseif(session()->get('locale') === 'kr')
-                                                {{ $category->title['kr'] }}
-                                            @elseif(session()->get('locale') === 'ru')
-                                                {{ $category->title['ru'] }}
-                                            @endif
+                                            <?php $loc = session()->get('locale') ? : Config::get('app.locale') ?>
+                                                {{ $category->title[$loc] }}
                                         </a></h1>
 
                                     {{--Tab-start--}}
@@ -78,7 +73,7 @@
                                     <div class="d-flex align-items-center py-2">
                                         <div class="news__category mr-2">
                                             @foreach($post->tags as $tag)
-                                                <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                             @endforeach
                                         </div>
                                     </div>
@@ -130,7 +125,7 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="news__category mr-2">
                                                                 @foreach($post->tags as $tag)
-                                                                    <span><a href="{{ route('index', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    <span><a href="{{ route('index', ['tag' => $tag->name[$loc]]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -171,7 +166,7 @@
                         @foreach($category->$pp as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
-{{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+{{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title[$loc] }}</a></h1>--}}
                                     {{--head news--}}
                                     <div class="row mt-4">
                                         <div class="col-md-6">
@@ -198,7 +193,7 @@
                                                     <div class="d-flex align-items-center py-2">
                                                         <div class="news__category mr-2">
                                                             @foreach($post->tags as $tag)
-                                                                <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                             @endforeach
                                                         </div>
                                                     </div>
@@ -250,7 +245,7 @@
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="news__category mr-2">
                                                                                 @foreach($post->tags as $tag)
-                                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                                 @endforeach
                                                                             </div>
                                                                         </div>
@@ -309,16 +304,10 @@
                             <!-- first-loop -->
                                 @if($loop->first)
                                     <h1 class="section__title"><a href="category-item.html">
-                                            @if(session()->get('locale') === 'uz')
-                                                {{ $category->title['uz'] }}
-                                            @elseif(session()->get('locale') === 'kr')
-                                                {{ $category->title['kr'] }}
-                                            @elseif(session()->get('locale') === 'ru')
-                                                {{ $category->title['ru'] }}
-                                            @endif
+                                                {{ $category->title[$loc] }}
                                         </a></h1>
 
-                                    {{--Tab-start--}}
+{{--                                    Tab-start--}}
                                     <section class="section-filter">
                                         <ul class="nav mb-3 filter" role="tablist">
                                             <li class="nav-item filter__item">
@@ -339,7 +328,7 @@
                                             </li>
                                         </ul>
                                     </section>
-                                    {{--Tab-end--}}
+{{--                                    Tab-end--}}
                 </div>
 
                 <div class="tab-content">
@@ -372,7 +361,7 @@
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
                                                 @foreach($post->tags as $tag)
-                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -424,7 +413,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
                                                                     @foreach($post->tags as $tag)
-                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -447,7 +436,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{--square adwertising--}}
+{{--                            square adwertising--}}
                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                 <div class="rek h-100">
                                     <div class="rek__vertical sticky-top">
@@ -464,8 +453,8 @@
                             @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
-                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
-                                        {{--head news--}}
+                                                                            <h1 class="section__title"><a href="category-item.html">{{ $category->title[$loc] }}</a></h1>
+{{--head news--}}
                                         <div class="row mt-4">
                                             <div class="col-md-6">
                                                 <div class="news news__top">
@@ -491,7 +480,7 @@
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
                                                                 @foreach($post->tags as $tag)
-                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -543,7 +532,7 @@
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
                                                                                     @foreach($post->tags as $tag)
-                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                                     @endforeach
                                                                                 </div>
                                                                             </div>
@@ -608,10 +597,12 @@
                                                 {{ $category->title['kr'] }}
                                             @elseif(session()->get('locale') === 'ru')
                                                 {{ $category->title['ru'] }}
+                                            @else
+                                                {{ $category->title['uz'] }}
                                             @endif
                                         </a></h1>
 
-                                    {{--Tab-start--}}
+{{--                                    Tab-start--}}
                                     <section class="section-filter">
                                         <ul class="nav mb-3 filter" role="tablist">
                                             <li class="nav-item filter__item">
@@ -632,7 +623,7 @@
                                             </li>
                                         </ul>
                                     </section>
-                                    {{--Tab-end--}}
+{{--                                    Tab-end--}}
                 </div>
 
                 <div class="tab-content">
@@ -665,7 +656,7 @@
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
                                                 @foreach($post->tags as $tag)
-                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -717,7 +708,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
                                                                     @foreach($post->tags as $tag)
-                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -740,7 +731,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{--square adwertising--}}
+{{--                            square adwertising--}}
                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                 <div class="rek h-100">
                                     <div class="rek__vertical sticky-top">
@@ -757,7 +748,7 @@
                             @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
-                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                                                            <h1 class="section__title"><a href="category-item.html">{{ $category->title[$loc] }}</a></h1>
                                         {{--head news--}}
                                         <div class="row mt-4">
                                             <div class="col-md-6">
@@ -784,7 +775,7 @@
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
                                                                 @foreach($post->tags as $tag)
-                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -836,7 +827,7 @@
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
                                                                                     @foreach($post->tags as $tag)
-                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                                     @endforeach
                                                                                 </div>
                                                                             </div>
@@ -859,7 +850,7 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            {{--square adwertising--}}
+{{--                                            square adwertising--}}
                                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                                 <div class="rek h-100">
                                                     <div class="rek__vertical sticky-top">
@@ -872,7 +863,7 @@
                 </div>
 
             </div>
-            {{--Gorizontal adwertising--}}
+{{--            Gorizontal adwertising--}}
             <div class="container rek-container">
                 <div class="rek">
                     <div class="rek__big d-none d-md-block">
@@ -888,7 +879,7 @@
         <!-- популярные новости -->
         <section id="popular_news" class="section-popular_news">
             <div class="container"><h2 class="section__title text-white mb-4">
-                    @lang("popular") <a href="#">новости</a></h2>
+                    @lang("popular") <a href="#">@lang("news")</a></h2>
                 <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                     <div class="swiper-wrapper"
                          style="transition-duration: 0ms; transform: translate3d(-2506.67px, 0px, 0px);">
@@ -948,10 +939,12 @@
                                                 {{ $category->title['kr'] }}
                                             @elseif(session()->get('locale') === 'ru')
                                                 {{ $category->title['ru'] }}
+                                            @else
+                                                {{ $category->title['uz'] }}
                                             @endif
                                         </a></h1>
 
-                                    {{--Tab-start--}}
+{{--                                    Tab-start--}}
                                     <section class="section-filter">
                                         <ul class="nav mb-3 filter" role="tablist">
                                             <li class="nav-item filter__item">
@@ -972,7 +965,7 @@
                                             </li>
                                         </ul>
                                     </section>
-                                    {{--Tab-end--}}
+{{--                                    Tab-end--}}
                 </div>
 
                 <div class="tab-content">
@@ -1005,7 +998,7 @@
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
                                                 @foreach($post->tags as $tag)
-                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -1057,7 +1050,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
                                                                     @foreach($post->tags as $tag)
-                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -1080,7 +1073,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{--square adwertising--}}
+{{--                            square adwertising--}}
                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                 <div class="rek h-100">
                                     <div class="rek__vertical sticky-top">
@@ -1097,7 +1090,7 @@
                             @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
-                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                                                            <h1 class="section__title"><a href="category-item.html">{{ $category->title[$loc] }}</a></h1>
                                         {{--head news--}}
                                         <div class="row mt-4">
                                             <div class="col-md-6">
@@ -1124,7 +1117,7 @@
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
                                                                 @foreach($post->tags as $tag)
-                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -1176,7 +1169,7 @@
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
                                                                                     @foreach($post->tags as $tag)
-                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                                     @endforeach
                                                                                 </div>
                                                                             </div>
@@ -1199,7 +1192,7 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            {{--square adwertising--}}
+{{--                                            square adwertising--}}
                                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                                 <div class="rek h-100">
                                                     <div class="rek__vertical sticky-top">
@@ -1212,7 +1205,7 @@
                 </div>
 
             </div>
-            {{--Gorizontal adwertising--}}
+{{--            Gorizontal adwertising--}}
             <div class="container rek-container">
                 <div class="rek">
                     <div class="rek__big d-none d-md-block">
@@ -1241,10 +1234,12 @@
                                                 {{ $category->title['kr'] }}
                                             @elseif(session()->get('locale') === 'ru')
                                                 {{ $category->title['ru'] }}
+                                            @else
+                                                {{ $category->title['uz'] }}
                                             @endif
                                         </a></h1>
 
-                                    {{--Tab-start--}}
+{{--                                    Tab-start--}}
                                     <section class="section-filter">
                                         <ul class="nav mb-3 filter" role="tablist">
                                             <li class="nav-item filter__item">
@@ -1265,7 +1260,7 @@
                                             </li>
                                         </ul>
                                     </section>
-                                    {{--Tab-end--}}
+{{--                                    Tab-end--}}
                 </div>
 
                 <div class="tab-content">
@@ -1298,7 +1293,7 @@
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
                                                 @foreach($post->tags as $tag)
-                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -1350,7 +1345,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
                                                                     @foreach($post->tags as $tag)
-                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -1373,7 +1368,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{--square adwertising--}}
+{{--                            square adwertising--}}
                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                 <div class="rek h-100">
                                     <div class="rek__vertical sticky-top">
@@ -1390,7 +1385,7 @@
                             @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
-                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                                                            <h1 class="section__title"><a href="category-item.html">{{ $category->title[$loc] }}</a></h1>
                                         {{--head news--}}
                                         <div class="row mt-4">
                                             <div class="col-md-6">
@@ -1417,7 +1412,7 @@
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
                                                                 @foreach($post->tags as $tag)
-                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -1469,7 +1464,7 @@
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
                                                                                     @foreach($post->tags as $tag)
-                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                                     @endforeach
                                                                                 </div>
                                                                             </div>
@@ -1492,7 +1487,7 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            {{--square adwertising--}}
+{{--                                            square adwertising--}}
                                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                                 <div class="rek h-100">
                                                     <div class="rek__vertical sticky-top">
@@ -1505,7 +1500,7 @@
                 </div>
 
             </div>
-            {{--Gorizontal adwertising--}}
+{{--            Gorizontal adwertising--}}
             <div class="container rek-container">
                 <div class="rek">
                     <div class="rek__big d-none d-md-block">
@@ -1534,10 +1529,12 @@
                                                 {{ $category->title['kr'] }}
                                             @elseif(session()->get('locale') === 'ru')
                                                 {{ $category->title['ru'] }}
+                                            @else
+                                                {{ $category->title['uz'] }}
                                             @endif
                                         </a></h1>
 
-                                    {{--Tab-start--}}
+{{--                                    Tab-start--}}
                                     <section class="section-filter">
                                         <ul class="nav mb-3 filter" role="tablist">
                                             <li class="nav-item filter__item">
@@ -1558,7 +1555,7 @@
                                             </li>
                                         </ul>
                                     </section>
-                                    {{--Tab-end--}}
+{{--                                    Tab-end--}}
                 </div>
 
                 <div class="tab-content">
@@ -1591,7 +1588,7 @@
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
                                                 @foreach($post->tags as $tag)
-                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -1643,7 +1640,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
                                                                     @foreach($post->tags as $tag)
-                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -1666,7 +1663,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{--square adwertising--}}
+{{--                            square adwertising--}}
                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                 <div class="rek h-100">
                                     <div class="rek__vertical sticky-top">
@@ -1683,7 +1680,7 @@
                             @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
-                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                                                            <h1 class="section__title"><a href="category-item.html">{{ $category->title[$loc] }}</a></h1>
                                         {{--head news--}}
                                         <div class="row mt-4">
                                             <div class="col-md-6">
@@ -1710,7 +1707,7 @@
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
                                                                 @foreach($post->tags as $tag)
-                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -1762,7 +1759,7 @@
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
                                                                                     @foreach($post->tags as $tag)
-                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                                     @endforeach
                                                                                 </div>
                                                                             </div>
@@ -1785,7 +1782,7 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            {{--square adwertising--}}
+{{--                                            square adwertising--}}
                                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                                 <div class="rek h-100">
                                                     <div class="rek__vertical sticky-top">
@@ -1798,7 +1795,7 @@
                 </div>
 
             </div>
-            {{--Gorizontal adwertising--}}
+{{--            Gorizontal adwertising--}}
             <div class="container rek-container">
                 <div class="rek">
                     <div class="rek__big d-none d-md-block">
@@ -1827,10 +1824,12 @@
                                                 {{ $category->title['kr'] }}
                                             @elseif(session()->get('locale') === 'ru')
                                                 {{ $category->title['ru'] }}
+                                            @else
+                                                {{ $category->title['uz'] }}
                                             @endif
                                         </a></h1>
 
-                                    {{--Tab-start--}}
+{{--                                    Tab-start--}}
                                     <section class="section-filter">
                                         <ul class="nav mb-3 filter" role="tablist">
                                             <li class="nav-item filter__item">
@@ -1851,7 +1850,7 @@
                                             </li>
                                         </ul>
                                     </section>
-                                    {{--Tab-end--}}
+{{--                                    Tab-end--}}
                 </div>
 
                 <div class="tab-content">
@@ -1884,7 +1883,7 @@
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
                                                 @foreach($post->tags as $tag)
-                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -1936,7 +1935,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div class="news__category mr-2">
                                                                     @foreach($post->tags as $tag)
-                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -1959,7 +1958,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{--square adwertising--}}
+{{--                            square adwertising--}}
                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                 <div class="rek h-100">
                                     <div class="rek__vertical sticky-top">
@@ -1976,7 +1975,7 @@
                             @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
-                                        {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
+                                                                            <h1 class="section__title"><a href="category-item.html">{{ $category->title[$loc] }}</a></h1>
                                         {{--head news--}}
                                         <div class="row mt-4">
                                             <div class="col-md-6">
@@ -2003,7 +2002,7 @@
                                                         <div class="d-flex align-items-center py-2">
                                                             <div class="news__category mr-2">
                                                                 @foreach($post->tags as $tag)
-                                                                    <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                    <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -2055,7 +2054,7 @@
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="news__category mr-2">
                                                                                     @foreach($post->tags as $tag)
-                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                                        <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->name[$loc] }}</a></span>
                                                                                     @endforeach
                                                                                 </div>
                                                                             </div>
@@ -2078,7 +2077,7 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            {{--square adwertising--}}
+{{--                                            square adwertising--}}
                                             <div class="col-md-3 col-lg-4 d-none d-md-block">
                                                 <div class="rek h-100">
                                                     <div class="rek__vertical sticky-top">
@@ -2091,7 +2090,7 @@
                 </div>
 
             </div>
-            {{--Gorizontal adwertising--}}
+{{--            Gorizontal adwertising--}}
             <div class="container rek-container">
                 <div class="rek">
                     <div class="rek__big d-none d-md-block">

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TagRequest;
 use App\Models\Tag;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -11,7 +13,7 @@ class TagController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -36,9 +38,11 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
-        Tag::create($request->all());
+        $params = $request->all();
+        $params['slug'] = SlugService::createSlug(Tag::class, 'slug', $request->name['uz']);
+        Tag::create($params);
         return redirect()->route('tags.index')->with('success', 'Тег успешно добавлен');
     }
 
@@ -69,9 +73,9 @@ class TagController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Tag $tag)
+    public function update(TagRequest $request, Tag $tag)
     {
         $tag->update($request->all());
         return redirect()->route('tags.index')->with('warning', 'Тег успешно отредактирован');

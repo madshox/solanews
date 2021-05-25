@@ -129,6 +129,8 @@
                                     {{ $category->title['kr'] }}
                                 @elseif(session()->get('locale') === 'ru')
                                     {{ $category->title['ru'] }}
+                                @else
+                                    {{ $category->title['uz'] }}
                                 @endif
                             </a>
                         </li>
@@ -285,6 +287,8 @@
                                 {{ $category->title['kr'] }}
                             @elseif(session()->get('locale') === 'ru')
                                 {{ $category->title['ru'] }}
+                            @else
+                                {{ $category->title['uz'] }}
                             @endif
                         </a>
                     </li>
@@ -306,6 +310,8 @@
                                 {{ $category->title['kr'] }}
                             @elseif(session()->get('locale') === 'ru')
                                 {{ $category->title['ru'] }}
+                            @else
+                                {{ $category->title['uz'] }}
                             @endif
                         </a>
                     </li>
@@ -327,6 +333,8 @@
                                 {{ $category->title['kr'] }}
                             @elseif(session()->get('locale') === 'ru')
                                 {{ $category->title['ru'] }}
+                            @else
+                                {{ $category->title['uz'] }}
                             @endif
                         </a>
                     </li>

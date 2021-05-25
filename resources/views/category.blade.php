@@ -1,23 +1,6 @@
 @extends('layouts.master')
-<?php
-//if(session()->get('locale') === 'uz') $l = "['uz']";
-//elseif (session()->get('locale') === 'kr') $l = "['kr']";
-//elseif (session()->get('locale') === 'ru') $l = "['ru']";
-
-switch (session()->get('locale')) {
-    case 'uz':
-        $l = '"uz"';
-        break;
-    case 'kr':
-        $l = "'kr'";
-        break;
-    case 'ru':
-        $l = "'ru'";
-        break;
-}
-?>
-{{--@dd($cat->title[$l]);--}}
-{{--@section('title', $cat->title[$l])--}}
+<?php $loc = session()->get('locale') ? : Config::get('app.locale') ?>
+@section('title', $cat->title[$loc])
 
 @section('content')
     <main id="app">
@@ -29,10 +12,10 @@ switch (session()->get('locale')) {
                             <div class="col-12">
                                 <div class="catalogBtn">
                                     @foreach($tags as $tag)
-                                        <div class="catalogBtn__item @if(Route::current()->tag == $tag->name) active @endif">
+                                        <div class="catalogBtn__item @if(Route::current()->tag == $tag->slug) active @endif">
                                             <a class="mybtn mybtn__green"
-                                               href="{{ route('tag', $tag->name) }}">
-                                                {{ $tag->name }}
+                                               href="{{ route('tag', $tag->slug) }}">
+                                                {{ $tag->name[$loc] }}
                                             </a>
                                         </div>
                                     @endforeach
@@ -43,13 +26,7 @@ switch (session()->get('locale')) {
                                 <div
                                     class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                                     <h1 class="section__title">
-                                        @if(session()->get('locale') === 'uz')
-                                            {{ $cat->title['uz'] }}
-                                        @elseif(session()->get('locale') === 'kr')
-                                            {{ $cat->title['kr'] }}
-                                        @elseif(session()->get('locale') === 'ru')
-                                            {{ $cat->title['ru'] }}
-                                        @endif
+                                            {{ $cat->title[$loc] }}
                                     </h1>
                                     <!-- Filter -->
 
@@ -95,7 +72,7 @@ switch (session()->get('locale')) {
                                                                 <div class="d-flex align-items-center">
                                                                     <div class="news__category mr-2">
                                                                         @foreach($post->tags as $tag)
-                                                                            <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                            <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->slug }}</a></span>
                                                                         @endforeach
                                                                     </div>
                                                                 </div>
@@ -151,7 +128,7 @@ switch (session()->get('locale')) {
                                                                 <div class="d-flex align-items-center">
                                                                     <div class="news__category mr-2">
                                                                         @foreach($post->tags as $tag)
-                                                                            <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                            <span><a href="{{ route('tag', ['tag' => $tag->slug]) }}">{{ $tag->slug }}</a></span>
                                                                         @endforeach()
                                                                     </div>
                                                                 </div>

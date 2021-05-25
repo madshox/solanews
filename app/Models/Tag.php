@@ -2,12 +2,18 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
     use HasFactory;
+    Use Sluggable;
+
+    protected $casts = [
+        'name' => 'array'
+    ];
 
     protected $guarded = [
         'id'
@@ -35,5 +41,13 @@ class Tag extends Model
     public function popularPostsKr() {
         return $this->belongsToMany(Post::class)->where('status', 1)
             ->where('lang', 'k')->orderBy('count_view', 'desc');
+    }
+
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
     }
 }

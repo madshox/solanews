@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @isset($category)
-    @section('title', 'Редактировать категорию ' . $category->name)
+    @section('title', 'Редактировать категорию ' . $category->title['uz'])
 @else
     @section('title', 'Создать категорию')
 @endisset
@@ -32,7 +32,7 @@
 
                         <div class="card-content">
                             <div class="card-body">
-                                @error('title')
+                                @error('title.uz')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
 
@@ -116,7 +116,7 @@
                                                         <input type="text" class="form-control" id="name"
                                                                name="title[kr]"
                                                                placeholder="Название"
-                                                               value="{{ old('title.Kr', isset($category) ? $category->title['Kr'] : null) }}">
+                                                               value="{{ old('title.kr', isset($category) ? $category->title['kr'] : null) }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-book"></i>
                                                     </div>
