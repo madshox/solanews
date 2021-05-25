@@ -1,5 +1,23 @@
 @extends('layouts.master')
-@section('title', $cat['title'])
+<?php
+//if(session()->get('locale') === 'uz') $l = "['uz']";
+//elseif (session()->get('locale') === 'kr') $l = "['kr']";
+//elseif (session()->get('locale') === 'ru') $l = "['ru']";
+
+switch (session()->get('locale')) {
+    case 'uz':
+        $l = '"uz"';
+        break;
+    case 'kr':
+        $l = "'kr'";
+        break;
+    case 'ru':
+        $l = "'ru'";
+        break;
+}
+?>
+{{--@dd($cat->title[$l]);--}}
+{{--@section('title', $cat->title[$l])--}}
 
 @section('content')
     <main id="app">
@@ -24,7 +42,15 @@
                             <div class="col-12 my-3">
                                 <div
                                     class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
-                                    <h1 class="section__title">{{ $cat->title }}</h1>
+                                    <h1 class="section__title">
+                                        @if(session()->get('locale') === 'uz')
+                                            {{ $cat->title['uz'] }}
+                                        @elseif(session()->get('locale') === 'kr')
+                                            {{ $cat->title['kr'] }}
+                                        @elseif(session()->get('locale') === 'ru')
+                                            {{ $cat->title['ru'] }}
+                                        @endif
+                                    </h1>
                                     <!-- Filter -->
 
                                     {{--Tab-start--}}

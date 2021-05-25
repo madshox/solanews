@@ -23,7 +23,7 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -35,12 +35,12 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $params = $request->all();
-        $params['slug'] = SlugService::createSlug(Category::class, 'slug', $request->title);
+        $params['slug'] = SlugService::createSlug(Category::class, 'slug', $request->title['uz']);
         Category::create($params);
         return redirect()->route('categories.index')->with('success', 'Категория успешно добавлена');
     }

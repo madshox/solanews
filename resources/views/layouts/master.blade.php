@@ -123,7 +123,13 @@
                     @foreach($categories as $category)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('category', $category->slug) }}">
-                                {{ $category->title }}
+                                @if(session()->get('locale') === 'uz')
+                                    {{ $category->title['uz'] }}
+                                @elseif(session()->get('locale') === 'kr')
+                                    {{ $category->title['kr'] }}
+                                @elseif(session()->get('locale') === 'ru')
+                                    {{ $category->title['ru'] }}
+                                @endif
                             </a>
                         </li>
                     @endforeach
@@ -273,7 +279,13 @@
                     @endif
                     <li>
                         <a href="{{ route('category', $category->slug) }}">
-                            {{ $category->title }}
+                            @if(session()->get('locale') === 'uz')
+                                {{ $category->title['uz'] }}
+                            @elseif(session()->get('locale') === 'kr')
+                                {{ $category->title['kr'] }}
+                            @elseif(session()->get('locale') === 'ru')
+                                {{ $category->title['ru'] }}
+                            @endif
                         </a>
                     </li>
                 @endforeach
@@ -288,7 +300,13 @@
                     @endif
                     <li>
                         <a href="{{ route('category', $category->slug) }}">
-                            {{ $category->title }}
+                            @if(session()->get('locale') === 'uz')
+                                {{ $category->title['uz'] }}
+                            @elseif(session()->get('locale') === 'kr')
+                                {{ $category->title['kr'] }}
+                            @elseif(session()->get('locale') === 'ru')
+                                {{ $category->title['ru'] }}
+                            @endif
                         </a>
                     </li>
                 @endforeach
@@ -303,7 +321,13 @@
                     @endif
                     <li>
                         <a href="{{ route('category', $category->slug) }}">
-                            {{ $category->title }}
+                            @if(session()->get('locale') === 'uz')
+                                {{ $category->title['uz'] }}
+                            @elseif(session()->get('locale') === 'kr')
+                                {{ $category->title['kr'] }}
+                            @elseif(session()->get('locale') === 'ru')
+                                {{ $category->title['ru'] }}
+                            @endif
                         </a>
                     </li>
                 @endforeach

@@ -7,13 +7,22 @@
         <section class="section-news" id="news">
             <div class="container">
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
-                    @if(session()->get('locale') === 'uz')
+
                 @foreach($categories as $category)
                     @if($category->position == 1)
-                        @foreach($category->latestPosts as $post)
+                        <?php $p = 'latestPosts'; if(session()->get('locale') === 'kr') $p = 'latestPostsKr'; ?>
+                        @foreach($category->$p as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
-                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
+                                    <h1 class="section__title"><a href="category-item.html">
+                                            @if(session()->get('locale') === 'uz')
+                                                {{ $category->title['uz'] }}
+                                            @elseif(session()->get('locale') === 'kr')
+                                                {{ $category->title['kr'] }}
+                                            @elseif(session()->get('locale') === 'ru')
+                                                {{ $category->title['ru'] }}
+                                            @endif
+                                        </a></h1>
 
                                     {{--Tab-start--}}
                                     <section class="section-filter">
@@ -158,7 +167,8 @@
                      aria-labelledby="first2-tab" role="tabpanel">
                 @foreach($categories as $category)
                     @if($category->position == 1)
-                        @foreach($category->popularPosts as $post)
+                        <?php $pp = 'popularPosts'; if(session()->get('locale') === 'kr') $pp = 'popularPostsKr'; ?>
+                        @foreach($category->$pp as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
 {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
@@ -295,10 +305,18 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 2)
-                        @foreach($category->latestPosts as $post)
+                        @foreach($category->$p as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
-                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
+                                    <h1 class="section__title"><a href="category-item.html">
+                                            @if(session()->get('locale') === 'uz')
+                                                {{ $category->title['uz'] }}
+                                            @elseif(session()->get('locale') === 'kr')
+                                                {{ $category->title['kr'] }}
+                                            @elseif(session()->get('locale') === 'ru')
+                                                {{ $category->title['ru'] }}
+                                            @endif
+                                        </a></h1>
 
                                     {{--Tab-start--}}
                                     <section class="section-filter">
@@ -443,7 +461,7 @@
                          aria-labelledby="second2-tab" role="tabpanel">
                     @foreach($categories as $category)
                         @if($category->position == 2)
-                            @foreach($category->popularPosts as $post)
+                            @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
                                         {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
@@ -580,10 +598,18 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 3)
-                        @foreach($category->latestPosts as $post)
+                        @foreach($category->$p as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
-                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
+                                    <h1 class="section__title"><a href="category-item.html">
+                                            @if(session()->get('locale') === 'uz')
+                                                {{ $category->title['uz'] }}
+                                            @elseif(session()->get('locale') === 'kr')
+                                                {{ $category->title['kr'] }}
+                                            @elseif(session()->get('locale') === 'ru')
+                                                {{ $category->title['ru'] }}
+                                            @endif
+                                        </a></h1>
 
                                     {{--Tab-start--}}
                                     <section class="section-filter">
@@ -728,7 +754,7 @@
                          aria-labelledby="third2-tab" role="tabpanel">
                     @foreach($categories as $category)
                         @if($category->position == 3)
-                            @foreach($category->popularPosts as $post)
+                            @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
                                         {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
@@ -859,14 +885,15 @@
             </div>
         </section>
 
-        <!-- @lang("popular") новости -->
+        <!-- популярные новости -->
         <section id="popular_news" class="section-popular_news">
             <div class="container"><h2 class="section__title text-white mb-4">
                     @lang("popular") <a href="#">новости</a></h2>
                 <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                     <div class="swiper-wrapper"
                          style="transition-duration: 0ms; transform: translate3d(-2506.67px, 0px, 0px);">
-                        @foreach($popularPost as $popular)
+                        <?php $po = $popularPosts; if(session()->get('locale') === 'kr') $po = $popularPostsKr; ?>
+                        @foreach($po as $popular)
                             <div class="swiper-slide" data-swiper-slide-index="2"
                                  style="width: 303.333px; margin-right: 10px;">
                                 <div class="news__sliders">
@@ -911,10 +938,18 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 4)
-                        @foreach($category->latestPosts as $post)
+                        @foreach($category->$p as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
-                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
+                                    <h1 class="section__title"><a href="category-item.html">
+                                            @if(session()->get('locale') === 'uz')
+                                                {{ $category->title['uz'] }}
+                                            @elseif(session()->get('locale') === 'kr')
+                                                {{ $category->title['kr'] }}
+                                            @elseif(session()->get('locale') === 'ru')
+                                                {{ $category->title['ru'] }}
+                                            @endif
+                                        </a></h1>
 
                                     {{--Tab-start--}}
                                     <section class="section-filter">
@@ -1059,7 +1094,7 @@
                          aria-labelledby="fourth2-tab" role="tabpanel">
                     @foreach($categories as $category)
                         @if($category->position == 4)
-                            @foreach($category->popularPosts as $post)
+                            @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
                                         {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
@@ -1196,10 +1231,18 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 5)
-                        @foreach($category->latestPosts as $post)
+                        @foreach($category->$p as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
-                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
+                                    <h1 class="section__title"><a href="category-item.html">
+                                            @if(session()->get('locale') === 'uz')
+                                                {{ $category->title['uz'] }}
+                                            @elseif(session()->get('locale') === 'kr')
+                                                {{ $category->title['kr'] }}
+                                            @elseif(session()->get('locale') === 'ru')
+                                                {{ $category->title['ru'] }}
+                                            @endif
+                                        </a></h1>
 
                                     {{--Tab-start--}}
                                     <section class="section-filter">
@@ -1344,7 +1387,7 @@
                          aria-labelledby="fifth2-tab" role="tabpanel">
                     @foreach($categories as $category)
                         @if($category->position == 5)
-                            @foreach($category->popularPosts as $post)
+                            @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
                                         {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
@@ -1481,10 +1524,18 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 6)
-                        @foreach($category->latestPosts as $post)
+                        @foreach($category->$p as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
-                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
+                                    <h1 class="section__title"><a href="category-item.html">
+                                            @if(session()->get('locale') === 'uz')
+                                                {{ $category->title['uz'] }}
+                                            @elseif(session()->get('locale') === 'kr')
+                                                {{ $category->title['kr'] }}
+                                            @elseif(session()->get('locale') === 'ru')
+                                                {{ $category->title['ru'] }}
+                                            @endif
+                                        </a></h1>
 
                                     {{--Tab-start--}}
                                     <section class="section-filter">
@@ -1629,7 +1680,7 @@
                          aria-labelledby="sixth2-tab" role="tabpanel">
                     @foreach($categories as $category)
                         @if($category->position == 6)
-                            @foreach($category->popularPosts as $post)
+                            @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
                                         {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}
@@ -1766,10 +1817,18 @@
                 <div class="d-flex align-items-md-center justify-content-between flex-md-row flex-column">
                 @foreach($categories as $category)
                     @if($category->position == 7)
-                        @foreach($category->latestPosts as $post)
+                        @foreach($category->$p as $post)
                             <!-- first-loop -->
                                 @if($loop->first)
-                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>
+                                    <h1 class="section__title"><a href="category-item.html">
+                                            @if(session()->get('locale') === 'uz')
+                                                {{ $category->title['uz'] }}
+                                            @elseif(session()->get('locale') === 'kr')
+                                                {{ $category->title['kr'] }}
+                                            @elseif(session()->get('locale') === 'ru')
+                                                {{ $category->title['ru'] }}
+                                            @endif
+                                        </a></h1>
 
                                     {{--Tab-start--}}
                                     <section class="section-filter">
@@ -1914,7 +1973,7 @@
                          aria-labelledby="seventh2-tab" role="tabpanel">
                     @foreach($categories as $category)
                         @if($category->position == 7)
-                            @foreach($category->popularPosts as $post)
+                            @foreach($category->$pp as $post)
                                 <!-- first-loop -->
                                     @if($loop->first)
                                         {{--                                    <h1 class="section__title"><a href="category-item.html">{{ $category->title }}</a></h1>--}}

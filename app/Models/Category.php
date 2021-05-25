@@ -11,6 +11,10 @@ class Category extends Model
     use HasFactory;
     Use Sluggable;
 
+    protected $casts = [
+        'title' => 'array'
+    ];
+
     protected $guarded = [
       'id'
     ];
@@ -22,12 +26,22 @@ class Category extends Model
 
     public function latestPosts() {
         return $this->hasMany(Post::class)->where('status', 1)
-            ->orderBy('created_at', 'desc')->limit(5);
+            ->where('lang', 'uz')->orderBy('created_at', 'desc')->limit(5);
     }
 
     public function popularPosts() {
         return $this->hasMany(Post::class)->where('status', 1)
-            ->orderBy('count_view', 'desc')->limit(5);
+            ->where('lang', 'uz')->orderBy('count_view', 'desc')->limit(5);
+    }
+
+    public function latestPostsKr() {
+        return $this->hasMany(Post::class)->where('status', 1)
+            ->where('lang', 'k')->orderBy('created_at', 'desc')->limit(5);
+    }
+
+    public function popularPostsKr() {
+        return $this->hasMany(Post::class)->where('status', 1)
+            ->where('lang', 'k')->orderBy('count_view', 'desc')->limit(5);
     }
 
     public function sluggable() {

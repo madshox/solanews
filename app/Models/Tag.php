@@ -19,11 +19,21 @@ class Tag extends Model
 
     public function latestPosts() {
         return $this->belongsToMany(Post::class)->where('status', 1)
-            ->orderBy('updated_at', 'desc');
+            ->where('lang', 'uz')->orderBy('updated_at', 'desc');
     }
 
     public function popularPosts() {
         return $this->belongsToMany(Post::class)->where('status', 1)
-            ->orderBy('count_view', 'desc');
+            ->where('lang', 'uz')->orderBy('count_view', 'desc');
+    }
+
+    public function latestPostsKr() {
+        return $this->belongsToMany(Post::class)->where('status', 1)
+            ->where('lang', 'k')->orderBy('updated_at', 'desc');
+    }
+
+    public function popularPostsKr() {
+        return $this->belongsToMany(Post::class)->where('status', 1)
+            ->where('lang', 'k')->orderBy('count_view', 'desc');
     }
 }

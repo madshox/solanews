@@ -24,17 +24,6 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
                                     <th scope="col" style="text-align: center;">Действия</th>
-                                    <th scope="col">Выбрать все
-
-                                        <div class="vs-checkbox-con vs-checkbox-danger">
-                                            <input type="checkbox" value="1" id="checkall">
-                                            <span class="vs-checkbox">
-                                                <span class="vs-checkbox--check">
-                                                    <i class="vs-icon feather icon-check"></i>
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -59,21 +48,6 @@
                                                     <i class="feather icon-trash-2"></i>
                                                 </div>
                                             </a>
-                                        </td>
-                                        <td id="{{$tag->id}}">
-                                            <li class="d-inline-block mr-2">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-danger sub_chk">
-                                                        <input type="checkbox" class="delete_check checkbox"
-                                                               data-id="{{$tag->id}}">
-                                                        <span class="vs-checkbox">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                    </div>
-                                                </fieldset>
-                                            </li>
                                         </td>
                                     </tr>
                                 @endforeach

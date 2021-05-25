@@ -30,10 +30,10 @@
                                 @foreach($categories as $category)
                                     <tr>
                                         <th scope="row">{{ $category->id }}</th>
-                                        <td>{{ $category->title }}</td>
+                                        <td>{{ $category->title['uz'] }}</td>
                                         <td>{{ $category->position }}</td>
                                         <td>
-                                            <div style="display: flex">
+                                            <div style="display: flex; justify-content: center;">
                                             <a href="{{ route('categories.edit', $category) }}">
 {{--                                                <input type="hidden" name="current_page" value="{{ $category->currentPage() }}">--}}
                                                 <button type="button"

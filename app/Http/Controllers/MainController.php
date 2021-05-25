@@ -41,16 +41,38 @@ class MainController extends Controller
     public function category($slug)
     {
         $cat = Category::where('slug', $slug)->first();
-        $latestPost = $cat->latestPosts()->paginate(4);
-        $popularPost = $cat->popularPosts()->paginate(4);
+
+        if (session()->get('locale') === 'uz') {
+            $latestPost = $cat->latestPosts()->paginate(4);
+        } else {
+            $latestPost = $cat->latestPostsKr()->paginate(4);
+        }
+
+        if (session()->get('locale') === 'uz') {
+            $popularPost = $cat->popularPosts()->paginate(4);
+        } else {
+            $popularPost = $cat->popularPostsKr()->paginate(4);
+        }
+
         return view('category', compact('cat', 'latestPost', 'popularPost'));
     }
 
     public function tag($tag)
     {
         $tag = Tag::where('name', $tag)->first();
-        $latestPost = $tag->latestPosts()->paginate(4);
-        $popularPost = $tag->popularPosts()->paginate(4);
+
+        if (session()->get('locale') === 'uz') {
+            $latestPost = $tag->latestPosts()->paginate(4);
+        } else {
+            $latestPost = $tag->latestPostsKr()->paginate(4);
+        }
+
+        if (session()->get('locale') === 'uz') {
+            $popularPost = $tag->popularPosts()->paginate(4);
+        } else {
+            $popularPost = $tag->popularPostsKr()->paginate(4);
+        }
+
         $tagList = Tag::get();
         return view('tag', compact('tag', 'tagList', 'latestPost', 'popularPost'));
     }
