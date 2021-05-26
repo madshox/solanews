@@ -17,8 +17,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "tightenco/ziggy": "^1.0",
-      "ext-mysql_xdevapi": "*"
+        "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

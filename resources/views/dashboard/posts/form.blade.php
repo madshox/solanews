@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
-{{--@dd($posts)--}}
-@section('title', 'Редактировать пост ' . $post['title'])
+{{--@dd($post->title)--}}
+@section('title', 'Редактировать пост ' . $post->title)
 @section('content')
     <section id="input-with-icons">
         <div class="row match-height">
@@ -10,7 +10,7 @@
                         <h4 class="card-title">Редактировать пост</h4>
                     </div>
                     <form id="form" method="POST" enctype="multipart/form-data"
-                          action="{{ route('posts.update', $post['id']) }}">
+                          action="{{ route('posts.update', $post) }}">
                         <input type="hidden" name="page" value="{{ $page }}">
                         @method('PUT')
                         <div class="card-content">
@@ -27,7 +27,7 @@
                                             class="form-group position-relative has-icon-left input-divider-left">
                                             <input type="text" class="form-control" id="name" name="title"
                                                    placeholder="Название услуги"
-                                                   value="{{ old('title', $post['title']) }}">
+                                                   value="{{ old('title', isset($post) ? $post->title : null) }}">
                                             <div class="form-control-position">
                                                 <i class="feather icon-phone"></i>
                                             </div>
@@ -43,7 +43,7 @@
                                             Описание
                                         </div>
                                         <textarea name="description" id="editor" cols="30" placeholder="Описание услуги"
-                                                  rows="10">{{ old('description', $post['description']) }}</textarea>
+                                                  rows="10">{{ old('title', isset($post) ? $post->description : null) }}</textarea>
                                     </div>
                                     <!--end-CK-editor-->
 
@@ -65,11 +65,11 @@
                                     <div class="col-12" style="margin-top: 30px">
                                         <select name="category" id="catid" class="form-control">
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->title }}"
+                                                <option value="{{ $category->title['uz'] }}"
                                                         @if($post['category_id'] == $category->id)
                                                         selected
                                                     @endif>
-                                                    {{ $category->title }}
+                                                    {{ $category->title['uz'] }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -86,7 +86,7 @@
                                                     @if(in_array($tag->id, $tagg->toArray()))
                                                         selected
                                                     @endif>
-                                                    {{ $tag->name }}
+                                                    {{ $tag->name['uz'] }}
                                                 </option>
                                             @endforeach
                                         </select>

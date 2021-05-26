@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="notifDiv"></div>
                 <div class="card-header">
-                    <h4 class="card-title">Услуги</h4>
+                    <h4 class="card-title">Теги</h4>
                     <a href="{{ route('tags.create') }}">
                         <button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"><i
                                 class="feather icon-plus"></i>Добавить

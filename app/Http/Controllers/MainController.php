@@ -36,7 +36,7 @@ class MainController extends Controller
     {
         $ids = $request->ids;
         Post::whereIn('id', explode(',', $ids))->delete();
-        return redirect()->route('posts.index')->with('danger', 'Посты успешно удалены');;
+        return redirect()->route('posts.index')->with('danger', 'Посты успешно удалены');
     }
 
     public function category($slug)
@@ -136,8 +136,8 @@ class MainController extends Controller
                     //get posts cats
                     $cat = str_replace('/category', '', $post->filter('.itemCat a')->attr('href'));
                     $cat = trim($cat, '/');
-                    $category = Category::where('title', $cat)->firstOr(function () {
-                        return $cat = Category::where('title', 'yangiliklar')->first();
+                    $category = Category::where('slug', $cat)->firstOr(function () {
+                        return $cat = Category::where('slug', 'yangiliklar')->first();
                     });
 
                     //get posts titles
@@ -185,7 +185,7 @@ class MainController extends Controller
                     $create_post = Post::create([
                         'title' => $title[0],
                         'category_id' => $category->id,
-                        'category' => $category->title,
+                        'category' => $category->title['uz'],
                         'description' => $description,
                         'img' => str_replace(storage_path() . '/app/public/', '', $images_url),
                         'news_source' => $link,
@@ -199,6 +199,7 @@ class MainController extends Controller
 //        return redirect()->route('posts.index');
         } catch (\Exception $e) {
             return redirect()->back();
+//            return $e;
         }
     }
 }

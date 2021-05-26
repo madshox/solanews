@@ -76,7 +76,7 @@
                                                         <input type="text" class="form-control" id="name"
                                                                name="title[ru]"
                                                                placeholder="Название"
-                                                               value="{{ old('title.ru', isset($category) ? $category->title['ru'] : null) }}">
+                                                               value="{{ old('title[ru]', isset($category) ? $category->title['ru'] : null) }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-book"></i>
                                                     </div>
@@ -96,7 +96,7 @@
                                                         <input type="text" class="form-control" id="name"
                                                                name="title[uz]"
                                                                placeholder="Название"
-                                                               value="{{ old('title.uz', isset($category) ? $category->title['uz'] : null) }}">
+                                                               value="{{ old('title[uz]', isset($category) ? $category->title['uz'] : null) }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-book"></i>
                                                     </div>
@@ -116,7 +116,7 @@
                                                         <input type="text" class="form-control" id="name"
                                                                name="title[kr]"
                                                                placeholder="Название"
-                                                               value="{{ old('title.kr', isset($category) ? $category->title['kr'] : null) }}">
+                                                               value="{{ old('title[kr]', isset($category) ? $category->title['kr'] : null) }}">
                                                     <div class="form-control-position">
                                                         <i class="feather icon-book"></i>
                                                     </div>

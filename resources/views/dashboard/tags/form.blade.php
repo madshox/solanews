@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 {{--@dd($tags)--}}
 @isset($tag)
-@section('title', 'Редактировать тег ' . $tag['title'])
+@section('title', 'Редактировать тег ' . $tag->title['uz'])
 @endisset
 
 @section('content')

@@ -236,7 +236,7 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" navigation-header"><span>Apps</span>
+            <li class=" navigation-header"><span><a href="{{ route('admin') }}">ADMIN</a></span>
             </li>
             <li class="nav-item @if(Route::current()->getName() == ('categories.index')) active @endif"><a href="{{ route('categories.index') }}"><i class="feather icon-mail"></i><span
                         class="menu-title">Категории</span></a>
