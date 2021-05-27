@@ -11,7 +11,7 @@
                     <h4 class="card-title">Услуги</h4>
                 </div>
                 <div class="card-header">
-                    <a href="{{ route('parse', 'k') }}">
+                    <a href="{{ route('parse', 'kr') }}">
                         <button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"><i
                                 class="feather icon-plus"></i>Парсить
                         </button>

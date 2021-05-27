@@ -24,7 +24,7 @@ class PostController extends Controller
 
     public function index_k()
     {
-        $posts = Post::where('lang', 'k')->paginate(10);
+        $posts = Post::where('lang', 'kr')->paginate(10);
         return view('dashboard.posts.index_k', compact('posts'));
     }
 

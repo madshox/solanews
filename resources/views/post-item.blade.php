@@ -1,5 +1,6 @@
 @extends('layouts.master')
-@section('title', $post['title'])
+<?php $loc = session()->get('locale') ? : Config::get('app.locale') ?>
+@section('title', $post->title)
 
 @section('content')
     <main>
@@ -30,7 +31,7 @@
                                         <div class="d-flex align-items-center py-2">
                                             <div class="news__category mr-2">
                                                 @foreach($post->tags as $tag)
-                                                    <span><a href="{{ route('index', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                    <span><a href="{{ route('index', ['tag' => $tag->name[$loc]]) }}">{{ $tag->name[$loc] }}</a></span>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -110,7 +111,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="news__category mr-2">
                                                             @foreach($similarPost->tags as $tag)
-                                                                <span><a href="{{ route('tag', ['tag' => $tag->name]) }}">{{ $tag->name }}</a></span>
+                                                                <span><a href="{{ route('tag', ['tag' => $tag->name[$loc]]) }}">{{ $tag->name[$loc] }}</a></span>
                                                             @endforeach
                                                         </div>
                                                     </div>

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<?php $loc = session()->get('locale') ? : Config::get('app.locale') ?>
 <head>
     <meta charset="utf-8">
     <title>@yield('title')</title>
@@ -123,15 +124,7 @@
                     @foreach($categories as $category)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('category', $category->slug) }}">
-                                @if(session()->get('locale') === 'uz')
-                                    {{ $category->title['uz'] }}
-                                @elseif(session()->get('locale') === 'kr')
-                                    {{ $category->title['kr'] }}
-                                @elseif(session()->get('locale') === 'ru')
-                                    {{ $category->title['ru'] }}
-                                @else
-                                    {{ $category->title['uz'] }}
-                                @endif
+                                    {{ $category->title[$loc] }}
                             </a>
                         </li>
                     @endforeach
@@ -144,6 +137,7 @@
                 </a>
             </div>
             <div class="lang d-lg-flex d-none">
+
                 <a @if($locale == 'ru') class="active" @endif href="{{ route('lang', 'ru') }}">РУ</a>
                 <a @if($locale == 'kr') class="active" @endif href="{{ route('lang', 'kr') }}">ЎЗ</a>
                 <a @if($locale == 'uz') class="active" @endif href="{{ route('lang', 'uz') }}">O'z</a>
@@ -281,15 +275,7 @@
                     @endif
                     <li>
                         <a href="{{ route('category', $category->slug) }}">
-                            @if(session()->get('locale') === 'uz')
-                                {{ $category->title['uz'] }}
-                            @elseif(session()->get('locale') === 'kr')
-                                {{ $category->title['kr'] }}
-                            @elseif(session()->get('locale') === 'ru')
-                                {{ $category->title['ru'] }}
-                            @else
-                                {{ $category->title['uz'] }}
-                            @endif
+                                {{ $category->title[$loc] }}
                         </a>
                     </li>
                 @endforeach
@@ -304,15 +290,7 @@
                     @endif
                     <li>
                         <a href="{{ route('category', $category->slug) }}">
-                            @if(session()->get('locale') === 'uz')
-                                {{ $category->title['uz'] }}
-                            @elseif(session()->get('locale') === 'kr')
-                                {{ $category->title['kr'] }}
-                            @elseif(session()->get('locale') === 'ru')
-                                {{ $category->title['ru'] }}
-                            @else
-                                {{ $category->title['uz'] }}
-                            @endif
+                                {{ $category->title[$loc] }}
                         </a>
                     </li>
                 @endforeach
@@ -327,15 +305,7 @@
                     @endif
                     <li>
                         <a href="{{ route('category', $category->slug) }}">
-                            @if(session()->get('locale') === 'uz')
-                                {{ $category->title['uz'] }}
-                            @elseif(session()->get('locale') === 'kr')
-                                {{ $category->title['kr'] }}
-                            @elseif(session()->get('locale') === 'ru')
-                                {{ $category->title['ru'] }}
-                            @else
-                                {{ $category->title['uz'] }}
-                            @endif
+                                {{ $category->title[$loc] }}
                         </a>
                     </li>
                 @endforeach

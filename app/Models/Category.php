@@ -36,12 +36,12 @@ class Category extends Model
 
     public function latestPostsKr() {
         return $this->hasMany(Post::class)->where('status', 1)
-            ->where('lang', 'k')->orderBy('created_at', 'desc')->limit(5);
+            ->where('lang', 'kr')->orderBy('created_at', 'desc')->limit(5);
     }
 
     public function popularPostsKr() {
         return $this->hasMany(Post::class)->where('status', 1)
-            ->where('lang', 'k')->orderBy('count_view', 'desc')->limit(5);
+            ->where('lang', 'kr')->orderBy('count_view', 'desc')->limit(5);
     }
 
     public function sluggable() {

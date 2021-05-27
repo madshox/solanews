@@ -80,6 +80,7 @@ class MainController extends Controller
 
     public function post($slug, $post)
     {
+//        $loc = session()->get('locale');
         $cat = Category::where('slug', $slug)->first();
         $post = Post::where('id', $post)->first();
         $similarPosts = $cat->latestPosts()->simplePaginate(3);

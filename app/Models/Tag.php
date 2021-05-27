@@ -35,12 +35,12 @@ class Tag extends Model
 
     public function latestPostsKr() {
         return $this->belongsToMany(Post::class)->where('status', 1)
-            ->where('lang', 'k')->orderBy('updated_at', 'desc');
+            ->where('lang', 'kr')->orderBy('updated_at', 'desc');
     }
 
     public function popularPostsKr() {
         return $this->belongsToMany(Post::class)->where('status', 1)
-            ->where('lang', 'k')->orderBy('count_view', 'desc');
+            ->where('lang', 'kr')->orderBy('count_view', 'desc');
     }
 
     public function sluggable() {

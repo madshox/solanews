@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         $popularPosts = Post::where('status', 1)->where('lang', 'uz')->orderBy('count_view', 'desc')->get();
         View::share('popularPosts', $popularPosts);
 
-        $popularPostsKr = Post::where('status', 1)->where('lang', 'k')->orderBy('count_view', 'desc')->get();
+        $popularPostsKr = Post::where('status', 1)->where('lang', 'kr')->orderBy('count_view', 'desc')->get();
         View::share('popularPostsKr', $popularPostsKr);
 
         $categories = Category::get();
